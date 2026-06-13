@@ -56,6 +56,18 @@
 .li { background: #0A66C2; }
 .am { background: #FF9900; }
 
+/* NEW: REPLAY SECTION */
+.replay-section { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+.replay-section h2 { font-size: 24px; margin-bottom: 20px; color: #FFD700; border-left: 4px solid #FFD700; padding-left: 12px; }
+.replay-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.replay-card { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid #333; transition: 0.3s; }
+.replay-card:hover { border-color: #FFD700; transform: translateY(-5px); }
+.replay-card img { width: 100%; height: 160px; object-fit: cover; }
+.replay-info { padding: 15px; }
+.replay-info h3 { font-size: 16px; margin-bottom: 5px; }
+.replay-info p { font-size: 13px; opacity: 0.7; }
+.replay-badge { background: #FFD700; color: #000; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block; margin-top: 5px; }
+
 .tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
 .tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
 .schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
@@ -75,7 +87,7 @@
 .bell-btn { background: #FFA500; }
 .bell-btn.subscribed { background: #4CAF50; }
 .prayer-btn { background: #8B5CF6; }
-.donate-btn { background: #FFD700; color: #000; } /* NEW GOLD BUTTON */
+.donate-btn { background: #FFD700; color: #000; }
 
 .channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 140px; }
 .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; transition: 0.3s; }
@@ -99,7 +111,6 @@
 .prayer-content button:hover { background: #7C3AED; }
 .close-prayer { float: right; font-size: 28px; cursor: pointer; color: #fff; }
 
-/* NEW: DONATE MODAL */
 .donate-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
 .donate-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #FFD700; animation: slideUp 0.3s ease; text-align: center; }
 .donate-content h3 { color: #FFD700; margin-bottom: 15px; }
@@ -132,6 +143,45 @@
   <a href="https://amazon.com" target="_blank" class="social-icon am">a</a>
 </div>
 
+<!-- NEW: WATCH REPLAY SECTION -->
+<div class="replay-section">
+  <h2>📼 Watch Replay - Past Sermons</h2>
+  <div class="replay-grid" id="replayGrid">
+    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/VIDEO_ID_1?autoplay=1')">
+      <img src="https://via.placeholder.com/400x225/FFD700/000?text=SERMON+1">
+      <div class="replay-info">
+        <h3>The Power of Faith</h3>
+        <p>Pastor Emmie Shukie | 45 min</p>
+        <span class="replay-badge">NEW</span>
+      </div>
+    </div>
+    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/VIDEO_ID_2?autoplay=1')">
+      <img src="https://via.placeholder.com/400x225/FFD700/000?text=SERMON+2">
+      <div class="replay-info">
+        <h3>God's Plan for Your Life</h3>
+        <p>Pastor Emmie Shukie | 52 min</p>
+        <span class="replay-badge">HOT</span>
+      </div>
+    </div>
+    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/VIDEO_ID_3?autoplay=1')">
+      <img src="https://via.placeholder.com/400x225/FFD700/000?text=SERMON+3">
+      <div class="replay-info">
+        <h3>Breaking Chains</h3>
+        <p>Pastor Emmie Shukie | 38 min</p>
+        <span class="replay-badge">TRENDING</span>
+      </div>
+    </div>
+    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/VIDEO_ID_4?autoplay=1')">
+      <img src="https://via.placeholder.com/400x225/FFD700/000?text=SERMON+4">
+      <div class="replay-info">
+        <h3>Morning Dew Prayers - Full</h3>
+        <p>Live Prayer Session | 60 min</p>
+        <span class="replay-badge">LATEST</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="tv-guide">
   <h2>📅 24/7 TV Guide - Kampala Time EAT</h2>
   <div class="schedule-grid" id="scheduleGrid">
@@ -151,7 +201,6 @@
   </div>
 </div>
 
-<!-- UPDATED: 5 BUTTONS NOW -->
 <div class="btn-group">
   <button id="prayerBtn" class="action-btn prayer-btn">🙏 Prayer Request</button>
   <button id="donateBtn" class="action-btn donate-btn">💰 Donate</button>
@@ -178,7 +227,6 @@
   </div>
 </div>
 
-<!-- NEW: DONATE POPUP -->
 <div class="donate-modal" id="donateModal">
   <div class="donate-content">
     <span class="close-prayer" onclick="closeDonate()">&times;</span>
@@ -221,6 +269,13 @@ function playChannel(url) {
   document.getElementById('videoFrame').src = url;
   startViewerCount();
 }
+
+// NEW: PLAY REPLAY FUNCTION
+function playReplay(url) {
+  document.getElementById('player').style.display = 'block';
+  document.getElementById('videoFrame').src = url;
+}
+
 function closePlayer() {
   document.getElementById('player').style.display = 'none';
   document.getElementById('videoFrame').src = '';
@@ -314,7 +369,6 @@ function sendPrayer() {
   document.getElementById('prayerRequest').value = '';
 }
 
-// NEW: DONATE FUNCTIONS
 function openDonate() {
   document.getElementById('donateModal').style.display = 'flex';
 }
@@ -357,7 +411,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     shareBtn.style.display = 'block';
     bellBtn.style.display = 'block';
     prayerBtn.style.display = 'block';
-    donateBtn.style.display = 'block'; // Show donate button too
+    donateBtn.style.display = 'block';
   }, 3000);
 });
 
@@ -381,7 +435,7 @@ bellBtn.addEventListener('click', () => {
 });
 
 prayerBtn.addEventListener('click', openPrayer);
-donateBtn.addEventListener('click', openDonate); // Open donate popup
+donateBtn.addEventListener('click', openDonate);
 
 OneSignalDeferred.push(async function(OneSignal) {
   if (await OneSignal.isPushNotificationsEnabled()) {
@@ -393,4 +447,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-  </html>
+    </html>
