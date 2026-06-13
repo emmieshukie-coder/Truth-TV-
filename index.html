@@ -23,14 +23,15 @@
 
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; }
+  body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; padding-bottom: 50px; }
   
-  .breaking-news { background: #c00; color: #fff; padding: 8px 0; overflow: hidden; position: sticky; top: 0; z-index: 101; }
-  .breaking-news span { background: #900; padding: 8px 15px; font-weight: bold; margin-right: 20px; display: inline-block; }
-  .ticker { display: inline-block; white-space: nowrap; animation: scroll 30s linear infinite; }
+  /* CHANGED: BREAKING NEWS NOW AT BOTTOM */
+  .breaking-news { background: #c00; color: #fff; padding: 10px 0; overflow: hidden; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 102; border-top: 3px solid #900; }
+  .breaking-news span { background: #900; padding: 10px 15px; font-weight: bold; margin-right: 20px; display: inline-block; }
+  .ticker { display: inline-block; white-space: nowrap; animation: scroll 25s linear infinite; }
   @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
   
-  header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 40px; z-index: 100; backdrop-filter: blur(10px); }
+  header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
   header h1 { font-size: 32px; }
   header p { opacity: 0.9; margin-top: 5px; }
   
@@ -57,7 +58,7 @@
   .program .desc { font-size: 13px; opacity: 0.7; }
   .program.hide { display: none; }
   
-  .btn-group { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; }
+  .btn-group { position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; }
   .action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; }
   .action-btn:hover { transform: scale(1.05); }
   .share-btn { background: #25D366; }
@@ -76,7 +77,7 @@
   .player { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
   .player iframe { width: 100%; height: 100%; border: none; }
   .close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
-  footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; }
+  footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; margin-bottom: 60px; }
   
   .prayer-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
   .prayer-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #8B5CF6; animation: slideUp 0.3s ease; }
@@ -89,11 +90,6 @@
 </style>
 </head>
 <body>
-
-<div class="breaking-news">
-  <span>BREAKING NEWS</span>
-  <div class="ticker" id="newsTicker">TRUTH TV UG is now broadcasting 24/7 | Send your prayer request below | Follow @EmmieShukie for latest news...</div>
-</div>
 
 <header>
   <h1>📺 TRUTH TV UG</h1>
@@ -121,7 +117,7 @@
     <div class="program" data-name="truth news prime" data-start="18" data-end="19.5"><div class="time">6:00pm - 7:30pm</div><div class="title">📺 TRUTH News Prime</div><div class="desc">Main news & community stories</div></div>
     <div class="program" data-name="truth exposed talk" data-start="19.5" data-end="21"><div class="time">7:30pm - 9:00pm</div><div class="title">🎤 Truth Exposed Talk</div><div class="desc">Debates, callers, live comments</div></div>
     <div class="program" data-name="night cinema" data-start="21" data-end="23"><div class="time">9:00pm - 11:00pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Movies, skits & testimonies</div></div>
-    <div class="program" data-name="night prayer replay" data-start="23" data-end="24"><div class="time">11:00pm - 12:00am</div><div class="time">11:00pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Replay of morning prayers + viewer testimonies</div></div>
+    <div class="program" data-name="night prayer replay" data-start="23" data-end="24"><div class="time">11:00pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Replay of morning prayers + viewer testimonies</div></div>
     <div class="program" data-name="gospel music night" data-start="0" data-end="3"><div class="time">12:00am - 3:00am</div><div class="title">🎵 Gospel Music Marathon</div><div class="desc">Best Ugandan gospel music all night</div></div>
     <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Teachings</div><div class="desc">Best sermons replay + Bible study</div></div>
   </div>
@@ -153,6 +149,12 @@
 </div>
 
 <footer>© 2026 TRUTH TV UG | Kampala, Uganda | Broadcasting 24/7</footer>
+
+<!-- CHANGED: BREAKING NEWS TICKER MOVED TO BOTTOM -->
+<div class="breaking-news">
+  <span>BREAKING NEWS</span>
+  <div class="ticker" id="newsTicker">TRUTH TV UG is now broadcasting 24/7 | Send your prayer request below | WhatsApp +256776686096 | Follow @EmmieShukie for latest news...</div>
+</div>
 
 <script>
 const CHANNEL_ID = "UCZwKKWoYRumFr8P1LVfGgwQ"; 
@@ -244,7 +246,7 @@ function startViewerCount() {
   }, 5000);
 }
 
-// PRAYER REQUEST FUNCTIONS - YOUR NUMBER ADDED
+// PRAYER REQUEST FUNCTIONS
 function openPrayer() {
   document.getElementById('prayerModal').style.display = 'flex';
 }
@@ -321,4 +323,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-                                                                                                                                                                                                                                 </html>
+    </html>
