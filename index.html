@@ -25,68 +25,67 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; padding-bottom: 50px; }
 
-  /* BREAKING NEWS AT BOTTOM */
- .breaking-news { background: #c00; color: #fff; padding: 10px 0; overflow: hidden; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 102; border-top: 3px solid #900; }
- .breaking-news span { background: #900; padding: 10px 15px; font-weight: bold; margin-right: 20px; display: inline-block; }
- .ticker { display: inline-block; white-space: nowrap; animation: scroll 25s linear infinite; }
+.breaking-news { background: #c00; color: #fff; padding: 10px 0; overflow: hidden; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 102; border-top: 3px solid #900; }
+.breaking-news span { background: #900; padding: 10px 15px; font-weight: bold; margin-right: 20px; display: inline-block; }
+.ticker { display: inline-block; white-space: nowrap; animation: scroll 25s linear infinite; }
   @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
   header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
   header h1 { font-size: 32px; }
   header p { opacity: 0.9; margin-top: 5px; }
 
- .search-box { margin-top: 15px; display: flex; justify-content: center; gap: 8px; }
- .search-box input { padding: 10px 15px; border-radius: 25px; border: none; width: 250px; outline: none; font-size: 14px; }
- .search-box button { background: #fff; color: #c41e3a; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
- .search-box button:hover { transform: scale(1.1); }
+.search-box { margin-top: 15px; display: flex; justify-content: center; gap: 8px; }
+.search-box input { padding: 10px 15px; border-radius: 25px; border: none; width: 250px; outline: none; font-size: 14px; }
+.search-box button { background: #fff; color: #c41e3a; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
+.search-box button:hover { transform: scale(1.1); }
 
   #nowPlaying { background: #c00; padding: 12px; text-align: center; font-weight: bold; margin: 0; font-size: 16px; animation: blink 2s infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
- .viewer-count { text-align: center; padding: 10px; background: #111; color: #00ff00; font-size: 14px; font-weight: bold; }
- .viewer-count span { color: #c41e3a; font-size: 16px; }
+.viewer-count { text-align: center; padding: 10px; background: #111; color: #00ff00; font-size: 14px; font-weight: bold; }
+.viewer-count span { color: #c41e3a; font-size: 16px; }
 
- .tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
- .tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
- .schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
- .program { background: #1a1a1a; border-radius: 12px; padding: 15px; border-left: 4px solid #c41e3a; transition: 0.3s; cursor: pointer; }
- .program:hover { transform: translateX(5px); background: #222; border-left-color: #fff; }
- .program.active { border-left-color: #00ff00; background: #2a2a2a; }
- .program.time { color: #c41e3a; font-weight: bold; font-size: 14px; }
- .program.active.time { color: #00ff00; }
- .program.title { font-size: 18px; margin: 8px 0; }
- .program.desc { font-size: 13px; opacity: 0.7; }
- .program.hide { display: none; }
+.tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
+.tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
+.schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+.program { background: #1a1a1a; border-radius: 12px; padding: 15px; border-left: 4px solid #c41e3a; transition: 0.3s; cursor: pointer; }
+.program:hover { transform: translateX(5px); background: #222; border-left-color: #fff; }
+.program.active { border-left-color: #00ff00; background: #2a2a2a; }
+.program.time { color: #c41e3a; font-weight: bold; font-size: 14px; }
+.program.active.time { color: #00ff00; }
+.program.title { font-size: 18px; margin: 8px 0; }
+.program.desc { font-size: 13px; opacity: 0.7; }
+.program.hide { display: none; }
 
- .btn-group { position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; }
- .action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; }
- .action-btn:hover { transform: scale(1.05); }
- .share-btn { background: #25D366; }
- .bell-btn { background: #FFA500; }
- .bell-btn.subscribed { background: #4CAF50; }
- .prayer-btn { background: #8B5CF6; }
+.btn-group { position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; }
+.action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.action-btn:hover { transform: scale(1.05); }
+.share-btn { background: #25D366; }
+.bell-btn { background: #FFA500; }
+.bell-btn.subscribed { background: #4CAF50; }
+.prayer-btn { background: #8B5CF6; }
 
- .channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 120px; }
- .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; transition: 0.3s; }
- .channel:hover { border-color: #c41e3a; transform: scale(1.02); }
- .channel img { width: 100%; height: 160px; object-fit: cover; }
- .channel h3 { padding: 15px; font-size: 18px; }
- .live-badge { position: absolute; top: 10px; left: 10px; background: #c41e3a; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; animation: pulse 1.5s infinite; box-shadow: 0 0 15px #c41e3a; }
+.channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 120px; }
+.channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; transition: 0.3s; }
+.channel:hover { border-color: #c41e3a; transform: scale(1.02); }
+.channel img { width: 100%; height: 160px; object-fit: cover; }
+.channel h3 { padding: 15px; font-size: 18px; }
+.live-badge { position: absolute; top: 10px; left: 10px; background: #c41e3a; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; animation: pulse 1.5s infinite; box-shadow: 0 0 15px #c41e3a; }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
- .player { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
- .player iframe { width: 100%; height: 100%; border: none; }
- .close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
+.player { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
+.player iframe { width: 100%; height: 100%; border: none; }
+.close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
   footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; margin-bottom: 60px; }
 
- .prayer-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
- .prayer-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #8B5CF6; animation: slideUp 0.3s ease; }
+.prayer-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
+.prayer-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #8B5CF6; animation: slideUp 0.3s ease; }
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
- .prayer-content h3 { color: #8B5CF6; margin-bottom: 15px; text-align: center; }
- .prayer-content input,.prayer-content textarea { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0a0a; color: #fff; font-size: 14px; }
- .prayer-content button { width: 100%; padding: 12px; background: #8B5CF6; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
- .prayer-content button:hover { background: #7C3AED; }
- .close-prayer { float: right; font-size: 28px; cursor: pointer; color: #fff; }
+.prayer-content h3 { color: #8B5CF6; margin-bottom: 15px; text-align: center; }
+.prayer-content input,.prayer-content textarea { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0a0a; color: #fff; font-size: 14px; }
+.prayer-content button { width: 100%; padding: 12px; background: #8B5CF6; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+.prayer-content button:hover { background: #7C3AED; }
+.close-prayer { float: right; font-size: 28px; cursor: pointer; color: #fff; }
 </style>
 </head>
 <body>
@@ -150,7 +149,6 @@
 
 <footer>© 2026 TRUTH TV UG | Kampala, Uganda | Broadcasting 24/7</footer>
 
-<!-- BREAKING NEWS TICKER AT BOTTOM -->
 <div class="breaking-news">
   <span>BREAKING NEWS</span>
   <div class="ticker" id="newsTicker">TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests...</div>
@@ -183,7 +181,6 @@ function closePlayer() {
   document.getElementById('videoFrame').src = '';
 }
 
-// SEARCH FUNCTION
 function searchShows() {
   let query = document.getElementById('searchInput').value.toLowerCase();
   document.querySelectorAll('.program').forEach(p => {
@@ -198,7 +195,6 @@ function searchShows() {
 document.getElementById('searchBtn').onclick = searchShows;
 document.getElementById('searchInput').onkeyup = searchShows;
 
-// AUTO NOW PLAYING - 24 HOURS LOOP
 function updateNowPlaying() {
   let now = new Date();
   let kampalaTime = new Date(now.toLocaleString("en-US", {timeZone: "Africa/Kampala"}));
@@ -233,7 +229,6 @@ function updateNowPlaying() {
 updateNowPlaying();
 setInterval(updateNowPlaying, 60000);
 
-// VIEWER COUNT
 function startViewerCount() {
   let count = 1247 + Math.floor(Math.random() * 500);
   document.getElementById('viewerCount').textContent = count.toLocaleString();
@@ -246,7 +241,6 @@ function startViewerCount() {
   }, 5000);
 }
 
-// PRAYER REQUEST FUNCTIONS
 function openPrayer() {
   document.getElementById('prayerModal').style.display = 'flex';
 }
@@ -275,14 +269,16 @@ function sendPrayer() {
   document.getElementById('prayerRequest').value = '';
 }
 
-// NEW: AUTO ROTATING BREAKING NEWS EVERY 10 SECONDS
+// UPDATED: SOCIAL MEDIA FOLLOW NEWS ADDED
 const newsItems = [
   "TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests",
   "Join us for Morning Dew Prayers daily at 6:00am live on YouTube",
+  "💰 SUPPORT US: Donate via MTN MoMo + Airtel Money 0776686096 - God bless you",
+  "📱 FOLLOW US: Facebook, Twitter X, TikTok, WhatsApp, YouTube, LinkedIn, Amazon @TRUTHTVUG",
   "Breaking: New gospel album from Pastor Wilson Bugembe out now",
   "Prayer testimonies: Send your testimony via WhatsApp +256776686096",
   "TRUTH News Prime airs daily at 6:00pm - Stay informed",
-  "Support TRUTH TV UG Ministry - Contact us for partnerships",
+  "💸 Partner with TRUTH TV: Send donations to 0776686096 MTN/Airtel",
   "Subscribe to Emmie Shukie YouTube channel for daily updates",
   "Youth Vibes show every day 2:00pm - 4:00pm | Your voice matters"
 ];
@@ -292,7 +288,7 @@ function rotateNews() {
   currentNewsIndex = (currentNewsIndex + 1) % newsItems.length;
   document.getElementById('newsTicker').textContent = newsItems[currentNewsIndex];
 }
-setInterval(rotateNews, 10000); // Change every 10 seconds
+setInterval(rotateNews, 10000);
 
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
@@ -342,4 +338,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-  </html>
+      </html>
