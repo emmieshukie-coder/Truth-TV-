@@ -56,7 +56,6 @@
 .li { background: #0A66C2; }
 .am { background: #FF9900; }
 
-/* NEW: REPLAY SECTION */
 .replay-section { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
 .replay-section h2 { font-size: 24px; margin-bottom: 20px; color: #FFD700; border-left: 4px solid #FFD700; padding-left: 12px; }
 .replay-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
@@ -143,61 +142,63 @@
   <a href="https://amazon.com" target="_blank" class="social-icon am">a</a>
 </div>
 
-<!-- NEW: WATCH REPLAY SECTION -->
+<!-- REAL REPLAY SERMONS - UPDATE VIDEO IDs -->
 <div class="replay-section">
-  <h2>📼 Watch Replay - Past Sermons</h2>
+  <h2>📼 Watch Replay - Past Sermons & Shows</h2>
   <div class="replay-grid" id="replayGrid">
-    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/VIDEO_ID_1?autoplay=1')">
-      <img src="https://via.placeholder.com/400x225/FFD700/000?text=SERMON+1">
+    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+      <img src="https://via.placeholder.com/400x225/FFD700/000?text=MORNING+DEW">
       <div class="replay-info">
-        <h3>The Power of Faith</h3>
-        <p>Pastor Emmie Shukie | 45 min</p>
-        <span class="replay-badge">NEW</span>
+        <h3>Morning Dew Prayers - Full Session</h3>
+        <p>Emmie Shukie | 60 min | Deliverance prayers</p>
+        <span class="replay-badge">LATEST</span>
       </div>
     </div>
-    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/VIDEO_ID_2?autoplay=1')">
-      <img src="https://via.placeholder.com/400x225/FFD700/000?text=SERMON+2">
+    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+      <img src="https://via.placeholder.com/400x225/FFD700/000?text=TRUTH+EXPOSED">
       <div class="replay-info">
-        <h3>God's Plan for Your Life</h3>
-        <p>Pastor Emmie Shukie | 52 min</p>
+        <h3>Truth Exposed: Corruption in Kampala</h3>
+        <p>Investigative Report | 45 min</p>
         <span class="replay-badge">HOT</span>
       </div>
     </div>
-    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/VIDEO_ID_3?autoplay=1')">
-      <img src="https://via.placeholder.com/400x225/FFD700/000?text=SERMON+3">
+    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+      <img src="https://via.placeholder.com/400x225/FFD700/000?text=NEWS+PRIME">
       <div class="replay-info">
-        <h3>Breaking Chains</h3>
-        <p>Pastor Emmie Shukie | 38 min</p>
-        <span class="replay-badge">TRENDING</span>
+        <h3>TRUTH News Prime Time - Full Bulletin</h3>
+        <p>Evening News | 90 min</p>
+        <span class="replay-badge">NEW</span>
       </div>
     </div>
-    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/VIDEO_ID_4?autoplay=1')">
-      <img src="https://via.placeholder.com/400x225/FFD700/000?text=SERMON+4">
+    <div class="replay-card" onclick="playReplay('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+      <img src="https://via.placeholder.com/400x225/FFD700/000?text=YOUTH+VIBES">
       <div class="replay-info">
-        <h3>Morning Dew Prayers - Full</h3>
-        <p>Live Prayer Session | 60 min</p>
-        <span class="replay-badge">LATEST</span>
+        <h3>Youth Vibes: Street Questions</h3>
+        <p>Youth Talk Show | 52 min</p>
+        <span class="replay-badge">TRENDING</span>
       </div>
     </div>
   </div>
 </div>
 
+<!-- REAL TV GUIDE PROGRAMS -->
 <div class="tv-guide">
   <h2>📅 24/7 TV Guide - Kampala Time EAT</h2>
   <div class="schedule-grid" id="scheduleGrid">
-    <div class="program" data-name="morning dew prayers" data-start="6" data-end="7"><div class="time">6:00am - 7:00am</div><div class="title">🙏 Morning Dew Prayers</div><div class="desc">Live prayer, devotion & prayer requests</div></div>
-    <div class="program" data-name="good morning uganda" data-start="7" data-end="8.5"><div class="time">7:00am - 8:30am</div><div class="title">☀️ Good Morning Uganda</div><div class="desc">News, weather Kampala, traffic updates</div></div>
-    <div class="program" data-name="truth talks education" data-start="8.5" data-end="10"><div class="time">8:30am - 10:00am</div><div class="title">📚 Truth Talks Education</div><div class="desc">Skills, money tips, CV & farming advice</div></div>
-    <div class="program" data-name="women corner" data-start="10" data-end="12"><div class="time">10:00am - 12:00pm</div><div class="title">👨‍👩‍👧 Women’s Corner</div><div class="desc">Marriage, parenting, health & cooking</div></div>
-    <div class="program" data-name="midday news gospel" data-start="12" data-end="14"><div class="time">12:00pm - 2:00pm</div><div class="title">📰 Midday News + Gospel</div><div class="desc">News recap + Ugandan gospel music</div></div>
-    <div class="program" data-name="youth vibes" data-start="14" data-end="16"><div class="time">2:00pm - 4:00pm</div><div class="title">🔥 Youth Vibes</div><div class="desc">Trends, motivation, street questions</div></div>
-    <div class="program" data-name="business money" data-start="16" data-end="18"><div class="time">4:00pm - 6:00pm</div><div class="title">💰 Business & Money Hour</div><div class="desc">Side hustles, business interviews</div></div>
-    <div class="program" data-name="truth news prime" data-start="18" data-end="19.5"><div class="time">6:00pm - 7:30pm</div><div class="title">📺 TRUTH News Prime</div><div class="desc">Main news & community stories</div></div>
-    <div class="program" data-name="truth exposed talk" data-start="19.5" data-end="21"><div class="time">7:30pm - 9:00pm</div><div class="title">🎤 Truth Exposed Talk</div><div class="desc">Debates, callers, live comments</div></div>
-    <div class="program" data-name="night cinema" data-start="21" data-end="23"><div class="time">9:00pm - 11:00pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Movies, skits & testimonies</div></div>
-    <div class="program" data-name="night prayer replay" data-start="23" data-end="24"><div class="time">11:00pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Replay of morning prayers + viewer testimonies</div></div>
-    <div class="program" data-name="gospel music night" data-start="0" data-end="3"><div class="time">12:00am - 3:00am</div><div class="title">🎵 Gospel Music Marathon</div><div class="desc">Best Ugandan gospel music all night</div></div>
-    <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Teachings</div><div class="desc">Best sermons replay + Bible study</div></div>
+    <div class="program" data-name="morning dew prayers" data-start="6" data-end="7"><div class="time">6:00am - 7:00am</div><div class="title">🙏 Morning Dew Prayers</div><div class="desc">Live prayers, devotion & prayer requests with Emmie Shukie</div></div>
+    <div class="program" data-name="good morning uganda" data-start="7" data-end="9"><div class="time">7:00am - 9:00am</div><div class="title">☀️ Good Morning Uganda</div><div class="desc">News, weather Kampala, traffic updates & current affairs</div></div>
+    <div class="program" data-name="truth exposed" data-start="9" data-end="10"><div class="time">9:00am - 10:00am</div><div class="title">🎤 Truth Exposed</div><div class="desc">Investigative stories & exposing corruption in Uganda</div></div>
+    <div class="program" data-name="women corner" data-start="10" data-end="12"><div class="time">10:00am - 12:00pm</div><div class="title">👩‍👧 Women's Corner</div><div class="desc">Marriage talks, parenting tips, health & family issues</div></div>
+    <div class="program" data-name="midday news" data-start="12" data-end="13"><div class="time">12:00pm - 1:00pm</div><div class="title">📰 TRUTH Midday News</div><div class="desc">Breaking news, Uganda updates & headlines</div></div>
+    <div class="program" data-name="gospel music" data-start="13" data-end="14"><div class="time">1:00pm - 2:00pm</div><div class="title">🎵 Gospel Music Hour</div><div class="desc">Best Ugandan gospel music videos & worship</div></div>
+    <div class="program" data-name="youth vibes" data-start="14" data-end="16"><div class="time">2:00pm - 4:00pm</div><div class="title">🔥 Youth Vibes</div><div class="desc">Youth talk, trends, motivation & street interviews</div></div>
+    <div class="program" data-name="business money" data-start="16" data-end="17.5"><div class="time">4:00pm - 5:30pm</div><div class="title">💰 Business & Money Hour</div><div class="desc">Side hustles, business tips, farming & financial advice</div></div>
+    <div class="program" data-name="truth news prime" data-start="17.5" data-end="19"><div class="time">5:30pm - 7:00pm</div><div class="title">📺 TRUTH News Prime Time</div><div class="desc">Main evening news, politics & community stories</div></div>
+    <div class="program" data-name="truth exposed talk" data-start="19" data-end="20.5"><div class="time">7:00pm - 8:30pm</div><div class="title">🎙️ Truth Exposed Talk Show</div><div class="desc">Live debate, callers, viewer comments & hot topics</div></div>
+    <div class="program" data-name="night cinema" data-start="20.5" data-end="22.5"><div class="time">8:30pm - 10:30pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Christian movies, skits, testimonies & drama</div></div>
+    <div class="program" data-name="night prayer" data-start="22.5" data-end="24"><div class="time">10:30pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Late night prayers, deliverance & viewer testimonies</div></div>
+    <div class="program" data-name="gospel music night" data-start="0" data-end="3"><div class="time">12:00am - 3:00am</div><div class="title">🎵 Gospel Music Marathon</div><div class="desc">Non-stop Ugandan gospel music all night</div></div>
+    <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Bible Teachings</div><div class="desc">Best sermons replay + Bible study with Emmie Shukie</div></div>
   </div>
 </div>
 
@@ -270,7 +271,6 @@ function playChannel(url) {
   startViewerCount();
 }
 
-// NEW: PLAY REPLAY FUNCTION
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
   document.getElementById('videoFrame').src = url;
@@ -383,7 +383,7 @@ const newsItems = [
   "📱 FOLLOW US: Facebook, Twitter X, TikTok, WhatsApp, YouTube, LinkedIn, Amazon @TRUTHTVUG",
   "Breaking: New gospel album from Pastor Wilson Bugembe out now",
   "Prayer testimonies: Send your testimony via WhatsApp +256776686096",
-  "TRUTH News Prime airs daily at 6:00pm - Stay informed",
+  "TRUTH News Prime airs daily at 5:30pm - Stay informed",
   "💸 Partner with TRUTH TV: Send donations to 0776686096 MTN/Airtel",
   "Subscribe to Emmie Shukie YouTube channel for daily updates",
   "Youth Vibes show every day 2:00pm - 4:00pm | Your voice matters"
