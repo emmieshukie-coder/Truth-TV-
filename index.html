@@ -34,7 +34,6 @@
   .search-box button { background: #fff; color: #c41e3a; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
   .search-box button:hover { transform: scale(1.1); }
   
-  /* NEW NOW PLAYING BANNER */
   #nowPlaying { background: #c00; padding: 12px; text-align: center; font-weight: bold; margin: 0; font-size: 16px; animation: blink 2s infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
   
@@ -74,21 +73,21 @@
 
 <header>
   <h1>📺 TRUTH TV UG</h1>
-  <p>Powered by Emmie Shukie | Uganda's Voice of Truth</p>
+  <p>Powered by Emmie Shukie | Uganda's Voice of Truth | 24/7</p>
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search shows...">
     <button id="searchBtn">🔍</button>
   </div>
 </header>
 
-<!-- NEW NOW PLAYING BANNER -->
 <div id="nowPlaying">🔴 ON AIR NOW: Loading...</div>
 
 <div class="channels" id="channels"></div>
 
 <div class="tv-guide">
-  <h2>📅 Today's TV Guide</h2>
+  <h2>📅 24/7 TV Guide - Kampala Time EAT</h2>
   <div class="schedule-grid" id="scheduleGrid">
+    <!-- DAY PROGRAMS -->
     <div class="program" data-name="morning dew prayers" data-start="6" data-end="7"><div class="time">6:00am - 7:00am</div><div class="title">🙏 Morning Dew Prayers</div><div class="desc">Live prayer, devotion & prayer requests</div></div>
     <div class="program" data-name="good morning uganda" data-start="7" data-end="8.5"><div class="time">7:00am - 8:30am</div><div class="title">☀️ Good Morning Uganda</div><div class="desc">News, weather Kampala, traffic updates</div></div>
     <div class="program" data-name="truth talks education" data-start="8.5" data-end="10"><div class="time">8:30am - 10:00am</div><div class="title">📚 Truth Talks Education</div><div class="desc">Skills, money tips, CV & farming advice</div></div>
@@ -99,6 +98,11 @@
     <div class="program" data-name="truth news prime" data-start="18" data-end="19.5"><div class="time">6:00pm - 7:30pm</div><div class="title">📺 TRUTH News Prime</div><div class="desc">Main news & community stories</div></div>
     <div class="program" data-name="truth exposed talk" data-start="19.5" data-end="21"><div class="time">7:30pm - 9:00pm</div><div class="title">🎤 Truth Exposed Talk</div><div class="desc">Debates, callers, live comments</div></div>
     <div class="program" data-name="night cinema" data-start="21" data-end="23"><div class="time">9:00pm - 11:00pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Movies, skits & testimonies</div></div>
+    
+    <!-- NEW: NIGHT PROGRAMS 11PM - 6AM -->
+    <div class="program" data-name="night prayer replay" data-start="23" data-end="24"><div class="time">11:00pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Replay of morning prayers + viewer testimonies</div></div>
+    <div class="program" data-name="gospel music night" data-start="0" data-end="3"><div class="time">12:00am - 3:00am</div><div class="title">🎵 Gospel Music Marathon</div><div class="desc">Best Ugandan gospel music all night</div></div>
+    <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Teachings</div><div class="desc">Best sermons replay + Bible study</div></div>
   </div>
 </div>
 
@@ -113,20 +117,20 @@
   <iframe id="videoFrame" allowfullscreen allow="autoplay"></iframe>
 </div>
 
-<footer>© 2026 TRUTH TV UG | Kampala, Uganda</footer>
+<footer>© 2026 TRUTH TV UG | Kampala, Uganda | Broadcasting 24/7</footer>
 
 <script>
 const CHANNEL_ID = "UCZwKKWoYRumFr8P1LVfGgwQ"; 
 const CHANNEL_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1`;
 const channels = [
-  { name: "TRUTH TV UG - Live Now", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=LIVE+ON+AIR", url: CHANNEL_EMBED, isLive: true },
+  { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: CHANNEL_EMBED, isLive: true },
   { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c41e3a?text=SUBSCRIBE+NOW", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
 ];
 
 channels.forEach(ch => {
   document.getElementById('channels').innerHTML += `
     <div class="channel" onclick="playChannel('${ch.url}')">
-      <div style="position:relative">${ch.isLive ? '<span class="live-badge">LIVE</span>' : ''}<img src="${ch.thumb}"></div>
+      <div style="position:relative">${ch.isLive ? '<span class="live-badge">LIVE 24/7</span>' : ''}<img src="${ch.thumb}"></div>
       <h3>${ch.name}</h3>
     </div>
   `;
@@ -156,7 +160,7 @@ function searchShows() {
 document.getElementById('searchBtn').onclick = searchShows;
 document.getElementById('searchInput').onkeyup = searchShows;
 
-// NEW: AUTO NOW PLAYING based on Kampala time EAT UTC+3
+// AUTO NOW PLAYING - 24 HOURS LOOP
 function updateNowPlaying() {
   let now = new Date();
   let kampalaTime = new Date(now.toLocaleString("en-US", {timeZone: "Africa/Kampala"}));
@@ -167,21 +171,31 @@ function updateNowPlaying() {
     p.classList.remove('active');
     let start = parseFloat(p.dataset.start);
     let end = parseFloat(p.dataset.end);
-    if(hour >= start && hour < end) {
-      currentProgram = p;
-      p.classList.add('active');
+    
+    // Handle programs that cross midnight like 23-24 and 0-3
+    if(start < end) {
+      if(hour >= start && hour < end) {
+        currentProgram = p;
+        p.classList.add('active');
+      }
+    } else {
+      // For programs like 23-24
+      if(hour >= start || hour < end) {
+        currentProgram = p;
+        p.classList.add('active');
+      }
     }
   });
   
   if(currentProgram) {
     let title = currentProgram.querySelector('.title').textContent;
-    document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: ${title}`;
+    document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: ${title} | 24/7 Broadcasting`;
   } else {
-    document.getElementById('nowPlaying').innerHTML = `🔴 OFF AIR: Next show starts at 6:00am`;
+    document.getElementById('nowPlaying').innerHTML = `🔴 TRUTH TV UG: Broadcasting Live 24/7`;
   }
 }
 updateNowPlaying();
-setInterval(updateNowPlaying, 60000); // Update every minute
+setInterval(updateNowPlaying, 60000);
 
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
@@ -209,7 +223,7 @@ installBtn.addEventListener('click', async () => {
 
 shareBtn.addEventListener('click', async () => {
   if (navigator.share) {
-    await navigator.share({ title: 'TRUTH TV UG', text: 'Watch TRUTH TV UG Live', url: window.location.href });
+    await navigator.share({ title: 'TRUTH TV UG', text: 'Watch TRUTH TV UG Live 24/7', url: window.location.href });
   }
 });
 
@@ -227,4 +241,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-  </html>
+      </html>
