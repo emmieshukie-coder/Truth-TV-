@@ -45,6 +45,17 @@
 .viewer-count { text-align: center; padding: 10px; background: #111; color: #00ff00; font-size: 14px; font-weight: bold; }
 .viewer-count span { color: #c41e3a; font-size: 16px; }
 
+.social-row { display: flex; justify-content: center; gap: 15px; padding: 15px; background: #111; border-top: 2px solid #c41e3a; }
+.social-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; text-decoration: none; transition: 0.3s; }
+.social-icon:hover { transform: scale(1.2); }
+.fb { background: #1877f2; }
+.tw { background: #000; }
+.tk { background: #000; }
+.wa { background: #25D366; }
+.yt { background: #ff0000; }
+.li { background: #0A66C2; }
+.am { background: #FF9900; }
+
 .tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
 .tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
 .schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
@@ -57,15 +68,16 @@
 .program.desc { font-size: 13px; opacity: 0.7; }
 .program.hide { display: none; }
 
-.btn-group { position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; }
-.action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.btn-group { position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; flex-wrap: wrap; justify-content: center; }
+.action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 18px; border-radius: 50px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s; white-space: nowrap; }
 .action-btn:hover { transform: scale(1.05); }
 .share-btn { background: #25D366; }
 .bell-btn { background: #FFA500; }
 .bell-btn.subscribed { background: #4CAF50; }
 .prayer-btn { background: #8B5CF6; }
+.donate-btn { background: #FFD700; color: #000; } /* NEW GOLD BUTTON */
 
-.channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 120px; }
+.channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 140px; }
 .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; transition: 0.3s; }
 .channel:hover { border-color: #c41e3a; transform: scale(1.02); }
 .channel img { width: 100%; height: 160px; object-fit: cover; }
@@ -86,6 +98,13 @@
 .prayer-content button { width: 100%; padding: 12px; background: #8B5CF6; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
 .prayer-content button:hover { background: #7C3AED; }
 .close-prayer { float: right; font-size: 28px; cursor: pointer; color: #fff; }
+
+/* NEW: DONATE MODAL */
+.donate-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
+.donate-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #FFD700; animation: slideUp 0.3s ease; text-align: center; }
+.donate-content h3 { color: #FFD700; margin-bottom: 15px; }
+.donate-number { background: #0a0a0a; padding: 15px; border-radius: 10px; margin: 10px 0; border: 2px solid #FFD700; font-size: 24px; font-weight: bold; color: #FFD700; }
+.donate-content p { margin: 8px 0; opacity: 0.8; }
 </style>
 </head>
 <body>
@@ -102,6 +121,16 @@
 <div id="nowPlaying">🔴 ON AIR NOW: Loading...</div>
 
 <div class="channels" id="channels"></div>
+
+<div class="social-row">
+  <a href="https://facebook.com/TRUTHTVUG" target="_blank" class="social-icon fb">f</a>
+  <a href="https://twitter.com/TRUTHTVUG" target="_blank" class="social-icon tw">X</a>
+  <a href="https://tiktok.com/@TRUTHTVUG" target="_blank" class="social-icon tk">♪</a>
+  <a href="https://wa.me/256776686096" target="_blank" class="social-icon wa">💬</a>
+  <a href="https://youtube.com/@EmmieShukie" target="_blank" class="social-icon yt">▶</a>
+  <a href="https://linkedin.com/company/TRUTHTVUG" target="_blank" class="social-icon li">in</a>
+  <a href="https://amazon.com" target="_blank" class="social-icon am">a</a>
+</div>
 
 <div class="tv-guide">
   <h2>📅 24/7 TV Guide - Kampala Time EAT</h2>
@@ -122,8 +151,10 @@
   </div>
 </div>
 
+<!-- UPDATED: 5 BUTTONS NOW -->
 <div class="btn-group">
   <button id="prayerBtn" class="action-btn prayer-btn">🙏 Prayer Request</button>
+  <button id="donateBtn" class="action-btn donate-btn">💰 Donate</button>
   <button id="bellBtn" class="action-btn bell-btn">🔔 Get Live Alerts</button>
   <button id="installBtn" class="action-btn">📲 Install App</button>
   <button id="shareBtn" class="action-btn share-btn">📤 Share</button>
@@ -144,6 +175,20 @@
     <textarea id="prayerRequest" placeholder="Type your prayer request here..." rows="4"></textarea>
     <button onclick="sendPrayer()">Send to TRUTH TV Team</button>
     <p style="font-size:12px; opacity:0.6; margin-top:10px; text-align:center;">We will pray for you during Morning Dew Prayers</p>
+  </div>
+</div>
+
+<!-- NEW: DONATE POPUP -->
+<div class="donate-modal" id="donateModal">
+  <div class="donate-content">
+    <span class="close-prayer" onclick="closeDonate()">&times;</span>
+    <h3>💰 Support TRUTH TV UG Ministry</h3>
+    <p>Send your love offering/donation via:</p>
+    <div class="donate-number">MTN MoMo: 0776686096</div>
+    <div class="donate-number">Airtel Money: 0776686096</div>
+    <p>Account Name: Emmie Shukie / TRUTH TV UG</p>
+    <p style="font-size:14px; color:#FFD700;">"He who sows sparingly will also reap sparingly" - 2 Cor 9:6</p>
+    <p style="font-size:12px; opacity:0.6;">God bless you for supporting the gospel</p>
   </div>
 </div>
 
@@ -269,7 +314,14 @@ function sendPrayer() {
   document.getElementById('prayerRequest').value = '';
 }
 
-// UPDATED: SOCIAL MEDIA FOLLOW NEWS ADDED
+// NEW: DONATE FUNCTIONS
+function openDonate() {
+  document.getElementById('donateModal').style.display = 'flex';
+}
+function closeDonate() {
+  document.getElementById('donateModal').style.display = 'none';
+}
+
 const newsItems = [
   "TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests",
   "Join us for Morning Dew Prayers daily at 6:00am live on YouTube",
@@ -295,6 +347,7 @@ const installBtn = document.getElementById('installBtn');
 const shareBtn = document.getElementById('shareBtn');
 const bellBtn = document.getElementById('bellBtn');
 const prayerBtn = document.getElementById('prayerBtn');
+const donateBtn = document.getElementById('donateBtn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
@@ -304,6 +357,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     shareBtn.style.display = 'block';
     bellBtn.style.display = 'block';
     prayerBtn.style.display = 'block';
+    donateBtn.style.display = 'block'; // Show donate button too
   }, 3000);
 });
 
@@ -327,6 +381,7 @@ bellBtn.addEventListener('click', () => {
 });
 
 prayerBtn.addEventListener('click', openPrayer);
+donateBtn.addEventListener('click', openDonate); // Open donate popup
 
 OneSignalDeferred.push(async function(OneSignal) {
   if (await OneSignal.isPushNotificationsEnabled()) {
@@ -338,4 +393,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-      </html>
+  </html>
