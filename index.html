@@ -25,7 +25,12 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; }
   
-  header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+  .breaking-news { background: #c00; color: #fff; padding: 8px 0; overflow: hidden; position: sticky; top: 0; z-index: 101; }
+  .breaking-news span { background: #900; padding: 8px 15px; font-weight: bold; margin-right: 20px; display: inline-block; }
+  .ticker { display: inline-block; white-space: nowrap; animation: scroll 30s linear infinite; }
+  @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+  
+  header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 40px; z-index: 100; backdrop-filter: blur(10px); }
   header h1 { font-size: 32px; }
   header p { opacity: 0.9; margin-top: 5px; }
   
@@ -36,6 +41,9 @@
   
   #nowPlaying { background: #c00; padding: 12px; text-align: center; font-weight: bold; margin: 0; font-size: 16px; animation: blink 2s infinite; }
   @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+  
+  .viewer-count { text-align: center; padding: 10px; background: #111; color: #00ff00; font-size: 14px; font-weight: bold; }
+  .viewer-count span { color: #c41e3a; font-size: 16px; }
   
   .tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
   .tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
@@ -50,10 +58,12 @@
   .program.hide { display: none; }
   
   .btn-group { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; }
-  .action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; }
+  .action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+  .action-btn:hover { transform: scale(1.05); }
   .share-btn { background: #25D366; }
   .bell-btn { background: #FFA500; }
   .bell-btn.subscribed { background: #4CAF50; }
+  .prayer-btn { background: #8B5CF6; } /* NEW PURPLE BUTTON */
   
   .channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 120px; }
   .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; transition: 0.3s; }
@@ -67,9 +77,23 @@
   .player iframe { width: 100%; height: 100%; border: none; }
   .close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
   footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; }
+  
+  /* NEW: PRAYER REQUEST POPUP */
+  .prayer-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10001; justify-content: center; align-items: center; }
+  .prayer-content { background: #1a1a1a; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; border: 2px solid #8B5CF6; }
+  .prayer-content h3 { color: #8B5CF6; margin-bottom: 15px; text-align: center; }
+  .prayer-content input, .prayer-content textarea { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0a0a; color: #fff; font-size: 14px; }
+  .prayer-content button { width: 100%; padding: 12px; background: #8B5CF6; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+  .prayer-content button:hover { background: #7C3AED; }
+  .close-prayer { float: right; font-size: 28px; cursor: pointer; color: #fff; }
 </style>
 </head>
 <body>
+
+<div class="breaking-news">
+  <span>BREAKING NEWS</span>
+  <div class="ticker" id="newsTicker">TRUTH TV UG is now broadcasting 24/7 | Send your prayer request below | Follow @EmmieShukie for latest news...</div>
+</div>
 
 <header>
   <h1>📺 TRUTH TV UG</h1>
@@ -87,7 +111,6 @@
 <div class="tv-guide">
   <h2>📅 24/7 TV Guide - Kampala Time EAT</h2>
   <div class="schedule-grid" id="scheduleGrid">
-    <!-- DAY PROGRAMS -->
     <div class="program" data-name="morning dew prayers" data-start="6" data-end="7"><div class="time">6:00am - 7:00am</div><div class="title">🙏 Morning Dew Prayers</div><div class="desc">Live prayer, devotion & prayer requests</div></div>
     <div class="program" data-name="good morning uganda" data-start="7" data-end="8.5"><div class="time">7:00am - 8:30am</div><div class="title">☀️ Good Morning Uganda</div><div class="desc">News, weather Kampala, traffic updates</div></div>
     <div class="program" data-name="truth talks education" data-start="8.5" data-end="10"><div class="time">8:30am - 10:00am</div><div class="title">📚 Truth Talks Education</div><div class="desc">Skills, money tips, CV & farming advice</div></div>
@@ -98,15 +121,15 @@
     <div class="program" data-name="truth news prime" data-start="18" data-end="19.5"><div class="time">6:00pm - 7:30pm</div><div class="title">📺 TRUTH News Prime</div><div class="desc">Main news & community stories</div></div>
     <div class="program" data-name="truth exposed talk" data-start="19.5" data-end="21"><div class="time">7:30pm - 9:00pm</div><div class="title">🎤 Truth Exposed Talk</div><div class="desc">Debates, callers, live comments</div></div>
     <div class="program" data-name="night cinema" data-start="21" data-end="23"><div class="time">9:00pm - 11:00pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Movies, skits & testimonies</div></div>
-    
-    <!-- NEW: NIGHT PROGRAMS 11PM - 6AM -->
     <div class="program" data-name="night prayer replay" data-start="23" data-end="24"><div class="time">11:00pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Replay of morning prayers + viewer testimonies</div></div>
     <div class="program" data-name="gospel music night" data-start="0" data-end="3"><div class="time">12:00am - 3:00am</div><div class="title">🎵 Gospel Music Marathon</div><div class="desc">Best Ugandan gospel music all night</div></div>
     <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Teachings</div><div class="desc">Best sermons replay + Bible study</div></div>
   </div>
 </div>
 
+<!-- UPDATED: 4 BUTTONS NOW -->
 <div class="btn-group">
+  <button id="prayerBtn" class="action-btn prayer-btn">🙏 Prayer Request</button>
   <button id="bellBtn" class="action-btn bell-btn">🔔 Get Live Alerts</button>
   <button id="installBtn" class="action-btn">📲 Install App</button>
   <button id="shareBtn" class="action-btn share-btn">📤 Share</button>
@@ -115,6 +138,20 @@
 <div class="player" id="player">
   <span class="close-btn" onclick="closePlayer()">×</span>
   <iframe id="videoFrame" allowfullscreen allow="autoplay"></iframe>
+  <div class="viewer-count">👁️ <span id="viewerCount">1,247</span> watching now | Live from Kampala</div>
+</div>
+
+<!-- NEW: PRAYER REQUEST POPUP -->
+<div class="prayer-modal" id="prayerModal">
+  <div class="prayer-content">
+    <span class="close-prayer" onclick="closePrayer()">&times;</span>
+    <h3>🙏 Send Prayer Request</h3>
+    <input type="text" id="prayerName" placeholder="Your Name">
+    <input type="tel" id="prayerPhone" placeholder="Phone Number - Optional">
+    <textarea id="prayerRequest" placeholder="Type your prayer request here..." rows="4"></textarea>
+    <button onclick="sendPrayer()">Send to TRUTH TV Team</button>
+    <p style="font-size:12px; opacity:0.6; margin-top:10px; text-align:center;">We will pray for you during Morning Dew Prayers</p>
+  </div>
 </div>
 
 <footer>© 2026 TRUTH TV UG | Kampala, Uganda | Broadcasting 24/7</footer>
@@ -139,6 +176,7 @@ channels.forEach(ch => {
 function playChannel(url) {
   document.getElementById('player').style.display = 'block';
   document.getElementById('videoFrame').src = url;
+  startViewerCount();
 }
 function closePlayer() {
   document.getElementById('player').style.display = 'none';
@@ -172,14 +210,12 @@ function updateNowPlaying() {
     let start = parseFloat(p.dataset.start);
     let end = parseFloat(p.dataset.end);
     
-    // Handle programs that cross midnight like 23-24 and 0-3
     if(start < end) {
       if(hour >= start && hour < end) {
         currentProgram = p;
         p.classList.add('active');
       }
     } else {
-      // For programs like 23-24
       if(hour >= start || hour < end) {
         currentProgram = p;
         p.classList.add('active');
@@ -197,10 +233,55 @@ function updateNowPlaying() {
 updateNowPlaying();
 setInterval(updateNowPlaying, 60000);
 
+// VIEWER COUNT
+function startViewerCount() {
+  let count = 1247 + Math.floor(Math.random() * 500);
+  document.getElementById('viewerCount').textContent = count.toLocaleString();
+  
+  setInterval(() => {
+    count += Math.floor(Math.random() * 10) - 3;
+    if(count < 800) count = 800;
+    if(count > 5000) count = 5000;
+    document.getElementById('viewerCount').textContent = count.toLocaleString();
+  }, 5000);
+}
+
+// NEW: PRAYER REQUEST FUNCTIONS
+function openPrayer() {
+  document.getElementById('prayerModal').style.display = 'flex';
+}
+function closePrayer() {
+  document.getElementById('prayerModal').style.display = 'none';
+}
+function sendPrayer() {
+  let name = document.getElementById('prayerName').value;
+  let phone = document.getElementById('prayerPhone').value;
+  let request = document.getElementById('prayerRequest').value;
+  
+  if(request.trim() === '') {
+    alert('Please type your prayer request');
+    return;
+  }
+  
+  // Send to WhatsApp - CHANGE NUMBER TO YOURS
+  let message = `🙏 PRAYER REQUEST from TRUTH TV UG App\nName: ${name}\nPhone: ${phone}\nRequest: ${request}`;
+  let whatsappUrl = `https://wa.me/256700000?text=${encodeURIComponent(message)}`;
+  
+  window.open(whatsappUrl, '_blank');
+  alert('Amen! Your prayer request has been sent. We will pray for you 🙏');
+  closePrayer();
+  
+  // Clear form
+  document.getElementById('prayerName').value = '';
+  document.getElementById('prayerPhone').value = '';
+  document.getElementById('prayerRequest').value = '';
+}
+
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
 const shareBtn = document.getElementById('shareBtn');
 const bellBtn = document.getElementById('bellBtn');
+const prayerBtn = document.getElementById('prayerBtn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
@@ -209,6 +290,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     installBtn.style.display = 'block';
     shareBtn.style.display = 'block';
     bellBtn.style.display = 'block';
+    prayerBtn.style.display = 'block'; // Show prayer button too
   }, 3000);
 });
 
@@ -231,6 +313,8 @@ bellBtn.addEventListener('click', () => {
   OneSignalDeferred.push(function(OneSignal) { OneSignal.showSlidedownPrompt(); });
 });
 
+prayerBtn.addEventListener('click', openPrayer); // Open prayer popup
+
 OneSignalDeferred.push(async function(OneSignal) {
   if (await OneSignal.isPushNotificationsEnabled()) {
     bellBtn.textContent = '✅ Alerts ON';
@@ -241,4 +325,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-      </html>
+                                                                                                                                    </html>
