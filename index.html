@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TRUTH TV UG - Uganda's Truth Channel</title>
+<meta name="theme-color" content="#c41e3a">
+<meta name="description" content="TRUTH TV UG - Watch Emmie Shukie Live 24/7">
+<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
+    OneSignal.init({
+      appId: "PASTE_ONESIGNAL_APP_ID_HERE",
+      notifyButton: { enable: false }
+    });
+  });
+</script>
+
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; }
+  header { padding: 25px 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; }
+  header h1 { font-size: 32px; }
+  .btn-group { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; }
+  .action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; }
+  .share-btn { background: #25D366; }
+  .bell-btn { background: #FFA500; }
+  .bell-btn.subscribed { background: #4CAF50; }
+  .channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 120px; }
+  .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; }
+  .channel:hover { border-color: #c41e3a; }
+  .channel img { width: 100%; height: 160px; object-fit: cover; }
+  .channel h3 { padding: 15px; font-size: 18px; }
+  .live-badge { position: absolute; top: 10px; left: 10px; background: #c41e3a; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+  .player { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
+  .player iframe { width: 100%; height: 100%; border: none; }
+  .close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
+  footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📺 TRUTH TV UG</h1>
+  <p>Powered by Emmie Shukie</p>
+</header>
+
+<div class="btn-group">
+  <button id="bellBtn" class="action-btn bell-btn">🔔 Get Live Alerts</button>
+  <button id="installBtn" class="action-btn">📲 Install App</button>
+  <button id="shareBtn" class="action-btn share-btn">📤 Share</button>
+</div>
+
+<div class="channels" id="channels"></div>
+
+<div class="player" id="player">
+  <span class="close-btn" onclick="closePlayer()">×</span>
+  <iframe id="videoFrame" allowfullscreen allow="autoplay"></iframe>
+</div>
+
+<footer>© 2026 TRUTH TV UG | Kampala, Uganda</footer>
+
+<script>
+const CHANNEL_ID = "UC"; // REPLACE WITH YOUR YOUTUBE CHANNEL ID
+const CHANNEL_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1`;
+
+const channels = [
+  { name: "TRUTH TV UG - Live Now", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=LIVE", url: CHANNEL_EMBED, isLive: true },
+  { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c41e3a?text=SUBSCRIBE", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
+];
+
+channels.forEach(ch => {
+  document.getElementById('channels').innerHTML += `
+    <div class="channel" onclick="playChannel('${ch.url}')">
+      <div style="position:relative">${ch.isLive ? '<span class="live-badge">LIVE</span>' : ''}<img src="${ch.thumb}"></div>
+      <h3>${ch.name}</h3>
+    </div>
+  `;
+});
+
+function playChannel(url) {
+  document.getElementById('player').style.display = 'block';
+  document.getElementById('videoFrame').src = url;
+}
+function closePlayer() {
+  document.getElementById('player').style.display = 'none';
+  document.getElementById('videoFrame').src = '';
+}
+
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+const shareBtn = document.getElementById('shareBtn');
+const bellBtn = document.getElementById('bellBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  setTimeout(() => {
+    installBtn.style.display = 'block';
+    shareBtn.style.display = 'block';
+    bellBtn.style.display = 'block';
+  }, 3000);
+});
+
+installBtn.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+  }
+});
+
+shareBtn.addEventListener('click', async () => {
+  if (navigator.share) {
+    await navigator.share({ title: 'TRUTH TV UG', text: 'Watch TRUTH TV UG Live', url: window.location.href });
+  }
+});
+
+bellBtn.addEventListener('click', () => {
+  OneSignalDeferred.push(function(OneSignal) { OneSignal.showSlidedownPrompt(); });
+});
+
+OneSignalDeferred.push(async function(OneSignal) {
+  if (await OneSignal.isPushNotificationsEnabled()) {
+    bellBtn.textContent = '✅ Alerts ON';
+    bellBtn.classList.add('subscribed');
+  }
+});
+
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+</script>
+</body>
+</html>
