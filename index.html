@@ -78,7 +78,6 @@
   .close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
   footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; }
   
-  /* CHANGED: PRAYER REQUEST POPUP NOW AT BOTTOM */
   .prayer-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
   .prayer-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #8B5CF6; animation: slideUp 0.3s ease; }
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -122,7 +121,7 @@
     <div class="program" data-name="truth news prime" data-start="18" data-end="19.5"><div class="time">6:00pm - 7:30pm</div><div class="title">📺 TRUTH News Prime</div><div class="desc">Main news & community stories</div></div>
     <div class="program" data-name="truth exposed talk" data-start="19.5" data-end="21"><div class="time">7:30pm - 9:00pm</div><div class="title">🎤 Truth Exposed Talk</div><div class="desc">Debates, callers, live comments</div></div>
     <div class="program" data-name="night cinema" data-start="21" data-end="23"><div class="time">9:00pm - 11:00pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Movies, skits & testimonies</div></div>
-    <div class="program" data-name="night prayer replay" data-start="23" data-end="24"><div class="time">11:00pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Replay of morning prayers + viewer testimonies</div></div>
+    <div class="program" data-name="night prayer replay" data-start="23" data-end="24"><div class="time">11:00pm - 12:00am</div><div class="time">11:00pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Replay of morning prayers + viewer testimonies</div></div>
     <div class="program" data-name="gospel music night" data-start="0" data-end="3"><div class="time">12:00am - 3:00am</div><div class="title">🎵 Gospel Music Marathon</div><div class="desc">Best Ugandan gospel music all night</div></div>
     <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Teachings</div><div class="desc">Best sermons replay + Bible study</div></div>
   </div>
@@ -141,11 +140,10 @@
   <div class="viewer-count">👁️ <span id="viewerCount">1,247</span> watching now | Live from Kampala</div>
 </div>
 
-<!-- PRAYER REQUEST POPUP NOW AT BOTTOM -->
 <div class="prayer-modal" id="prayerModal">
   <div class="prayer-content">
     <span class="close-prayer" onclick="closePrayer()">&times;</span>
-    <h3>🙏 Send Prayer Request</h3>
+    <h3>🙏 Send Prayer Request to +256776686096</h3>
     <input type="text" id="prayerName" placeholder="Your Name">
     <input type="tel" id="prayerPhone" placeholder="Phone Number - Optional">
     <textarea id="prayerRequest" placeholder="Type your prayer request here..." rows="4"></textarea>
@@ -246,7 +244,7 @@ function startViewerCount() {
   }, 5000);
 }
 
-// PRAYER REQUEST FUNCTIONS
+// PRAYER REQUEST FUNCTIONS - YOUR NUMBER ADDED
 function openPrayer() {
   document.getElementById('prayerModal').style.display = 'flex';
 }
@@ -264,10 +262,10 @@ function sendPrayer() {
   }
   
   let message = `🙏 PRAYER REQUEST from TRUTH TV UG App\nName: ${name}\nPhone: ${phone}\nRequest: ${request}`;
-  let whatsappUrl = `https://wa.me/256700000?text=${encodeURIComponent(message)}`;
+  let whatsappUrl = `https://wa.me/256776686096?text=${encodeURIComponent(message)}`;
   
   window.open(whatsappUrl, '_blank');
-  alert('Amen! Your prayer request has been sent. We will pray for you 🙏');
+  alert('Amen! Your prayer request has been sent to +256776686096. We will pray for you 🙏');
   closePrayer();
   
   document.getElementById('prayerName').value = '';
@@ -323,4 +321,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-    </html>
+                                                                                                                                                                                                                                 </html>
