@@ -24,20 +24,41 @@
 <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; }
-  header { padding: 25px 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; }
+  
+  header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
   header h1 { font-size: 32px; }
+  header p { opacity: 0.9; margin-top: 5px; }
+  
+  /* NEW SEARCH BAR */
+  .search-box { margin-top: 15px; display: flex; justify-content: center; gap: 8px; }
+  .search-box input { padding: 10px 15px; border-radius: 25px; border: none; width: 250px; outline: none; font-size: 14px; }
+  .search-box button { background: #fff; color: #c41e3a; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
+  .search-box button:hover { transform: scale(1.1); }
+  
+  .tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
+  .tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
+  .schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+  .program { background: #1a1a1a; border-radius: 12px; padding: 15px; border-left: 4px solid #c41e3a; transition: 0.3s; cursor: pointer; }
+  .program:hover { transform: translateX(5px); background: #222; border-left-color: #fff; }
+  .program .time { color: #c41e3a; font-weight: bold; font-size: 14px; }
+  .program .title { font-size: 18px; margin: 8px 0; }
+  .program .desc { font-size: 13px; opacity: 0.7; }
+  .program.hide { display: none; }
+  
   .btn-group { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; }
   .action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; cursor: pointer; }
   .share-btn { background: #25D366; }
   .bell-btn { background: #FFA500; }
   .bell-btn.subscribed { background: #4CAF50; }
+  
   .channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 120px; }
-  .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; }
-  .channel:hover { border-color: #c41e3a; }
+  .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; transition: 0.3s; }
+  .channel:hover { border-color: #c41e3a; transform: scale(1.02); }
   .channel img { width: 100%; height: 160px; object-fit: cover; }
   .channel h3 { padding: 15px; font-size: 18px; }
-  .live-badge { position: absolute; top: 10px; left: 10px; background: #c41e3a; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; animation: pulse 2s infinite; }
+  .live-badge { position: absolute; top: 10px; left: 10px; background: #c41e3a; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; animation: pulse 1.5s infinite; box-shadow: 0 0 15px #c41e3a; }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+  
   .player { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
   .player iframe { width: 100%; height: 100%; border: none; }
   .close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
@@ -48,16 +69,37 @@
 
 <header>
   <h1>📺 TRUTH TV UG</h1>
-  <p>Powered by Emmie Shukie</p>
+  <p>Powered by Emmie Shukie | Uganda's Voice of Truth</p>
+  <!-- NEW SEARCH BAR -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search shows...">
+    <button id="searchBtn">🔍</button>
+  </div>
 </header>
+
+<div class="channels" id="channels"></div>
+
+<div class="tv-guide">
+  <h2>📅 Today's TV Guide</h2>
+  <div class="schedule-grid" id="scheduleGrid">
+    <div class="program" data-name="morning dew prayers"><div class="time">6:00am - 7:00am</div><div class="title">🙏 Morning Dew Prayers</div><div class="desc">Live prayer, devotion & prayer requests</div></div>
+    <div class="program" data-name="good morning uganda"><div class="time">7:00am - 8:30am</div><div class="title">☀️ Good Morning Uganda</div><div class="desc">News, weather Kampala, traffic updates</div></div>
+    <div class="program" data-name="truth talks education"><div class="time">8:30am - 10:00am</div><div class="title">📚 Truth Talks Education</div><div class="desc">Skills, money tips, CV & farming advice</div></div>
+    <div class="program" data-name="women corner"><div class="time">10:00am - 12:00pm</div><div class="title">👨‍👩‍👧 Women’s Corner</div><div class="desc">Marriage, parenting, health & cooking</div></div>
+    <div class="program" data-name="midday news gospel"><div class="time">12:00pm - 2:00pm</div><div class="title">📰 Midday News + Gospel</div><div class="desc">News recap + Ugandan gospel music</div></div>
+    <div class="program" data-name="youth vibes"><div class="time">2:00pm - 4:00pm</div><div class="title">🔥 Youth Vibes</div><div class="desc">Trends, motivation, street questions</div></div>
+    <div class="program" data-name="business money"><div class="time">4:00pm - 6:00pm</div><div class="title">💰 Business & Money Hour</div><div class="desc">Side hustles, business interviews</div></div>
+    <div class="program" data-name="truth news prime"><div class="time">6:00pm - 7:30pm</div><div class="title">📺 TRUTH News Prime</div><div class="desc">Main news & community stories</div></div>
+    <div class="program" data-name="truth exposed talk"><div class="time">7:30pm - 9:00pm</div><div class="title">🎤 Truth Exposed Talk</div><div class="desc">Debates, callers, live comments</div></div>
+    <div class="program" data-name="night cinema"><div class="time">9:00pm - 11:00pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Movies, skits & testimonies</div></div>
+  </div>
+</div>
 
 <div class="btn-group">
   <button id="bellBtn" class="action-btn bell-btn">🔔 Get Live Alerts</button>
   <button id="installBtn" class="action-btn">📲 Install App</button>
   <button id="shareBtn" class="action-btn share-btn">📤 Share</button>
 </div>
-
-<div class="channels" id="channels"></div>
 
 <div class="player" id="player">
   <span class="close-btn" onclick="closePlayer()">×</span>
@@ -67,11 +109,11 @@
 <footer>© 2026 TRUTH TV UG | Kampala, Uganda</footer>
 
 <script>
-const CHANNEL_ID = "UCZwKKWoYRumFr8P1LVfGgwQ"; // REPLACE WITH YOUR YOUTUBE CHANNEL ID
+const CHANNEL_ID = "UCZwKKWoYRumFr8P1LVfGgwQ"; 
 const CHANNEL_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1`;
 const channels = [
-  { name: "TRUTH TV UG - Live Now", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=LIVE", url: CHANNEL_EMBED, isLive: true },
-  { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c41e3a?text=SUBSCRIBE", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
+  { name: "TRUTH TV UG - Live Now", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=LIVE+ON+AIR", url: CHANNEL_EMBED, isLive: true },
+  { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c41e3a?text=SUBSCRIBE+NOW", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
 ];
 
 channels.forEach(ch => {
@@ -91,6 +133,21 @@ function closePlayer() {
   document.getElementById('player').style.display = 'none';
   document.getElementById('videoFrame').src = '';
 }
+
+// NEW: SEARCH FUNCTION
+function searchShows() {
+  let query = document.getElementById('searchInput').value.toLowerCase();
+  document.querySelectorAll('.program').forEach(p => {
+    let name = p.getAttribute('data-name');
+    if(name.includes(query)) {
+      p.classList.remove('hide');
+    } else {
+      p.classList.add('hide');
+    }
+  });
+}
+document.getElementById('searchBtn').onclick = searchShows;
+document.getElementById('searchInput').onkeyup = searchShows;
 
 let deferredPrompt;
 const installBtn = document.getElementById('installBtn');
@@ -136,4 +193,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-</html>
+      </html>
