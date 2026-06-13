@@ -63,7 +63,7 @@
   .share-btn { background: #25D366; }
   .bell-btn { background: #FFA500; }
   .bell-btn.subscribed { background: #4CAF50; }
-  .prayer-btn { background: #8B5CF6; } /* NEW PURPLE BUTTON */
+  .prayer-btn { background: #8B5CF6; }
   
   .channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 120px; }
   .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; transition: 0.3s; }
@@ -78,9 +78,10 @@
   .close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
   footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; }
   
-  /* NEW: PRAYER REQUEST POPUP */
-  .prayer-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10001; justify-content: center; align-items: center; }
-  .prayer-content { background: #1a1a1a; padding: 30px; border-radius: 15px; width: 90%; max-width: 400px; border: 2px solid #8B5CF6; }
+  /* CHANGED: PRAYER REQUEST POPUP NOW AT BOTTOM */
+  .prayer-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
+  .prayer-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #8B5CF6; animation: slideUp 0.3s ease; }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
   .prayer-content h3 { color: #8B5CF6; margin-bottom: 15px; text-align: center; }
   .prayer-content input, .prayer-content textarea { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0a0a; color: #fff; font-size: 14px; }
   .prayer-content button { width: 100%; padding: 12px; background: #8B5CF6; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
@@ -127,7 +128,6 @@
   </div>
 </div>
 
-<!-- UPDATED: 4 BUTTONS NOW -->
 <div class="btn-group">
   <button id="prayerBtn" class="action-btn prayer-btn">🙏 Prayer Request</button>
   <button id="bellBtn" class="action-btn bell-btn">🔔 Get Live Alerts</button>
@@ -141,7 +141,7 @@
   <div class="viewer-count">👁️ <span id="viewerCount">1,247</span> watching now | Live from Kampala</div>
 </div>
 
-<!-- NEW: PRAYER REQUEST POPUP -->
+<!-- PRAYER REQUEST POPUP NOW AT BOTTOM -->
 <div class="prayer-modal" id="prayerModal">
   <div class="prayer-content">
     <span class="close-prayer" onclick="closePrayer()">&times;</span>
@@ -246,7 +246,7 @@ function startViewerCount() {
   }, 5000);
 }
 
-// NEW: PRAYER REQUEST FUNCTIONS
+// PRAYER REQUEST FUNCTIONS
 function openPrayer() {
   document.getElementById('prayerModal').style.display = 'flex';
 }
@@ -263,7 +263,6 @@ function sendPrayer() {
     return;
   }
   
-  // Send to WhatsApp - CHANGE NUMBER TO YOURS
   let message = `🙏 PRAYER REQUEST from TRUTH TV UG App\nName: ${name}\nPhone: ${phone}\nRequest: ${request}`;
   let whatsappUrl = `https://wa.me/256700000?text=${encodeURIComponent(message)}`;
   
@@ -271,7 +270,6 @@ function sendPrayer() {
   alert('Amen! Your prayer request has been sent. We will pray for you 🙏');
   closePrayer();
   
-  // Clear form
   document.getElementById('prayerName').value = '';
   document.getElementById('prayerPhone').value = '';
   document.getElementById('prayerRequest').value = '';
@@ -290,7 +288,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     installBtn.style.display = 'block';
     shareBtn.style.display = 'block';
     bellBtn.style.display = 'block';
-    prayerBtn.style.display = 'block'; // Show prayer button too
+    prayerBtn.style.display = 'block';
   }, 3000);
 });
 
@@ -313,7 +311,7 @@ bellBtn.addEventListener('click', () => {
   OneSignalDeferred.push(function(OneSignal) { OneSignal.showSlidedownPrompt(); });
 });
 
-prayerBtn.addEventListener('click', openPrayer); // Open prayer popup
+prayerBtn.addEventListener('click', openPrayer);
 
 OneSignalDeferred.push(async function(OneSignal) {
   if (await OneSignal.isPushNotificationsEnabled()) {
@@ -325,4 +323,4 @@ OneSignalDeferred.push(async function(OneSignal) {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-                                                                                                                                    </html>
+    </html>
