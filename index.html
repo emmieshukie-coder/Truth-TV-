@@ -105,8 +105,30 @@
 
 .player { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
 .player iframe { width: 100%; height: 100%; border: none; }
-.close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10000; }
-  footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; margin-bottom: 60px; }
+.close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10002; }
+footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; margin-bottom: 60px; }
+
+/* KEEP BREAKING NEWS + BUTTONS VISIBLE OVER VIDEO */
+.player .breaking-news {
+  position: absolute!important;
+  bottom: 0!important;
+  top: auto!important;
+  z-index: 10003!important;
+  width: 100%;
+}
+.player .btn-group {
+  position: absolute!important;
+  bottom: 70px!important;
+  z-index: 10003!important;
+}
+.player .viewer-count {
+  position: absolute!important;
+  top: 70px!important;
+  left: 0;
+  right: 0;
+  z-index: 10003!important;
+  background: rgba(0,0,0,0.7);
+}
 
 .prayer-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
 .prayer-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #8B5CF6; animation: slideUp 0.3s ease; }
@@ -153,7 +175,6 @@
 <div class="music-section">
   <h2>🎵 All Music Videos - Suggest What to Watch Next!</h2>
   
-  <!-- CATEGORY TABS -->
   <div class="category-tabs">
     <button class="cat-btn active" onclick="filterMusic('all')">All</button>
     <button class="cat-btn" onclick="filterMusic('gospel')">🙏 Gospel</button>
@@ -164,7 +185,6 @@
   </div>
 
   <div class="music-grid" id="musicGrid">
-    <!-- GOSPEL -->
     <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/6v2L2UGZJAM?autoplay=1')">
       <img src="https://img.youtube.com/vi/6v2L2UGZJAM/maxresdefault.jpg">
       <div class="music-info"><h3>We Worship You - Wilson Bugembe</h3><p>Gospel | 5:32</p><span class="music-badge">TOP</span></div>
@@ -177,8 +197,6 @@
       <img src="https://img.youtube.com/vi/Xu4rgIHV7q4/maxresdefault.jpg">
       <div class="music-info"><h3>Way Maker - Sinach</h3><p>African Gospel | 5:26</p><span class="music-badge">BLESSED</span></div>
     </div>
-
-    <!-- UGANDAN -->
     <div class="music-card show" data-cat="ugandan" onclick="playReplay('https://www.youtube.com/embed/9bZkp7q19f0?autoplay=1')">
       <img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg">
       <div class="music-info"><h3>Gangnam Style - PSY</h3><p>K-Pop | 4:12</p><span class="music-badge">VIRAL</span></div>
@@ -187,8 +205,6 @@
       <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg">
       <div class="music-info"><h3>Despacito - Luis Fonsi</h3><p>Latin | 4:41</p><span class="music-badge">HIT</span></div>
     </div>
-
-    <!-- AFROBEAT -->
     <div class="music-card show" data-cat="afrobeat" onclick="playReplay('https://www.youtube.com/embed/hFAOXdXZ5TM?autoplay=1')">
       <img src="https://img.youtube.com/vi/hFAOXdXZ5TM/maxresdefault.jpg">
       <div class="music-info"><h3>Calm Down - Rema</h3><p>Afrobeat | 3:39</p><span class="music-badge">TRENDING</span></div>
@@ -197,8 +213,6 @@
       <img src="https://img.youtube.com/vi/3JuYEul0trI/maxresdefault.jpg">
       <div class="music-info"><h3>Love Nwantiti - CKay</h3><p>Afrobeat | 2:57</p><span class="music-badge">HOT</span></div>
     </div>
-
-    <!-- LOVE -->
     <div class="music-card show" data-cat="love" onclick="playReplay('https://www.youtube.com/embed/0KSOMA3QBU0?autoplay=1')">
       <img src="https://img.youtube.com/vi/0KSOMA3QBU0/maxresdefault.jpg">
       <div class="music-info"><h3>Perfect - Ed Sheeran</h3><p>Love Song | 4:23</p><span class="music-badge">ROMANCE</span></div>
@@ -207,8 +221,6 @@
       <img src="https://img.youtube.com/vi/RgKAFK5djSk/maxresdefault.jpg">
       <div class="music-info"><h3>Shape of You - Ed Sheeran</h3><p>Pop | 3:53</p><span class="music-badge">FAVORITE</span></div>
     </div>
-
-    <!-- DANCEHALL -->
     <div class="music-card show" data-cat="dancehall" onclick="playReplay('https://www.youtube.com/embed/PT2_F-1esPk?autoplay=1')">
       <img src="https://img.youtube.com/vi/PT2_F-1esPk/maxresdefault.jpg">
       <div class="music-info"><h3>Lean On - Major Lazer</h3><p>EDM/Dancehall | 2:56</p><span class="music-badge">DANCE</span></div>
@@ -220,7 +232,6 @@
   </div>
 </div>
 
-<!-- REAL TV GUIDE PROGRAMS -->
 <div class="tv-guide">
   <h2>📅 24/7 TV Guide - Kampala Time EAT</h2>
   <div class="schedule-grid" id="scheduleGrid">
@@ -237,11 +248,10 @@
     <div class="program" data-name="night cinema" data-start="20.5" data-end="22.5"><div class="time">8:30pm - 10:30pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Christian movies, skits, testimonies & drama</div></div>
     <div class="program" data-name="night prayer" data-start="22.5" data-end="24"><div class="time">10:30pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Late night prayers, deliverance & viewer testimonies</div></div>
     <div class="program" data-name="gospel music night" data-start="0" data-end="3"><div class="time">12:00am - 3:00am</div><div class="title">🎵 Gospel Music Marathon</div><div class="desc">Non-stop Ugandan gospel music all night</div></div>
-    <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Bible Teachings</div><div class="desc">Best sermons replay + Bible study with Emmie Shukie</div></div>
+    <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Bible Teachings</div><div class="desc">Best sermons replay + Bible study with Emmie Shukie</div></div>
   </div>
 </div>
 
-<!-- SUGGEST BUTTON -->
 <button class="suggest-btn" onclick="suggestMusic()">🎤 Suggest Song</button>
 
 <div class="btn-group">
@@ -252,10 +262,24 @@
   <button id="shareBtn" class="action-btn share-btn">📤 Share</button>
 </div>
 
+<!-- PLAYER WITH OVERLAY ELEMENTS -->
 <div class="player" id="player">
+  <div class="breaking-news">
+    <span>BREAKING NEWS</span>
+    <div class="ticker" id="newsTickerPlayer">TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests...</div>
+  </div>
+
+  <div class="viewer-count">👁️ <span id="viewerCountPlayer">1,247</span> watching now | Live from Kampala</div>
+
+  <div class="btn-group">
+    <button id="prayerBtnPlayer" class="action-btn prayer-btn" style="display:block">🙏 Prayer</button>
+    <button id="donateBtnPlayer" class="action-btn donate-btn" style="display:block">💰 Donate</button>
+    <button id="bellBtnPlayer" class="action-btn bell-btn" style="display:block">🔔 Alerts</button>
+    <button id="shareBtnPlayer" class="action-btn share-btn" style="display:block">📤 Share</button>
+  </div>
+
   <span class="close-btn" onclick="closePlayer()">×</span>
   <iframe id="videoFrame" allowfullscreen allow="autoplay"></iframe>
-  <div class="viewer-count">👁️ <span id="viewerCount">1,247</span> watching now | Live from Kampala</div>
 </div>
 
 <div class="prayer-modal" id="prayerModal">
@@ -292,7 +316,7 @@
 
 <script>
 const CHANNEL_ID = "UCZwKKWoYRumFr8P1LVfGgwQ";
-const CHANNEL_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1`;
+const CHANNEL_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1&mute=1`;
 const channels = [
   { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: CHANNEL_EMBED, isLive: true },
   { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c41e3a?text=SUBSCRIBE+NOW", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
@@ -315,7 +339,7 @@ function playChannel(url) {
 
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
-  document.getElementById('videoFrame').src = url;
+  document.getElementById('videoFrame').src = url + '&autoplay=1&mute=1';
 }
 
 function closePlayer() {
@@ -323,7 +347,6 @@ function closePlayer() {
   document.getElementById('videoFrame').src = '';
 }
 
-// MUSIC CATEGORY FILTER
 function filterMusic(category) {
   document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
   event.target.classList.add('active');
@@ -337,7 +360,6 @@ function filterMusic(category) {
   });
 }
 
-// SUGGEST MUSIC FUNCTION
 function suggestMusic() {
   let song = prompt('🎵 What song should we add next?\n\nArtist - Song Title - Category');
   if(song && song.trim() !== '') {
@@ -399,12 +421,14 @@ setInterval(updateNowPlaying, 60000);
 function startViewerCount() {
   let count = 1247 + Math.floor(Math.random() * 500);
   document.getElementById('viewerCount').textContent = count.toLocaleString();
+  document.getElementById('viewerCountPlayer').textContent =count.toLocaleString();
 
   setInterval(() => {
     count += Math.floor(Math.random() * 10) - 3;
     if(count < 800) count = 800;
     if(count > 5000) count = 5000;
     document.getElementById('viewerCount').textContent = count.toLocaleString();
+    document.getElementById('viewerCountPlayer').textContent = count.toLocaleString();
   }, 5000);
 }
 
@@ -460,6 +484,7 @@ let currentNewsIndex = 0;
 function rotateNews() {
   currentNewsIndex = (currentNewsIndex + 1) % newsItems.length;
   document.getElementById('newsTicker').textContent = newsItems[currentNewsIndex];
+  document.getElementById('newsTickerPlayer').textContent = newsItems[currentNewsIndex];
 }
 setInterval(rotateNews, 10000);
 
@@ -469,6 +494,10 @@ const shareBtn = document.getElementById('shareBtn');
 const bellBtn = document.getElementById('bellBtn');
 const prayerBtn = document.getElementById('prayerBtn');
 const donateBtn = document.getElementById('donateBtn');
+const prayerBtnPlayer = document.getElementById('prayerBtnPlayer');
+const donateBtnPlayer = document.getElementById('donateBtnPlayer');
+const bellBtnPlayer = document.getElementById('bellBtnPlayer');
+const shareBtnPlayer = document.getElementById('shareBtnPlayer');
 
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
@@ -496,18 +525,30 @@ shareBtn.addEventListener('click', async () => {
     await navigator.share({ title: 'TRUTH TV UG', text: 'Watch TRUTH TV UG Live 24/7', url: window.location.href });
   }
 });
+shareBtnPlayer.addEventListener('click', async () => {
+  if (navigator.share) {
+    await navigator.share({ title: 'TRUTH TV UG', text: 'Watch TRUTH TV UG Live 24/7', url: window.location.href });
+  }
+});
 
 bellBtn.addEventListener('click', () => {
   OneSignalDeferred.push(function(OneSignal) { OneSignal.showSlidedownPrompt(); });
 });
+bellBtnPlayer.addEventListener('click', () => {
+  OneSignalDeferred.push(function(OneSignal) { OneSignal.showSlidedownPrompt(); });
+});
 
 prayerBtn.addEventListener('click', openPrayer);
+prayerBtnPlayer.addEventListener('click', openPrayer);
 donateBtn.addEventListener('click', openDonate);
+donateBtnPlayer.addEventListener('click', openDonate);
 
 OneSignalDeferred.push(async function(OneSignal) {
   if (await OneSignal.isPushNotificationsEnabled()) {
     bellBtn.textContent = '✅ Alerts ON';
     bellBtn.classList.add('subscribed');
+    bellBtnPlayer.textContent = '✅ ON';
+    bellBtnPlayer.classList.add('subscribed');
   }
 });
 
