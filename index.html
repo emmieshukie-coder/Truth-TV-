@@ -22,25 +22,44 @@
 </script>
 
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; padding-bottom: 50px; }
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Allow selection in inputs only */
+input, textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; padding-bottom: 50px; }
 
 .breaking-news { background: #c00; color: #fff; padding: 10px 0; overflow: hidden; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 102; border-top: 3px solid #900; }
 .breaking-news span { background: #900; padding: 10px 15px; font-weight: bold; margin-right: 20px; display: inline-block; }
 .ticker { display: inline-block; white-space: nowrap; animation: scroll 25s linear infinite; }
-  @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+@keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-  header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
-  header h1 { font-size: 32px; }
-  header p { opacity: 0.9; margin-top: 5px; }
+header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+header h1 { font-size: 32px; }
+header p { opacity: 0.9; margin-top: 5px; }
 
 .search-box { margin-top: 15px; display: flex; justify-content: center; gap: 8px; }
 .search-box input { padding: 10px 15px; border-radius: 25px; border: none; width: 250px; outline: none; font-size: 14px; }
 .search-box button { background: #fff; color: #c41e3a; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
 .search-box button:hover { transform: scale(1.1); }
 
-  #nowPlaying { background: #c00; padding: 12px; text-align: center; font-weight: bold; margin: 0; font-size: 16px; animation: blink 2s infinite; }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+#nowPlaying { background: #c00; padding: 12px; text-align: center; font-weight: bold; margin: 0; font-size: 16px; animation: blink 2s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
 .viewer-count { text-align: center; padding: 10px; background: #111; color: #00ff00; font-size: 14px; font-weight: bold; }
 .viewer-count span { color: #c41e3a; font-size: 16px; }
@@ -103,7 +122,7 @@
 .channel img { width: 100%; height: 160px; object-fit: cover; }
 .channel h3 { padding: 15px; font-size: 18px; }
 .live-badge { position: absolute; top: 10px; left: 10px; background: #c41e3a; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; animation: pulse 1.5s infinite; box-shadow: 0 0 15px #c41e3a; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
 .player { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
 .player iframe { width: 100%; height: 100%; border: none; }
@@ -270,7 +289,7 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 <!-- JOBAI LANDING ADVERT BANNER - DISPLAYS BELOW BREAKING NEWS -->
 <div style="max-width: 100%; margin: 0 auto 70px auto; padding: 15px 10px; background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); border-radius: 15px; text-align: center; border: 3px solid #fff; box-shadow: 0 5px 20px rgba(255,215,0,0.4); position: relative; z-index: 101;">
   <div style="background: #fff; border-radius: 50px; padding: 5px 15px; display: inline-block; margin-bottom: 10px; border: 2px solid #000;">
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhU..." alt="Jobai-Landing" style="width: 120px; height: 40px; object-fit: contain;">
+    <img src="/jobai-logo.png" alt="Jobai-Landing" style="width: 120px; height: 40px; object-fit: contain;">
   </div>
   <h2 style="font-size: 22px; margin-bottom: 8px; color: #000;">📢 ADVERTISE WITH TRUTH TV UG</h2>
   <p style="font-size: 14px; margin-bottom: 12px; color: #000; font-weight: bold;" id="adText">Affordable advert packages for all businesses | Your advert next? WhatsApp now</p>
@@ -494,19 +513,6 @@ function updateNowPlaying() {
 updateNowPlaying();
 setInterval(updateNowPlaying, 60000);
 
-function startViewerCount() {
-  let count = 1247 + Math.floor(Math.random() * 500);
-  document.getElementById('viewerCount').textContent = count.toLocaleString();
-  document.getElementById('viewerCountPlayer').textContent = count.toLocaleString();
-  setInterval(() => {
-    count += Math.floor(Math.random() * 10) - 3;
-    if(count < 800) count = 800;
-    if(count > 5000) count = 5000;
-    document.getElementById('viewerCount').textContent = count.toLocaleString();
-    document.getElementById('viewerCountPlayer').textContent = count.toLocaleString();
-  }, 5000);
-}
-
 const newsItems = [
   "TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests",
   "Join us for Morning Dew Prayers daily at 6:00am live on YouTube",
@@ -527,22 +533,6 @@ function rotateNews() {
   document.getElementById('newsTickerPlayer').textContent = newsItems[currentNewsIndex];
 }
 setInterval(rotateNews, 10000);
-
-// ADVERT ROTATION - JOBAI LANDING + BAKERIES + SOAP FACTORIES
-const adMessages = [
-  "Affordable advert packages for all businesses | Your advert next? WhatsApp now",
-  "Bakeries: Advertise bread, cakes & pastries like Jobai-Landing | WhatsApp 0776686096",
-  "Soap Factories: Get your detergents on TRUTH TV 24/7 | Be seen like Jobai-Landing",
-  "Prime time ads during TRUTH News 5:30pm | Contact 0776686096",
-  "Join Jobai-Landing & top brands advertising on TRUTH TV UG"
-];
-
-let adIndex = 0;
-function rotateAds() {
-  adIndex = (adIndex + 1) % adMessages.length;
-  document.getElementById('adText').textContent = adMessages[adIndex];
-}
-setInterval(rotateAds, 4000);
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
