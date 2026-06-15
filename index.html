@@ -71,8 +71,6 @@
 .music-info h3 { font-size: 16px; margin-bottom: 5px; }
 .music-info p { font-size: 13px; opacity: 0.7; }
 .music-badge { background: #FF0000; color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block; margin-top: 5px; }
-.suggest-btn { position: fixed; bottom: 120px; right: 20px; background: #25D366; color: white; border: none; padding: 15px 20px; border-radius: 50px; font-weight: bold; cursor: pointer; z-index: 9997; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
-.suggest-btn:hover { transform: scale(1.1); }
 
 .tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
 .tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
@@ -85,15 +83,6 @@
 .program.title { font-size: 18px; margin: 8px 0; }
 .program.desc { font-size: 13px; opacity: 0.7; }
 .program.hide { display: none; }
-
-.btn-group { position: fixed; bottom: 70px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 9998; flex-wrap: wrap; justify-content: center; }
-.action-btn { display: none; background: #c41e3a; color: white; border: none; padding: 14px 18px; border-radius: 50px; font-size: 13px; font-weight: bold; cursor: pointer; transition: 0.3s; white-space: nowrap; }
-.action-btn:hover { transform: scale(1.05); }
-.share-btn { background: #25D366; }
-.bell-btn { background: #FFA500; }
-.bell-btn.subscribed { background: #4CAF50; }
-.prayer-btn { background: #8B5CF6; }
-.donate-btn { background: #FFD700; color: #000; }
 
 .channels { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 30px 20px; max-width: 1400px; margin: 0 auto; padding-bottom: 140px; }
 .channel { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid transparent; position: relative; transition: 0.3s; }
@@ -108,20 +97,15 @@
 .close-btn { position: absolute; top: 20px; right: 30px; font-size: 45px; cursor: pointer; color: #fff; z-index: 10002; }
 footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; margin-bottom: 60px; }
 
-/* KEEP BREAKING NEWS + BUTTONS VISIBLE OVER VIDEO */
-.player .breaking-news {
+/* KEEP BREAKING NEWS VISIBLE OVER VIDEO */
+.player.breaking-news {
   position: absolute!important;
   bottom: 0!important;
   top: auto!important;
   z-index: 10003!important;
   width: 100%;
 }
-.player .btn-group {
-  position: absolute!important;
-  bottom: 70px!important;
-  z-index: 10003!important;
-}
-.player .viewer-count {
+.player.viewer-count {
   position: absolute!important;
   top: 70px!important;
   left: 0;
@@ -153,21 +137,6 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
  80% { opacity: 1; }
  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
 }
-
-.prayer-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
-.prayer-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #8B5CF6; animation: slideUp 0.3s ease; }
-  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-.prayer-content h3 { color: #8B5CF6; margin-bottom: 15px; text-align: center; }
-.prayer-content input,.prayer-content textarea { width: 100%; padding: 12px; margin: 8px 0; border-radius: 8px; border: 1px solid #333; background: #0a0a0a; color: #fff; font-size: 14px; }
-.prayer-content button { width: 100%; padding: 12px; background: #8B5CF6; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-.prayer-content button:hover { background: #7C3AED; }
-.close-prayer { float: right; font-size: 28px; cursor: pointer; color: #fff; }
-
-.donate-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
-.donate-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #FFD700; animation: slideUp 0.3s ease; text-align: center; }
-.donate-content h3 { color: #FFD700; margin-bottom: 15px; }
-.donate-number { background: #0a0a0a; padding: 15px; border-radius: 10px; margin: 10px 0; border: 2px solid #FFD700; font-size: 24px; font-weight: bold; color: #FFD700; }
-.donate-content p { margin: 8px 0; opacity: 0.8; }
 </style>
 </head>
 <body>
@@ -197,8 +166,8 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 
 <!-- ALL MUSIC TYPES SECTION -->
 <div class="music-section">
-  <h2>🎵 All Music Videos - Suggest What to Watch Next!</h2>
-  
+  <h2>🎵 All Music Videos</h2>
+
   <div class="category-tabs">
     <button class="cat-btn active" onclick="filterMusic('all')">All</button>
     <button class="cat-btn" onclick="filterMusic('gospel')">🙏 Gospel</button>
@@ -276,16 +245,6 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   </div>
 </div>
 
-<button class="suggest-btn" onclick="suggestMusic()">🎤 Suggest Song</button>
-
-<div class="btn-group">
-  <button id="prayerBtn" class="action-btn prayer-btn">🙏 Prayer Request</button>
-  <button id="donateBtn" class="action-btn donate-btn">💰 Donate</button>
-  <button id="bellBtn" class="action-btn bell-btn">🔔 Get Live Alerts</button>
-  <button id="installBtn" class="action-btn">📲 Install App</button>
-  <button id="shareBtn" class="action-btn share-btn">📤 Share</button>
-</div>
-
 <!-- PLAYER WITH OVERLAY ELEMENTS -->
 <div class="player" id="player">
   <div class="breaking-news">
@@ -298,40 +257,8 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   <!-- TAP TO UNMUTE HINT -->
   <div class="unmute-hint" id="unmuteHint">🔊 Tap video to unmute sound</div>
 
-  <div class="btn-group">
-    <button id="prayerBtnPlayer" class="action-btn prayer-btn" style="display:block">🙏 Prayer</button>
-    <button id="donateBtnPlayer" class="action-btn donate-btn" style="display:block">💰 Donate</button>
-    <button id="bellBtnPlayer" class="action-btn bell-btn" style="display:block">🔔 Alerts</button>
-    <button id="shareBtnPlayer" class="action-btn share-btn" style="display:block">📤 Share</button>
-  </div>
-
   <span class="close-btn" onclick="closePlayer()">×</span>
   <iframe id="videoFrame" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>
-</div>
-
-<div class="prayer-modal" id="prayerModal">
-  <div class="prayer-content">
-    <span class="close-prayer" onclick="closePrayer()">&times;</span>
-    <h3>🙏 Send Prayer Request to +256776686096</h3>
-    <input type="text" id="prayerName" placeholder="Your Name">
-    <input type="tel" id="prayerPhone" placeholder="Phone Number - Optional">
-    <textarea id="prayerRequest" placeholder="Type your prayer request here..." rows="4"></textarea>
-    <button onclick="sendPrayer()">Send to TRUTH TV Team</button>
-    <p style="font-size:12px; opacity:0.6; margin-top:10px; text-align:center;">We will pray for you during Morning Dew Prayers</p>
-  </div>
-</div>
-
-<div class="donate-modal" id="donateModal">
-  <div class="donate-content">
-    <span class="close-prayer" onclick="closeDonate()">&times;</span>
-    <h3>💰 Support TRUTH TV UG Ministry</h3>
-    <p>Send your love offering/donation via:</p>
-    <div class="donate-number">MTN MoMo: 0776686096</div>
-    <div class="donate-number">Airtel Money: 0776686096</div>
-    <p>Account Name: Emmie Shukie / TRUTH TV UG</p>
-    <p style="font-size:14px; color:#FFD700;">"He who sows sparingly will also reap sparingly" - 2 Cor 9:6</p>
-    <p style="font-size:12px; opacity:0.6;">God bless you for supporting the gospel</p>
-  </div>
 </div>
 
 <footer>© 2026 TRUTH TV UG | Kampala, Uganda | Broadcasting 24/7</footer>
@@ -376,7 +303,7 @@ function playChannel(url) {
 // REMOVED mute=1 for songs so voice plays after 1 tap
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
-  let separator = url.includes('?') ? '&' : '?';
+  let separator = url.includes('?')? '&' : '?';
   document.getElementById('videoFrame').src = url + separator + 'autoplay=0&playsinline=1';
   showUnmuteHint();
 }
@@ -389,7 +316,7 @@ function closePlayer() {
 function filterMusic(category) {
   document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
   event.target.classList.add('active');
-  
+
   document.querySelectorAll('.music-card').forEach(card => {
     if(category === 'all' || card.dataset.cat === category) {
       card.classList.add('show');
@@ -397,16 +324,6 @@ function filterMusic(category) {
       card.classList.remove('show');
     }
   });
-}
-
-function suggestMusic() {
-  let song = prompt('🎵 What song should we add next?\n\nArtist - Song Title - Category');
-  if(song && song.trim() !== '') {
-    let message = `🎵 MUSIC REQUEST for TRUTH TV UG\nViewer Suggestion: ${song}`;
-    let whatsappUrl = `https://wa.me/256776686096?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-    alert('Thank you! Your song suggestion has been sent to TRUTH TV team 🙏 We will add it soon!');
-  }
 }
 
 function searchShows() {
@@ -471,41 +388,6 @@ function startViewerCount() {
   }, 5000);
 }
 
-function openPrayer() {
-  document.getElementById('prayerModal').style.display = 'flex';
-}
-function closePrayer() {
-  document.getElementById('prayerModal').style.display = 'none';
-}
-function sendPrayer() {
-  let name = document.getElementById('prayerName').value;
-  let phone = document.getElementById('prayerPhone').value;
-  let request = document.getElementById('prayerRequest').value;
-
-  if(request.trim() === '') {
-    alert('Please type your prayer request');
-    return;
-  }
-
-  let message = `🙏 PRAYER REQUEST from TRUTH TV UG App\nName: ${name}\nPhone: ${phone}\nRequest: ${request}`;
-  let whatsappUrl = `https://wa.me/256776686096?text=${encodeURIComponent(message)}`;
-
-  window.open(whatsappUrl, '_blank');
-  alert('Amen! Your prayer request has been sent to +256776686096. We will pray for you 🙏');
-  closePrayer();
-
-  document.getElementById('prayerName').value = '';
-  document.getElementById('prayerPhone').value = '';
-  document.getElementById('prayerRequest').value = '';
-}
-
-function openDonate() {
-  document.getElementById('donateModal').style.display = 'flex';
-}
-function closeDonate() {
-  document.getElementById('donateModal').style.display = 'none';
-}
-
 const newsItems = [
   "TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests",
   "Join us for Morning Dew Prayers daily at 6:00am live on YouTube",
@@ -526,70 +408,6 @@ function rotateNews() {
   document.getElementById('newsTickerPlayer').textContent = newsItems[currentNewsIndex];
 }
 setInterval(rotateNews, 10000);
-
-let deferredPrompt;
-const installBtn = document.getElementById('installBtn');
-const shareBtn = document.getElementById('shareBtn');
-const bellBtn = document.getElementById('bellBtn');
-const prayerBtn = document.getElementById('prayerBtn');
-const donateBtn = document.getElementById('donateBtn');
-const prayerBtnPlayer = document.getElementById('prayerBtnPlayer');
-const donateBtnPlayer = document.getElementById('donateBtnPlayer');
-const bellBtnPlayer = document.getElementById('bellBtnPlayer');
-const shareBtnPlayer = document.getElementById('shareBtnPlayer');
-
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  setTimeout(() => {
-    installBtn.style.display = 'block';
-    shareBtn.style.display = 'block';
-    bellBtn.style.display = 'block';
-    prayerBtn.style.display = 'block';
-    donateBtn.style.display = 'block';
-  }, 3000);
-});
-
-installBtn.addEventListener('click', async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt = null;
-    installBtn.style.display = 'none';
-  }
-});
-
-shareBtn.addEventListener('click', async () => {
-  if (navigator.share) {
-    await navigator.share({ title: 'TRUTH TV UG', text: 'Watch TRUTH TV UG Live 24/7', url: window.location.href });
-  }
-});
-shareBtnPlayer.addEventListener('click', async () => {
-  if (navigator.share) {
-    await navigator.share({ title: 'TRUTH TV UG', text: 'Watch TRUTH TV UG Live 24/7', url: window.location.href });
-  }
-});
-
-bellBtn.addEventListener('click', () => {
-  OneSignalDeferred.push(function(OneSignal) { OneSignal.showSlidedownPrompt(); });
-});
-bellBtnPlayer.addEventListener('click', () => {
-  OneSignalDeferred.push(function(OneSignal) { OneSignal.showSlidedownPrompt(); });
-});
-
-prayerBtn.addEventListener('click', openPrayer);
-prayerBtnPlayer.addEventListener('click', openPrayer);
-donateBtn.addEventListener('click', openDonate);
-donateBtnPlayer.addEventListener('click', openDonate);
-
-OneSignalDeferred.push(async function(OneSignal) {
-  if (await OneSignal.isPushNotificationsEnabled()) {
-    bellBtn.textContent = '✅ Alerts ON';
-    bellBtn.classList.add('subscribed');
-    bellBtnPlayer.textContent = '✅ ON';
-    bellBtnPlayer.classList.add('subscribed');
-  }
-});
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
