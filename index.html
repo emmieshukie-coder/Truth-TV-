@@ -163,6 +163,9 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 .chat-input input { flex: 1; padding: 8px; border-radius: 5px; border: none; background: #222; color: #fff; }
 .chat-input button { background: #c41e3a; border: none; color: #fff; padding: 8px 12px; margin-left: 5px; border-radius: 5px; cursor: pointer; }
 .chat-toggle { position: absolute; bottom: 70px; right: 20px; background: #c41e3a; padding: 10px 15px; border-radius: 50px; cursor: pointer; z-index: 10005; font-weight: bold; }
+
+/* JOBAI LANDING ADVERT LOGO */
+.jobai-logo { width: 80px; height: 80px; border-radius: 15px; object-fit: contain; background: #fff; padding: 8px; margin-bottom: 10px; border: 2px solid #000; }
 </style>
 </head>
 <body>
@@ -265,12 +268,13 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   </div>
 </div>
 
-<!-- ADVERTISE WITH US SECTION - TARGET BAKERIES + SOAP FACTORIES -->
+<!-- ADVERTISE WITH US SECTION - JOBAI LANDING SAMPLE ADVERT -->
 <div style="max-width: 1400px; margin: 40px auto; padding: 0 20px;">
-  <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #000; padding: 30px 20px; border-radius: 15px; text-align: center; border: 3px solid #fff;">
+  <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #000; padding: 30px 20px; border-radius: 15px; text-align: center; border: 3px solid #fff; box-shadow: 0 5px 20px rgba(255,215,0,0.3);">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhU..." alt="Jobai-Landing" class="jobai-logo">
     <h2 style="font-size: 28px; margin-bottom: 10px;">📢 ADVERTISE WITH TRUTH TV UG</h2>
-    <p style="font-size: 16px; margin-bottom: 15px;" id="adText">Reach 10,000+ viewers daily across Uganda | Your business on TV 24/7</p>
-    <a href="https://wa.me/256776686096?text=Hello TRUTH TV, I want to advertise my business" target="_blank" style="background: #000; color: #FFD700; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block;">💬 Contact Us on WhatsApp</a>
+    <p style="font-size: 16px; margin-bottom: 15px; font-weight: bold;" id="adText">Now Showing: Jobai-Landing | Get hired faster with Jobai-Landing platform</p>
+    <a href="https://wa.me/256776686096?text=Hello TRUTH TV, I want to advertise my business like Jobai-Landing" target="_blank" style="background: #000; color: #FFD700; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block; font-size: 16px;">💬 Book Your Advert Now</a>
   </div>
 </div>
 
@@ -527,14 +531,14 @@ function rotateNews() {
 }
 setInterval(rotateNews, 10000);
 
-// ADVERT ROTATION FOR BAKERIES + SOAP FACTORIES + ALL BUSINESSES
+// ADVERT ROTATION - JOBAI LANDING + BAKERIES + SOAP FACTORIES
 const adMessages = [
-  "Bakeries: Advertise your bread, cakes & pastries to 10,000+ viewers daily | WhatsApp 0776686096",
-  "Soap Factories: Get your detergents, body soap & liquid soap on TRUTH TV 24/7 | Call now",
-  "Reach 10,000+ viewers daily across Uganda | Your business on TV 24/7",
-  "Prime time ads during TRUTH News 5:30pm | Maximum exposure for your shop",
-  "Affordable packages for churches, schools, bakeries, soap factories & all businesses",
-  "Partner with Emmie Shukie | Uganda's Voice of Truth | Advertise today"
+  "Now Showing: Jobai-Landing | Get hired faster with Jobai-Landing platform | Advertise here too",
+  "Bakeries: Show your bread, cakes & pastries to 10,000+ viewers daily like Jobai-Landing | WhatsApp 0776686096",
+  "Soap Factories: Put your detergents & body soap on TRUTH TV 24/7 | Be seen like Jobai-Landing",
+  "Your business here 24/7 | Prime time ads during TRUTH News 5:30pm | Contact 0776686096",
+  "Join Jobai-Landing, bakeries, soap factories & top brands advertising on TRUTH TV UG",
+  "Affordable advert packages for all businesses | Your advert next? WhatsApp now"
 ];
 
 let adIndex = 0;
@@ -542,7 +546,7 @@ function rotateAds() {
   adIndex = (adIndex + 1) % adMessages.length;
   document.getElementById('adText').textContent = adMessages[adIndex];
 }
-setInterval(rotateAds, 5000);
+setInterval(rotateAds, 4000);
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
