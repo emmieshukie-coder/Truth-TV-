@@ -373,10 +373,11 @@ function playChannel(url) {
   showUnmuteHint();
 }
 
+// REMOVED mute=1 for songs so voice plays after 1 tap
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
   let separator = url.includes('?') ? '&' : '?';
-  document.getElementById('videoFrame').src = url + separator + 'autoplay=1&mute=1&playsinline=1';
+  document.getElementById('videoFrame').src = url + separator + 'autoplay=0&playsinline=1';
   showUnmuteHint();
 }
 
