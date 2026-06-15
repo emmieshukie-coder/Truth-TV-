@@ -56,7 +56,7 @@
 .li { background: #0A66C2; }
 .am { background: #FF9900; }
 
-/* MUSIC SECTION WITH CATEGORIES */
+/* MUSIC SECTION */
 .music-section { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
 .music-section h2 { font-size: 24px; margin-bottom: 15px; color: #FFD700; border-left: 4px solid #FFD700; padding-left: 12px; }
 .category-tabs { display: flex; gap: 10px; overflow-x: auto; margin-bottom: 20px; padding-bottom: 10px; }
@@ -71,6 +71,18 @@
 .music-info h3 { font-size: 16px; margin-bottom: 5px; }
 .music-info p { font-size: 13px; opacity: 0.7; }
 .music-badge { background: #FF0000; color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block; margin-top: 5px; }
+
+/* MOVIES SECTION */
+.movies-section { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+.movies-section h2 { font-size: 24px; margin-bottom: 15px; color: #00BFFF; border-left: 4px solid #00BFFF; padding-left: 12px; }
+.movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.movie-card { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid #333; transition: 0.3s; }
+.movie-card:hover { border-color: #00BFFF; transform: translateY(-5px); }
+.movie-card img { width: 100%; height: 180px; object-fit: cover; }
+.movie-info { padding: 15px; }
+.movie-info h3 { font-size: 16px; margin-bottom: 5px; }
+.movie-info p { font-size: 13px; opacity: 0.7; }
+.movie-badge { background: #00BFFF; color: #000; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block; margin-top: 5px; }
 
 .tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
 .tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
@@ -167,7 +179,6 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 <!-- ALL MUSIC TYPES SECTION -->
 <div class="music-section">
   <h2>🎵 All Music Videos</h2>
-
   <div class="category-tabs">
     <button class="cat-btn active" onclick="filterMusic('all')">All</button>
     <button class="cat-btn" onclick="filterMusic('gospel')">🙏 Gospel</button>
@@ -176,7 +187,6 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
     <button class="cat-btn" onclick="filterMusic('love')">💕 Love</button>
     <button class="cat-btn" onclick="filterMusic('dancehall')">🎤 Dancehall</button>
   </div>
-
   <div class="music-grid" id="musicGrid">
     <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/6v2L2UGZJAM?autoplay=1')">
       <img src="https://img.youtube.com/vi/6v2L2UGZJAM/maxresdefault.jpg">
@@ -186,41 +196,68 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
       <img src="https://img.youtube.com/vi/MtN1YnoL46g/maxresdefault.jpg">
       <div class="music-info"><h3>Situma - Levixone</h3><p>Gospel | 4:15</p><span class="music-badge">HOT</span></div>
     </div>
-    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/Xu4rgIHV7q4?autoplay=1')">
-      <img src="https://img.youtube.com/vi/Xu4rgIHV7q4/maxresdefault.jpg">
-      <div class="music-info"><h3>Way Maker - Sinach</h3><p>African Gospel | 5:26</p><span class="music-badge">BLESSED</span></div>
-    </div>
-    <div class="music-card show" data-cat="ugandan" onclick="playReplay('https://www.youtube.com/embed/9bZkp7q19f0?autoplay=1')">
-      <img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg">
-      <div class="music-info"><h3>Gangnam Style - PSY</h3><p>K-Pop | 4:12</p><span class="music-badge">VIRAL</span></div>
-    </div>
-    <div class="music-card show" data-cat="ugandan" onclick="playReplay('https://www.youtube.com/embed/kJQP7kiw5Fk?autoplay=1')">
-      <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg">
-      <div class="music-info"><h3>Despacito - Luis Fonsi</h3><p>Latin | 4:41</p><span class="music-badge">HIT</span></div>
-    </div>
     <div class="music-card show" data-cat="afrobeat" onclick="playReplay('https://www.youtube.com/embed/hFAOXdXZ5TM?autoplay=1')">
       <img src="https://img.youtube.com/vi/hFAOXdXZ5TM/maxresdefault.jpg">
       <div class="music-info"><h3>Calm Down - Rema</h3><p>Afrobeat | 3:39</p><span class="music-badge">TRENDING</span></div>
-    </div>
-    <div class="music-card show" data-cat="afrobeat" onclick="playReplay('https://www.youtube.com/embed/3JuYEul0trI?autoplay=1')">
-      <img src="https://img.youtube.com/vi/3JuYEul0trI/maxresdefault.jpg">
-      <div class="music-info"><h3>Love Nwantiti - CKay</h3><p>Afrobeat | 2:57</p><span class="music-badge">HOT</span></div>
     </div>
     <div class="music-card show" data-cat="love" onclick="playReplay('https://www.youtube.com/embed/0KSOMA3QBU0?autoplay=1')">
       <img src="https://img.youtube.com/vi/0KSOMA3QBU0/maxresdefault.jpg">
       <div class="music-info"><h3>Perfect - Ed Sheeran</h3><p>Love Song | 4:23</p><span class="music-badge">ROMANCE</span></div>
     </div>
-    <div class="music-card show" data-cat="love" onclick="playReplay('https://www.youtube.com/embed/RgKAFK5djSk?autoplay=1')">
-      <img src="https://img.youtube.com/vi/RgKAFK5djSk/maxresdefault.jpg">
-      <div class="music-info"><h3>Shape of You - Ed Sheeran</h3><p>Pop | 3:53</p><span class="music-badge">FAVORITE</span></div>
+  </div>
+</div>
+
+<!-- MOVIES & DRAMA SECTION -->
+<div class="movies-section">
+  <h2>🎬 Movies & Drama</h2>
+  <div class="movie-grid">
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
+      <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
+      <div class="movie-info"><h3>The Healer - Christian Movie</h3><p>Drama | 1h 52m</p><span class="movie-badge">NEW</span></div>
     </div>
-    <div class="music-card show" data-cat="dancehall" onclick="playReplay('https://www.youtube.com/embed/PT2_F-1esPk?autoplay=1')">
-      <img src="https://img.youtube.com/vi/PT2_F-1esPk/maxresdefault.jpg">
-      <div class="music-info"><h3>Lean On - Major Lazer</h3><p>EDM/Dancehall | 2:56</p><span class="music-badge">DANCE</span></div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/EXeTwQWrcwY?autoplay=1')">
+      <img src="https://img.youtube.com/vi/EXeTwQWrcwY/maxresdefault.jpg">
+      <div class="movie-info"><h3>God's Not Dead</h3><p>Faith Drama | 1h 53m</p><span class="movie-badge">HOT</span></div>
     </div>
-    <div class="music-card show" data-cat="dancehall" onclick="playReplay('https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=1')">
-      <img src="https://img.youtube.com/vi/2Vv-BfVoq4g/maxresdefault.jpg">
-      <div class="music-info"><h3>See You Again - Wiz Khalifa</h3><p>Hip Hop | 3:49</p><span class="music-badge">CHART</span></div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/SXHHN1HTkYo?autoplay=1')">
+      <img src="https://img.youtube.com/vi/SXHHN1HTkYo/maxresdefault.jpg">
+      <div class="movie-info"><h3>War Room</h3><p>Prayer Drama | 2h 0m</p><span class="movie-badge">TOP</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/4mOkFXIgKJg?autoplay=1')">
+      <img src="https://img.youtube.com/vi/4mOkFXIgKJg/maxresdefault.jpg">
+      <div class="movie-info"><h3>Overcomer</h3><p>Sports Drama | 1h 59m</p><span class="movie-badge">INSPIRING</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/9G4jnaznUoQ?autoplay=1')">
+      <img src="https://img.youtube.com/vi/9G4jnaznUoQ/maxresdefault.jpg">
+      <div class="movie-info"><h3>Fireproof</h3><p>Marriage Drama | 2h 2m</p><span class="movie-badge">FAITH</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/RhDaaRNDV0g?autoplay=1')">
+      <img src="https://img.youtube.com/vi/RhDaaRNDV0g/maxresdefault.jpg">
+      <div class="movie-info"><h3>Courageous</h3><p>Action Drama | 2h 10m</p><span class="movie-badge">POWERFUL</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/8h2UDkh9XCU?autoplay=1')">
+      <img src="https://img.youtube.com/vi/8h2UDkh9XCU/maxresdefault.jpg">
+      <div class="movie-info"><h3>I Can Only Imagine</h3><p>Music Drama | 1h 50m</p><span class="movie-badge">TRUE STORY</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/5OS-0c_a06Y?autoplay=1')">
+      <img src="https://img.youtube.com/vi/5OS-0c_a06Y/maxresdefault.jpg">
+      <div class="movie-info"><h3>Miracles from Heaven</h3><p>Family Drama | 1h 49m</p><span class="movie-badge">HEALING</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/RJPniOYYEcI?autoplay=1')">
+      <img src="https://img.youtube.com/vi/RJPniOYYEcI/maxresdefault.jpg">
+      <div class="movie-info"><h3>Breakthrough</h3><p>Faith Drama | 1h 56m</p><span class="movie-badge">MIRACLE</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/lhykUc0nTPE?autoplay=1')">
+      <img src="https://img.youtube.com/vi/lhykUc0nTPE/maxresdefault.jpg">
+      <div class="movie-info"><h3>Woodlawn</h3><p>Sports Faith | 2h 4m</p><span class="movie-badge">LEGEND</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/NXYhFR-hhxc?autoplay=1')">
+      <img src="https://img.youtube.com/vi/NXYhFR-hhxc/maxresdefault.jpg">
+      <div class="movie-info"><h3>Unbroken</h3><p>War Drama | 2h 17m</p><span class="movie-badge">EPIC</span></div>
+    </div>
+    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/vqcmLwvOiz0?autoplay=1')">
+      <img src="https://img.youtube.com/vi/vqcmLwvOiz0/maxresdefault.jpg">
+      <div class="movie-info"><h3>Do You Believe?</h3><p>Faith Drama | 1h 55m</p><span class="movie-badge">MOVING</span></div>
     </div>
   </div>
 </div>
@@ -231,32 +268,18 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
     <div class="program" data-name="morning dew prayers" data-start="6" data-end="7"><div class="time">6:00am - 7:00am</div><div class="title">🙏 Morning Dew Prayers</div><div class="desc">Live prayers, devotion & prayer requests with Emmie Shukie</div></div>
     <div class="program" data-name="good morning uganda" data-start="7" data-end="9"><div class="time">7:00am - 9:00am</div><div class="title">☀️ Good Morning Uganda</div><div class="desc">News, weather Kampala, traffic updates & current affairs</div></div>
     <div class="program" data-name="truth exposed" data-start="9" data-end="10"><div class="time">9:00am - 10:00am</div><div class="title">🎤 Truth Exposed</div><div class="desc">Investigative stories & exposing corruption in Uganda</div></div>
-    <div class="program" data-name="women corner" data-start="10" data-end="12"><div class="time">10:00am - 12:00pm</div><div class="title">👩‍👧 Women's Corner</div><div class="desc">Marriage talks, parenting tips, health & family issues</div></div>
-    <div class="program" data-name="midday news" data-start="12" data-end="13"><div class="time">12:00pm - 1:00pm</div><div class="title">📰 TRUTH Midday News</div><div class="desc">Breaking news, Uganda updates & headlines</div></div>
-    <div class="program" data-name="gospel music" data-start="13" data-end="14"><div class="time">1:00pm - 2:00pm</div><div class="title">🎵 Gospel Music Hour</div><div class="desc">Best Ugandan gospel music videos & worship</div></div>
-    <div class="program" data-name="youth vibes" data-start="14" data-end="16"><div class="time">2:00pm - 4:00pm</div><div class="title">🔥 Youth Vibes</div><div class="desc">Youth talk, trends, motivation & street interviews</div></div>
-    <div class="program" data-name="business money" data-start="16" data-end="17.5"><div class="time">4:00pm - 5:30pm</div><div class="title">💰 Business & Money Hour</div><div class="desc">Side hustles, business tips, farming & financial advice</div></div>
-    <div class="program" data-name="truth news prime" data-start="17.5" data-end="19"><div class="time">5:30pm - 7:00pm</div><div class="title">📺 TRUTH News Prime Time</div><div class="desc">Main evening news, politics & community stories</div></div>
-    <div class="program" data-name="truth exposed talk" data-start="19" data-end="20.5"><div class="time">7:00pm - 8:30pm</div><div class="title">🎙️ Truth Exposed Talk Show</div><div class="desc">Live debate, callers, viewer comments & hot topics</div></div>
     <div class="program" data-name="night cinema" data-start="20.5" data-end="22.5"><div class="time">8:30pm - 10:30pm</div><div class="title">🎬 Night Cinema</div><div class="desc">Christian movies, skits, testimonies & drama</div></div>
-    <div class="program" data-name="night prayer" data-start="22.5" data-end="24"><div class="time">10:30pm - 12:00am</div><div class="title">🌙 Night Prayer & Testimonies</div><div class="desc">Late night prayers, deliverance & viewer testimonies</div></div>
-    <div class="program" data-name="gospel music night" data-start="0" data-end="3"><div class="time">12:00am - 3:00am</div><div class="title">🎵 Gospel Music Marathon</div><div class="desc">Non-stop Ugandan gospel music all night</div></div>
-    <div class="program" data-name="sermons replay" data-start="3" data-end="6"><div class="time">3:00am - 6:00am</div><div class="title">📖 Sermons & Bible Teachings</div><div class="desc">Best sermons replay + Bible study with Emmie Shukie</div></div>
   </div>
 </div>
 
-<!-- PLAYER WITH OVERLAY ELEMENTS -->
+<!-- PLAYER -->
 <div class="player" id="player">
   <div class="breaking-news">
     <span>BREAKING NEWS</span>
     <div class="ticker" id="newsTickerPlayer">TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests...</div>
   </div>
-
   <div class="viewer-count">👁️ <span id="viewerCountPlayer">1,247</span> watching now | Live from Kampala</div>
-
-  <!-- TAP TO UNMUTE HINT -->
   <div class="unmute-hint" id="unmuteHint">🔊 Tap video to unmute sound</div>
-
   <span class="close-btn" onclick="closePlayer()">×</span>
   <iframe id="videoFrame" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>
 </div>
@@ -300,7 +323,6 @@ function playChannel(url) {
   showUnmuteHint();
 }
 
-// REMOVED mute=1 for songs so voice plays after 1 tap
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
   let separator = url.includes('?')? '&' : '?';
@@ -316,7 +338,6 @@ function closePlayer() {
 function filterMusic(category) {
   document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
   event.target.classList.add('active');
-
   document.querySelectorAll('.music-card').forEach(card => {
     if(category === 'all' || card.dataset.cat === category) {
       card.classList.add('show');
@@ -344,13 +365,11 @@ function updateNowPlaying() {
   let now = new Date();
   let kampalaTime = new Date(now.toLocaleString("en-US", {timeZone: "Africa/Kampala"}));
   let hour = kampalaTime.getHours() + kampalaTime.getMinutes()/60;
-
   let currentProgram = null;
   document.querySelectorAll('.program').forEach(p => {
     p.classList.remove('active');
     let start = parseFloat(p.dataset.start);
     let end = parseFloat(p.dataset.end);
-
     if(start < end) {
       if(hour >= start && hour < end) {
         currentProgram = p;
@@ -363,7 +382,6 @@ function updateNowPlaying() {
       }
     }
   });
-
   if(currentProgram) {
     let title = currentProgram.querySelector('.title').textContent;
     document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: ${title} | 24/7 Broadcasting`;
@@ -378,7 +396,6 @@ function startViewerCount() {
   let count = 1247 + Math.floor(Math.random() * 500);
   document.getElementById('viewerCount').textContent = count.toLocaleString();
   document.getElementById('viewerCountPlayer').textContent = count.toLocaleString();
-
   setInterval(() => {
     count += Math.floor(Math.random() * 10) - 3;
     if(count < 800) count = 800;
@@ -390,15 +407,9 @@ function startViewerCount() {
 
 const newsItems = [
   "TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests",
+  "🎬 New movies added: God's Not Dead, War Room, Overcomer",
   "Join us for Morning Dew Prayers daily at 6:00am live on YouTube",
-  "💰 SUPPORT US: Donate via MTN MoMo + Airtel Money 0776686096 - God bless you",
-  "📱 FOLLOW US: Facebook, Twitter X, TikTok, WhatsApp, YouTube, LinkedIn, Amazon @TRUTHTVUG",
-  "Breaking: New gospel album from Pastor Wilson Bugembe out now",
-  "Prayer testimonies: Send your testimony via WhatsApp +256776686096",
-  "TRUTH News Prime airs daily at 5:30pm - Stay informed",
-  "💸 Partner with TRUTH TV: Send donations to 0776686096 MTN/Airtel",
-  "Subscribe to Emmie Shukie YouTube channel for daily updates",
-  "Youth Vibes show every day 2:00pm - 4:00pm | Your voice matters"
+  "📱 FOLLOW US: Facebook, Twitter X, TikTok, WhatsApp, YouTube @TRUTHTVUG"
 ];
 
 let currentNewsIndex = 0;
@@ -412,4 +423,4 @@ setInterval(rotateNews, 10000);
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-  </html>
+      </html>
