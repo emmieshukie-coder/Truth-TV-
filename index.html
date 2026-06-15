@@ -72,18 +72,6 @@
 .music-info p { font-size: 13px; opacity: 0.7; }
 .music-badge { background: #FF0000; color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block; margin-top: 5px; }
 
-/* MOVIES SECTION */
-.movies-section { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
-.movies-section h2 { font-size: 24px; margin-bottom: 15px; color: #00BFFF; border-left: 4px solid #00BFFF; padding-left: 12px; }
-.movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-.movie-card { background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid #333; transition: 0.3s; }
-.movie-card:hover { border-color: #00BFFF; transform: translateY(-5px); }
-.movie-card img { width: 100%; height: 180px; object-fit: cover; }
-.movie-info { padding: 15px; }
-.movie-info h3 { font-size: 16px; margin-bottom: 5px; }
-.movie-info p { font-size: 13px; opacity: 0.7; }
-.movie-badge { background: #00BFFF; color: #000; padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; display: inline-block; margin-top: 5px; }
-
 .tv-guide { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
 .tv-guide h2 { font-size: 24px; margin-bottom: 20px; color: #c41e3a; border-left: 4px solid #c41e3a; padding-left: 12px; }
 .schedule-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
@@ -207,61 +195,6 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   </div>
 </div>
 
-<!-- MOVIES & DRAMA SECTION -->
-<div class="movies-section">
-  <h2>🎬 Movies & Drama</h2>
-  <div class="movie-grid">
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1')">
-      <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg">
-      <div class="movie-info"><h3>The Healer - Christian Movie</h3><p>Drama | 1h 52m</p><span class="movie-badge">NEW</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/EXeTwQWrcwY?autoplay=1')">
-      <img src="https://img.youtube.com/vi/EXeTwQWrcwY/maxresdefault.jpg">
-      <div class="movie-info"><h3>God's Not Dead</h3><p>Faith Drama | 1h 53m</p><span class="movie-badge">HOT</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/SXHHN1HTkYo?autoplay=1')">
-      <img src="https://img.youtube.com/vi/SXHHN1HTkYo/maxresdefault.jpg">
-      <div class="movie-info"><h3>War Room</h3><p>Prayer Drama | 2h 0m</p><span class="movie-badge">TOP</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/4mOkFXIgKJg?autoplay=1')">
-      <img src="https://img.youtube.com/vi/4mOkFXIgKJg/maxresdefault.jpg">
-      <div class="movie-info"><h3>Overcomer</h3><p>Sports Drama | 1h 59m</p><span class="movie-badge">INSPIRING</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/9G4jnaznUoQ?autoplay=1')">
-      <img src="https://img.youtube.com/vi/9G4jnaznUoQ/maxresdefault.jpg">
-      <div class="movie-info"><h3>Fireproof</h3><p>Marriage Drama | 2h 2m</p><span class="movie-badge">FAITH</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/RhDaaRNDV0g?autoplay=1')">
-      <img src="https://img.youtube.com/vi/RhDaaRNDV0g/maxresdefault.jpg">
-      <div class="movie-info"><h3>Courageous</h3><p>Action Drama | 2h 10m</p><span class="movie-badge">POWERFUL</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/8h2UDkh9XCU?autoplay=1')">
-      <img src="https://img.youtube.com/vi/8h2UDkh9XCU/maxresdefault.jpg">
-      <div class="movie-info"><h3>I Can Only Imagine</h3><p>Music Drama | 1h 50m</p><span class="movie-badge">TRUE STORY</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/5OS-0c_a06Y?autoplay=1')">
-      <img src="https://img.youtube.com/vi/5OS-0c_a06Y/maxresdefault.jpg">
-      <div class="movie-info"><h3>Miracles from Heaven</h3><p>Family Drama | 1h 49m</p><span class="movie-badge">HEALING</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/RJPniOYYEcI?autoplay=1')">
-      <img src="https://img.youtube.com/vi/RJPniOYYEcI/maxresdefault.jpg">
-      <div class="movie-info"><h3>Breakthrough</h3><p>Faith Drama | 1h 56m</p><span class="movie-badge">MIRACLE</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/lhykUc0nTPE?autoplay=1')">
-      <img src="https://img.youtube.com/vi/lhykUc0nTPE/maxresdefault.jpg">
-      <div class="movie-info"><h3>Woodlawn</h3><p>Sports Faith | 2h 4m</p><span class="movie-badge">LEGEND</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/NXYhFR-hhxc?autoplay=1')">
-      <img src="https://img.youtube.com/vi/NXYhFR-hhxc/maxresdefault.jpg">
-      <div class="movie-info"><h3>Unbroken</h3><p>War Drama | 2h 17m</p><span class="movie-badge">EPIC</span></div>
-    </div>
-    <div class="movie-card" onclick="playReplay('https://www.youtube.com/embed/vqcmLwvOiz0?autoplay=1')">
-      <img src="https://img.youtube.com/vi/vqcmLwvOiz0/maxresdefault.jpg">
-      <div class="movie-info"><h3>Do You Believe?</h3><p>Faith Drama | 1h 55m</p><span class="movie-badge">MOVING</span></div>
-    </div>
-  </div>
-</div>
-
 <div class="tv-guide">
   <h2>📅 24/7 TV Guide - Kampala Time EAT</h2>
   <div class="schedule-grid" id="scheduleGrid">
@@ -370,7 +303,7 @@ function updateNowPlaying() {
     p.classList.remove('active');
     let start = parseFloat(p.dataset.start);
     let end = parseFloat(p.dataset.end);
-    if(start < end) {
+    if(start < start < end) {
       if(hour >= start && hour < end) {
         currentProgram = p;
         p.classList.add('active');
@@ -407,7 +340,6 @@ function startViewerCount() {
 
 const newsItems = [
   "TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests",
-  "🎬 New movies added: God's Not Dead, War Room, Overcomer",
   "Join us for Morning Dew Prayers daily at 6:00am live on YouTube",
   "📱 FOLLOW US: Facebook, Twitter X, TikTok, WhatsApp, YouTube @TRUTHTVUG"
 ];
@@ -423,4 +355,4 @@ setInterval(rotateNews, 10000);
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-      </html>
+  </html>
