@@ -130,6 +130,30 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   background: rgba(0,0,0,0.7);
 }
 
+/* TAP TO UNMUTE OVERLAY */
+.unmute-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.8);
+  color: #FFD700;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 10004;
+  display: none;
+  animation: fadeInOut 3s ease;
+  border: 2px solid #FFD700;
+}
+@keyframes fadeInOut {
+ 0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+ 20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+ 80% { opacity: 1; }
+ 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
 .prayer-modal { display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 10001; align-items: flex-end; justify-content: center; }
 .prayer-content { background: #1a1a1a; padding: 25px; border-radius: 20px 20px 0 0; width: 100%; max-width: 500px; border-top: 3px solid #8B5CF6; animation: slideUp 0.3s ease; }
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -271,6 +295,9 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 
   <div class="viewer-count">👁️ <span id="viewerCountPlayer">1,247</span> watching now | Live from Kampala</div>
 
+  <!-- TAP TO UNMUTE HINT -->
+  <div class="unmute-hint" id="unmuteHint">🔊 Tap video to unmute sound</div>
+
   <div class="btn-group">
     <button id="prayerBtnPlayer" class="action-btn prayer-btn" style="display:block">🙏 Prayer</button>
     <button id="donateBtnPlayer" class="action-btn donate-btn" style="display:block">💰 Donate</button>
@@ -279,7 +306,7 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   </div>
 
   <span class="close-btn" onclick="closePlayer()">×</span>
-  <iframe id="videoFrame" allowfullscreen allow="autoplay"></iframe>
+  <iframe id="videoFrame" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>
 </div>
 
 <div class="prayer-modal" id="prayerModal">
@@ -316,11 +343,19 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 
 <script>
 const CHANNEL_ID = "UCZwKKWoYRumFr8P1LVfGgwQ";
-const CHANNEL_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1&mute=1`;
+const CHANNEL_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1&mute=1&playsinline=1`;
 const channels = [
   { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: CHANNEL_EMBED, isLive: true },
   { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c41e3a?text=SUBSCRIBE+NOW", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
 ];
+
+function showUnmuteHint() {
+  let hint = document.getElementById('unmuteHint');
+  hint.style.display = 'block';
+  setTimeout(() => {
+    hint.style.display = 'none';
+  }, 3000);
+}
 
 channels.forEach(ch => {
   document.getElementById('channels').innerHTML += `
@@ -335,11 +370,14 @@ function playChannel(url) {
   document.getElementById('player').style.display = 'block';
   document.getElementById('videoFrame').src = url;
   startViewerCount();
+  showUnmuteHint();
 }
 
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
-  document.getElementById('videoFrame').src = url + '&autoplay=1&mute=1';
+  let separator = url.includes('?') ? '&' : '?';
+  document.getElementById('videoFrame').src = url + separator + 'autoplay=1&mute=1&playsinline=1';
+  showUnmuteHint();
 }
 
 function closePlayer() {
@@ -421,7 +459,7 @@ setInterval(updateNowPlaying, 60000);
 function startViewerCount() {
   let count = 1247 + Math.floor(Math.random() * 500);
   document.getElementById('viewerCount').textContent = count.toLocaleString();
-  document.getElementById('viewerCountPlayer').textContent =count.toLocaleString();
+  document.getElementById('viewerCountPlayer').textContent = count.toLocaleString();
 
   setInterval(() => {
     count += Math.floor(Math.random() * 10) - 3;
