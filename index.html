@@ -7,7 +7,6 @@
 <meta name="theme-color" content="#c41e3a">
 <meta name="description" content="TRUTH TV UG - Watch Emmie Shukie Live 24/7">
 
-<!-- PWA META TAGS - INSTALL AS APP -->
 <link rel="manifest" href="/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -348,7 +347,8 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 </div>
 
 <script>
-const FACEBOOK_LIVE_URL = "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F61576846708840%2Fvideos%2F1302258328741861%2F&show_text=0&width=800&autoplay=1&muted=1&playsinline=1&allowfullscreen=1";
+// CHANGED: Facebook → Castr RTMP Player for TRUTH TV UG
+const FACEBOOK_LIVE_URL = "https://player.castr.com/live_c63d584069a711f188392b25e74f7f96?password=28f46f43&autoplay=1&muted=1";
 
 const channels = [
   { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: FACEBOOK_LIVE_URL, isLive: true },
