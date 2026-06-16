@@ -6,9 +6,13 @@
 <title>TRUTH TV UG - Uganda's Truth Channel</title>
 <meta name="theme-color" content="#c41e3a">
 <meta name="description" content="TRUTH TV UG - Watch Emmie Shukie Live 24/7">
+
+<!-- PWA META TAGS - INSTALL AS APP -->
 <link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TRUTH TV UG">
+<link rel="apple-touch-icon" href="/icon-512.png">
 
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
@@ -341,6 +345,11 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   </div>
 </div>
 
+<!-- PWA INSTALL BUTTON -->
+<div id="installPopup" style="display:none;position:fixed;bottom:140px;left:50%;transform:translateX(-50%);background:#c41e3a;padding:15px 25px;border-radius:50px;color:#fff;font-weight:bold;z-index:9999;box-shadow:0 5px 20px rgba(196,30,58,0.6);cursor:pointer">
+  📲 Install TRUTH TV App
+</div>
+
 <script>
 const CHANNEL_ID = "UCZwKKWoYRumFr8P1LVfGgwQ";
 const CHANNEL_EMBED = `https://www.youtube.com/embed/live_stream?channel=${CHANNEL_ID}&autoplay=1&mute=1&playsinline=1`;
@@ -388,7 +397,6 @@ channels.forEach(ch => {
 function playChannel(url) {
   document.getElementById('player').style.display = 'block';
   document.getElementById('videoFrame').src = url;
-  startViewerCount();
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
 }
@@ -533,6 +541,32 @@ function rotateNews() {
   document.getElementById('newsTickerPlayer').textContent = newsItems[currentNewsIndex];
 }
 setInterval(rotateNews, 10000);
+
+// PWA INSTALL SCRIPT
+let deferredPrompt;
+const installPopup = document.getElementById('installPopup');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installPopup.style.display = 'block';
+});
+
+installPopup.addEventListener('click', async () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      installPopup.style.display = 'none';
+    }
+    deferredPrompt = null;
+  }
+});
+
+window.addEventListener('appinstalled', () => {
+  installPopup.style.display = 'none';
+  alert('TRUTH TV UG installed successfully! 🙏');
+});
 
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
