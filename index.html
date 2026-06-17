@@ -232,19 +232,19 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
     <button class="cat-btn" onclick="filterMusic('dancehall')">🎤 Dancehall</button>
   </div>
   <div class="music-grid" id="musicGrid">
-    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/6v2L2UGZJAM?autoplay=1')">
+    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/6v2L2UGZJAM')">
       <img src="https://img.youtube.com/vi/6v2L2UGZJAM/maxresdefault.jpg">
       <div class="music-info"><h3>We Worship You - Wilson Bugembe</h3><p>Gospel | 5:32</p><span class="music-badge">TOP</span></div>
     </div>
-    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/MtN1YnoL46g?autoplay=1')">
+    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/MtN1YnoL46g')">
       <img src="https://img.youtube.com/vi/MtN1YnoL46g/maxresdefault.jpg">
       <div class="music-info"><h3>Situma - Levixone</h3><p>Gospel | 4:15</p><span class="music-badge">HOT</span></div>
     </div>
-    <div class="music-card show" data-cat="afrobeat" onclick="playReplay('https://www.youtube.com/embed/hFAOXdXZ5TM?autoplay=1')">
+    <div class="music-card show" data-cat="afrobeat" onclick="playReplay('https://www.youtube.com/embed/hFAOXdXZ5TM')">
       <img src="https://img.youtube.com/vi/hFAOXdXZ5TM/maxresdefault.jpg">
       <div class="music-info"><h3>Calm Down - Rema</h3><p>Afrobeat | 3:39</p><span class="music-badge">TRENDING</span></div>
     </div>
-    <div class="music-card show" data-cat="love" onclick="playReplay('https://www.youtube.com/embed/0KSOMA3QBU0?autoplay=1')">
+    <div class="music-card show" data-cat="love" onclick="playReplay('https://www.youtube.com/embed/0KSOMA3QBU0')">
       <img src="https://img.youtube.com/vi/0KSOMA3QBU0/maxresdefault.jpg">
       <div class="music-info"><h3>Perfect - Ed Sheeran</h3><p>Love Song | 4:23</p><span class="music-badge">ROMANCE</span></div>
     </div>
@@ -347,8 +347,8 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 </div>
 
 <script>
-// CHANGED: Facebook → Castr RTMP Player for TRUTH TV UG
-const FACEBOOK_LIVE_URL = "https://player.castr.com/live_c63d584069a711f188392b25e74f7f96?password=28f46f43&autoplay=1&muted=1";
+// CHANGED: Added quality=hd + autoplay=1&muted=1 for high quality speed
+const FACEBOOK_LIVE_URL = "https://player.castr.com/live_c63d584069a711f188392b25e74f7f96?password=28f46f43&autoplay=1&muted=1&quality=hd";
 
 const channels = [
   { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: FACEBOOK_LIVE_URL, isLive: true },
@@ -391,17 +391,20 @@ channels.forEach(ch => {
   `;
 });
 
+// CHANGED: Added quality=hd + autoplay=1&muted=1 for high quality
 function playChannel(url) {
   document.getElementById('player').style.display = 'block';
-  document.getElementById('videoFrame').src = url;
+  let separator = url.includes('?')? '&' : '?';
+  document.getElementById('videoFrame').src = url + separator + 'autoplay=1&muted=1&quality=hd';
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
 }
 
+// CHANGED: Added quality=hd + autoplay=1 for high quality replays
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
   let separator = url.includes('?')? '&' : '?';
-  document.getElementById('videoFrame').src = url + separator + 'autoplay=0&playsinline=1';
+  document.getElementById('videoFrame').src = url + separator + 'autoplay=1&playsinline=1&quality=hd';
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
 }
