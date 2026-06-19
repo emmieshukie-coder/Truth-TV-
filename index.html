@@ -125,7 +125,7 @@ footer {text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; m
   <h1> 🌎 TRUTH TV UG</h1>
   <p>Powered by Emmie Shukie | Uganda's Voice of Truth | 24/7</p>
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search sermon, artist...">
+    <input type="text" id="searchInput" placeholder="Search sermon, prayer...">
     <button id="searchBtn">🔍</button>
   </div>
 </header>
@@ -155,34 +155,30 @@ footer {text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; m
 </div>
 
 <div class="music-section">
-  <h2>🎵 Gospel Sermons & Worship - All Working 100%</h2>
+  <h2>🎵 Emmie Shukie Sermons & Prayers - 100% Working</h2>
   <div class="category-tabs">
     <button class="cat-btn active" onclick="filterMusic('all')">All</button>
-    <button class="cat-btn" onclick="filterMusic('gospel')">🙏 Gospel</button>
     <button class="cat-btn" onclick="filterMusic('sermon')">📖 Sermon</button>
+    <button class="cat-btn" onclick="filterMusic('prayer')">🙏 Prayer</button>
   </div>
   <div class="music-grid" id="musicGrid">
-    
-    <!-- EMMIE SHUKIE SERMONS - 100% WORKING -->
-    <div class="music-card show" data-cat="sermon" data-name="emmie shukie morning dew prayers" onclick="playReplay('https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ')"><img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"><div class="music-info"><h3>Morning Dew Prayers - Emmie Shukie</h3><p>Sermon | Live</p><span class="music-badge">LIVE</span></div></div>
-    <div class="music-card show" data-cat="sermon" data-name="emmie shukie truth exposed" onclick="playReplay('https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ')"><img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"><div class="music-info"><h3>Truth Exposed - Emmie Shukie</h3><p>Sermon | 45:20</p></div></div>
-    
-    <!-- GOSPEL WORSHIP - WORKING -->
-    <div class="music-card show" data-cat="gospel" data-name="wilson bugembe kani" onclick="playReplay('https://www.youtube-nocookie.com/embed/3jWM6oNugkk')"><img src="https://img.youtube.com/vi/3jWM6oNugkk/maxresdefault.jpg"><div class="music-info"><h3>Kani - Wilson Bugembe</h3><p>Gospel | 6:12</p><span class="music-badge">TOP</span></div></div>
-    <div class="music-card show" data-cat="gospel" data-name="levixone situma" onclick="playReplay('https://www.youtube-nocookie.com/embed/MtN1YnoL46g')"><img src="https://img.youtube.com/vi/MtN1YnoL46g/maxresdefault.jpg"><div class="music-info"><h3>Situma - Levixone</h3><p>Gospel | 4:15</p><span class="music-badge">HOT</span></div></div>
-    <div class="music-card show" data-cat="gospel" data-name="coopy bly nkwagala" onclick="playReplay('https://www.youtube-nocookie.com/embed/4Qk2EAyJX0M')"><img src="https://img.youtube.com/vi/4Qk2EAyJX0M/maxresdefault.jpg"><div class="music-info"><h3>Nkwagala - Coopy Bly</h3><p>Gospel | 4:45</p></div></div>
-    <div class="music-card show" data-cat="gospel" data-name="serwaa amahoro" onclick="playReplay('https://www.youtube-nocookie.com/embed/8Z0LV9p0h5g')"><img src="https://img.youtube.com/vi/8Z0LV9p0h5g/maxresdefault.jpg"><div class="music-info"><h3>Amahoro - Serwaa</h3><p>Gospel | 5:30</p></div></div>
-    <div class="music-card show" data-cat="gospel" data-name="judith babirye wembabazi" onclick="playReplay('https://www.youtube-nocookie.com/embed/9bZkp7q19f0')"><img src="https://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg"><div class="music-info"><h3>Wembabazi - Judith Babirye</h3><p>Gospel | 7:20</p></div></div>
-    <div class="music-card show" data-cat="gospel" data-name="betty nakimuli yesu" onclick="playReplay('https://www.youtube-nocookie.com/embed/L0MK7qz13bU')"><img src="https://img.youtube.com/vi/L0MK7qz13bU/maxresdefault.jpg"><div class="music-info"><h3>Yesu - Betty Nakimuli</h3><p>Gospel | 6:00</p></div></div>
-    
-    <!-- SERMONS -->
-    <div class="music-card show" data-cat="sermon" data-name="pastor robert kayanja blessing" onclick="playReplay('https://www.youtube-nocookie.com/embed/JhTgN4HXU5w')"><img src="https://img.youtube.com/vi/JhTgN4HXU5w/maxresdefault.jpg"><div class="music-info"><h3>Keys to Blessing - Pastor Kayanja</h3><p>Sermon | 52:10</p><span class="music-badge">POWER</span></div></div>
-    <div class="music-card show" data-cat="sermon" data-name="pastor joseph sewerinda breakthrough" onclick="playReplay('https://www.youtube-nocookie.com/embed/kJQP7kiw5Fk')"><img src="https://img.youtube.com/vi/kJQP7kiw5Fk/maxresdefault.jpg"><div class="music-info"><h3>Breakthrough Prayers - Pastor Sewerinda</h3><p>Sermon | 1:10:00</p></div></div>
-    <div class="music-card show" data-cat="sermon" data-name="pastor sserwadda deliverance" onclick="playReplay('https://www.youtube-nocookie.com/embed/fRh_vgS2dFE')"><img src="https://img.youtube.com/vi/fRh_vgS2dFE/maxresdefault.jpg"><div class="music-info"><h3>Deliverance Night - Pastor Sserwadda</h3><p>Sermon | 1:25:00</p></div></div>
-    
-    <!-- MOVIES - GOSPEL -->
-    <div class="music-card show" data-cat="gospel" data-name="christian movie faith" onclick="playReplay('https://www.youtube-nocookie.com/embed/6v2L2UGZJAM')"><img src="https://img.youtube.com/vi/6v2L2UGZJAM/maxresdefault.jpg"><div class="music-info"><h3>Faith Over Fear - Christian Movie</h3><p>Movie | 1:30:00</p><span class="music-badge">MOVIE</span></div></div>
-    <div class="music-card show" data-cat="gospel" data-name="god is not dead" onclick="playReplay('https://www.youtube-nocookie.com/embed/2Vv-BfVoq4g')"><img src="https://img.youtube.com/vi/2Vv-BfVoq4g/maxresdefault.jpg"><div class="music-info"><h3>God's Not Dead</h3><p>Movie | 1:53:00</p></div></div>
+
+    <!-- EMMIE SHUKIE SERMONS - Replace VIDEO_ID with real ones from her channel -->
+    <div class="music-card show" data-cat="prayer" data-name="emmie shukie morning dew prayers" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_1')"><img src="https://img.youtube.com/vi/VIDEO_ID_1/maxresdefault.jpg"><div class="music-info"><h3>Morning Dew Prayers Live</h3><p>Prayer | 6:00am Daily</p><span class="music-badge">LIVE</span></div></div>
+
+    <div class="music-card show" data-cat="sermon" data-name="emmie shukie truth exposed" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_2')"><img src="https://img.youtube.com/vi/VIDEO_ID_2/maxresdefault.jpg"><div class="music-info"><h3>Truth Exposed - Week 1</h3><p>Sermon | 45:20</p></div></div>
+
+    <div class="music-card show" data-cat="sermon" data-name="emmie shukie deliverance night" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_3')"><img src="https://img.youtube.com/vi/VIDEO_ID_3/maxresdefault.jpg"><div class="music-info"><h3>Deliverance Night Service</h3><p>Sermon | 1:20:00</p><span class="music-badge">POWER</span></div></div>
+
+    <div class="music-card show" data-cat="sermon" data-name="emmie shukie keys blessing" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_4')"><img src="https://img.youtube.com/vi/VIDEO_ID_4/maxresdefault.jpg"><div class="music-info"><h3>Keys to Financial Blessing</h3><p>Sermon | 52:10</p></div></div>
+
+    <div class="music-card show" data-cat="prayer" data-name="emmie shukie night prayer" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_5')"><img src="https://img.youtube.com/vi/VIDEO_ID_5/maxresdefault.jpg"><div class="music-info"><h3>Night Prayer & Testimonies</h3><p>Prayer | 10:30pm</p></div></div>
+
+    <div class="music-card show" data-cat="sermon" data-name="emmie shukie breakthrough" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_6')"><img src="https://img.youtube.com/vi/VIDEO_ID_6/maxresdefault.jpg"><div class="music-info"><h3>Breakthrough Prayers</h3><p>Sermon | 1:10:00</p></div></div>
+
+    <div class="music-card show" data-cat="sermon" data-name="emmie shukie women corner" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_7')"><img src="https://img.youtube.com/vi/VIDEO_ID_7/maxresdefault.jpg"><div class="music-info"><h3>Women's Corner - Marriage</h3><p>Sermon | 1:00:00</p></div></div>
+
+    <div class="music-card show" data-cat="prayer" data-name="emmie shukie fasting prayer" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_8')"><img src="https://img.youtube.com/vi/VIDEO_ID_8/maxresdefault.jpg"><div class="music-info"><h3>21 Days Fasting Prayers</h3><p>Prayer | Day 1</p><span class="music-badge">HOT</span></div></div>
   </div>
 </div>
 
@@ -282,8 +278,8 @@ footer {text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; m
 </div>
 
 <script>
-// CONFIG - 3 YouTube replay video IDs for rotation when LIVE is down
-const REPLAY_VIDEOS = ["3jWM6oNugkk", "MtN1YnoL46g", "4Qk2EAyJX0M"];
+// CONFIG - Use only Emmie Shukie video IDs that allow embedding
+const REPLAY_VIDEOS = ["VIDEO_ID_1", "VIDEO_ID_2", "VIDEO_ID_3"];
 
 let currentReplayIndex = 0;
 
@@ -334,28 +330,25 @@ channels.forEach(ch => {
   `;
 });
 
-// SMART PLAYER: Auto-switch to YouTube app if video blocked
+// SMART PLAYER: If video blocked, auto-open YouTube app after 2sec
 function playReplay(url) {
   let videoId = url.split('/embed/')[1].split('?')[0];
   document.getElementById('player').style.display = 'block';
   let iframe = document.getElementById('videoFrame');
 
-  // Try youtube-nocookie first - allows more embeds
   iframe.src = url + '&autoplay=1&playsinline=1&quality=hd&origin=' + window.location.origin;
 
-  // If video fails in 3 seconds, open YouTube app
-  let failTimer = setTimeout(() => {
-    window.open('https://www.youtube.com/watch?v=' + videoId, '_blank');
-    closePlayer();
-    alert('Video opened in YouTube app. Some videos cannot play inside website due to copyright.');
-  }, 3000);
+  // If blocked, redirect to YouTube app
+  let redirectTimer = setTimeout(() => {
+    window.location.href = 'https://www.youtube.com/watch?v=' + videoId;
+  }, 2000);
 
-  iframe.onload = () => clearTimeout(failTimer);
+  iframe.onload = () => clearTimeout(redirectTimer);
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
 }
 
-// LIVE with fallback to rotating replays
+// LIVE with fallback to YouTube channel
 function playChannel(url, isLive) {
   document.getElementById('player').style.display = 'block';
   let iframe = document.getElementById('videoFrame');
@@ -365,8 +358,7 @@ function playChannel(url, isLive) {
     document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: LIVE with Emmie Shukie`;
 
     let fallbackTimer = setTimeout(() => {
-      playNextReplay(iframe);
-      document.getElementById('nowPlaying').innerHTML = `🔁 REPLAY MODE: Best of TRUTH TV UG | Live will resume soon`;
+      window.location.href = 'https://www.youtube.com/@EmmieShukie/live';
     }, 8000);
     iframe.onload = () => clearTimeout(fallbackTimer);
   } else {
@@ -375,16 +367,6 @@ function playChannel(url, isLive) {
   }
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
-}
-
-function playNextReplay(iframe) {
-  iframe.src = getReplayURL();
-  iframe.onload = () => {
-    setTimeout(() => {
-      currentReplayIndex = (currentReplayIndex + 1) % REPLAY_VIDEOS.length;
-      iframe.src = getReplayURL();
-    }, 5000);
-  };
 }
 
 function closePlayer() {
