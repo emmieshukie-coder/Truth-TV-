@@ -347,11 +347,25 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 </div>
 
 <script>
-// CHANGED: Added quality=hd + autoplay=1&muted=1 for high quality speed
-const FACEBOOK_LIVE_URL = "https://player.castr.com/live_c63d584069a711f188392b25e74f7f96?password=28f46f43&autoplay=1&muted=1&quality=hd";
+// CONFIG - 3 YouTube replay video IDs for rotation when LIVE is down
+const REPLAY_VIDEOS = [
+  "6v2L2UGZJAM", // 1. Wilson Bugembe - We Worship You
+  "MtN1YnoL46g", // 2. Levixone - Situma
+  "hFAOXdXZ5TM" // 3. Rema - Calm Down. Replace with your 3 sermon IDs
+];
+
+let currentReplayIndex = 0;
+
+function getReplayURL() {
+  let videoId = REPLAY_VIDEOS[currentReplayIndex];
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1&muted=1&loop=1&playlist=${videoId}&quality=hd`;
+}
+
+// LIVE URL from Castr with HD quality
+const LIVE_URL = "https://player.castr.com/live_c63d584069a711f188392b25e74f7f96?password=28f46f43&autoplay=1&muted=1&quality=hd";
 
 const channels = [
-  { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: FACEBOOK_LIVE_URL, isLive: true },
+  { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: LIVE_URL, isLive: true },
   { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c41e3a?text=SUBSCRIBE+NOW", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
 ];
 
@@ -384,23 +398,55 @@ function showUnmuteHint() {
 
 channels.forEach(ch => {
   document.getElementById('channels').innerHTML += `
-    <div class="channel" onclick="playChannel('${ch.url}')">
+    <div class="channel" onclick="playChannel('${ch.url}', ${ch.isLive})">
       <div style="position:relative">${ch.isLive? '<span class="live-badge">LIVE 24/7</span>' : ''}<img src="${ch.thumb}"></div>
       <h3>${ch.name}</h3>
     </div>
   `;
 });
 
-// CHANGED: Added quality=hd + autoplay=1&muted=1 for high quality
-function playChannel(url) {
+// SMART PLAYER: Auto-switch to rotating replays if live fails
+function playChannel(url, isLive) {
   document.getElementById('player').style.display = 'block';
-  let separator = url.includes('?')? '&' : '?';
-  document.getElementById('videoFrame').src = url + separator + 'autoplay=1&muted=1&quality=hd';
+  let iframe = document.getElementById('videoFrame');
+
+  if(isLive) {
+    // Try LIVE first with HD
+    iframe.src = url + '&autoplay=1&muted=1&quality=hd';
+    document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: LIVE with Emmie Shukie`;
+
+    // If live doesn't load in 8 seconds, switch to replay rotation
+    let fallbackTimer = setTimeout(() => {
+      playNextReplay(iframe);
+      document.getElementById('nowPlaying').innerHTML = `🔁 REPLAY MODE: Best of TRUTH TV UG | Live will resume soon`;
+    }, 8000);
+
+    // If live loads successfully, cancel fallback
+    iframe.onload = () => clearTimeout(fallbackTimer);
+  } else {
+    // YouTube channel button
+    iframe.src = url + '&autoplay=1&muted=1';
+    document.getElementById('nowPlaying').innerHTML = `📺 Subscribe on YouTube`;
+  }
+
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
 }
 
-// CHANGED: Added quality=hd + autoplay=1 for high quality replays
+// Function to rotate through 3 replay videos
+function playNextReplay(iframe) {
+  iframe.src = getReplayURL();
+
+  // When video ends, play next one in the list
+  iframe.onload = () => {
+    setTimeout(() => {
+      currentReplayIndex = (currentReplayIndex + 1) % REPLAY_VIDEOS.length;
+      iframe.src = getReplayURL();
+    }, 5000); // Wait 5sec after video ends before switching
+  };
+}
+
+// REPLAY function for music videos - also with HD
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
   let separator = url.includes('?')? '&' : '?';
