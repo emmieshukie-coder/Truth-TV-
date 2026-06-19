@@ -184,10 +184,6 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 .chat-input input { flex: 1; padding: 8px; border-radius: 5px; border: none; background: #222; color: #fff; }
 .chat-input button { background: #c41e3a; border: none; color: #fff; padding: 8px 12px; margin-left: 5px; border-radius: 5px; cursor: pointer; }
 .chat-toggle { position: absolute; bottom: 70px; right: 20px; background: #c41e3a; padding: 10px 15px; border-radius: 50px; cursor: pointer; z-index: 10005; font-weight: bold; }
-
-.error-overlay {position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#111;padding:30px;border-radius:15px;text-align:center;z-index:10006;border:3px solid #c41e3a;max-width:90%;}
-.error-overlay h3 {color:#c41e3a;margin-bottom:15px;font-size:22px;}
-.error-overlay p {margin-bottom:15px;font-size:15px;line-height:1.6;}
 </style>
 </head>
 <body>
@@ -196,7 +192,7 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   <h1> 🌎 TRUTH TV UG</h1>
   <p>Powered by Emmie Shukie | Uganda's Voice of Truth | 24/7</p>
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search shows, sermons, movies...">
+    <input type="text" id="searchInput" placeholder="Search shows...">
     <button id="searchBtn">🔍</button>
   </div>
 </header>
@@ -226,53 +222,32 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 </div>
 
 <div class="music-section">
-  <h2>🎵 Emmie Shukie Sermons, Prayers & Gospel</h2>
+  <h2>🎵 All Music Videos</h2>
   <div class="category-tabs">
     <button class="cat-btn active" onclick="filterMusic('all')">All</button>
-    <button class="cat-btn" onclick="filterMusic('sermon')">📖 Sermon</button>
-    <button class="cat-btn" onclick="filterMusic('prayer')">🙏 Prayer</button>
-    <button class="cat-btn" onclick="filterMusic('gospel')">🎤 Gospel</button>
-    <button class="cat-btn" onclick="filterMusic('movie')">🎬 Movies</button>
+    <button class="cat-btn" onclick="filterMusic('gospel')">🙏 Gospel</button>
+    <button class="cat-btn" onclick="filterMusic('ugandan')">🇺🇬 Ugandan</button>
+    <button class="cat-btn" onclick="filterMusic('afrobeat')">🔥 Afrobeat</button>
+    <button class="cat-btn" onclick="filterMusic('love')">💕 Love</button>
+    <button class="cat-btn" onclick="filterMusic('dancehall')">🎤 Dancehall</button>
   </div>
   <div class="music-grid" id="musicGrid">
-    
-    <!-- REPLACE VIDEO_ID_XX WITH REAL IDS FROM EMMIE SHUKIE YOUTUBE CHANNEL -->
-    <!-- SERMons -->
-    <div class="music-card show" data-cat="sermon" data-name="emmie shukie truth exposed" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_01')"><img src="https://img.youtube.com/vi/VIDEO_ID_01/maxresdefault.jpg"><div class="music-info"><h3>Truth Exposed - Week 1</h3><p>Sermon | 45:20</p><span class="music-badge">NEW</span></div></div>
-
-    <div class="music-card show" data-cat="sermon" data-name="emmie shukie deliverance night" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_02')"><img src="https://img.youtube.com/vi/VIDEO_ID_02/maxresdefault.jpg"><div class="music-info"><h3>Deliverance Night Service</h3><p>Sermon | 1:20:00</p><span class="music-badge">POWER</span></div></div>
-
-    <div class="music-card show" data-cat="sermon" data-name="emmie shukie keys blessing" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_03')"><img src="https://img.youtube.com/vi/VIDEO_ID_03/maxresdefault.jpg"><div class="music-info"><h3>Keys to Financial Blessing</h3><p>Sermon | 52:10</p></div></div>
-
-    <div class="music-card show" data-cat="sermon" data-name="emmie shukie breakthrough" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_04')"><img src="https://img.youtube.com/vi/VIDEO_ID_04/maxresdefault.jpg"><div class="music-info"><h3>Breakthrough Prayers</h3><p>Sermon | 1:10:00</p></div></div>
-
-    <div class="music-card show" data-cat="sermon" data-name="emmie shukie women corner" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_05')"><img src="https://img.youtube.com/vi/VIDEO_ID_05/maxresdefault.jpg"><div class="music-info"><h3>Women's Corner - Marriage</h3><p>Sermon | 1:00:00</p></div></div>
-
-    <!-- PRAYERS -->
-    <div class="music-card show" data-cat="prayer" data-name="emmie shukie morning dew prayers" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_06')"><img src="https://img.youtube.com/vi/VIDEO_ID_06/maxresdefault.jpg"><div class="music-info"><h3>Morning Dew Prayers Live</h3><p>Prayer | 6:00am Daily</p><span class="music-badge">LIVE</span></div></div>
-
-    <div class="music-card show" data-cat="prayer" data-name="emmie shukie night prayer" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_07')"><img src="https://img.youtube.com/vi/VIDEO_ID_07/maxresdefault.jpg"><div class="music-info"><h3>Night Prayer & Testimonies</h3><p>Prayer | 10:30pm</p></div></div>
-
-    <div class="music-card show" data-cat="prayer" data-name="emmie shukie fasting prayer" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_08')"><img src="https://img.youtube.com/vi/VIDEO_ID_08/maxresdefault.jpg"><div class="music-info"><h3>21 Days Fasting Prayers Day 1</h3><p>Prayer | 1:30:00</p><span class="music-badge">HOT</span></div></div>
-
-    <!-- GOSPEL MUSIC -->
-    <div class="music-card show" data-cat="gospel" data-name="emmie shukie worship" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_09')"><img src="https://img.youtube.com/vi/VIDEO_ID_09/maxresdefault.jpg"><div class="music-info"><h3>Worship & Praise Medley</h3><p>Gospel | 30:00</p></div></div>
-
-    <div class="music-card show" data-cat="gospel" data-name="emmie shukie thanksgiving" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_10')"><img src="https://img.youtube.com/vi/VIDEO_ID_10/maxresdefault.jpg"><div class="music-info"><h3>Thanksgiving Service</h3><p>Gospel | 2:00:00</p></div></div>
-
-    <!-- MOVIES -->
-    <div class="music-card show" data-cat="movie" data-name="emmie shukie christian movie" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_11')"><img src="https://img.youtube.com/vi/VIDEO_ID_11/maxresdefault.jpg"><div class="music-info"><h3>Night Cinema: The Testimony</h3><p>Movie | 1:45:00</p><span class="music-badge">DRAMA</span></div></div>
-
-    <div class="music-card show" data-cat="movie" data-name="emmie shukie skit" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_12')"><img src="https://img.youtube.com/vi/VIDEO_ID_12/maxresdefault.jpg"><div class="music-info"><h3>Life Choices - Christian Skit</h3><p>Movie | 25:00</p></div></div>
-
-    <div class="music-card show" data-cat="movie" data-name="emmie shukie family drama" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_13')"><img src="https://img.youtube.com/vi/VIDEO_ID_13/maxresdefault.jpg"><div class="music-info"><h3>Family Restoration</h3><p>Movie | 50:00</p></div></div>
-
-    <div class="music-card show" data-cat="movie" data-name="emmie shukie youth movie" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_14')"><img src="https://img.youtube.com/vi/VIDEO_ID_14/maxresdefault.jpg"><div class="music-info"><h3>Youth & Purpose</h3><p>Movie | 40:00</p></div></div>
-
-    <div class="music-card show" data-cat="movie" data-name="emmie shukie faith movie" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_15')"><img src="https://img.youtube.com/vi/VIDEO_ID_15/maxresdefault.jpg"><div class="music-info"><h3>Faith Over Fear</h3><p>Movie | 55:00</p><span class="music-badge">NEW</span></div></div>
-
-    <div class="music-card show" data-cat="movie" data-name="emmie shukie miracle" onclick="playReplay('https://www.youtube-nocookie.com/embed/VIDEO_ID_16')"><img src="https://img.youtube.com/vi/VIDEO_ID_16/maxresdefault.jpg"><div class="music-info"><h3>Miracle at Midnight</h3><p>Movie | 1:30:00</p></div></div>
-
+    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/6v2L2UGZJAM')">
+      <img src="https://img.youtube.com/vi/6v2L2UGZJAM/maxresdefault.jpg">
+      <div class="music-info"><h3>We Worship You - Wilson Bugembe</h3><p>Gospel | 5:32</p><span class="music-badge">TOP</span></div>
+    </div>
+    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/MtN1YnoL46g')">
+      <img src="https://img.youtube.com/vi/MtN1YnoL46g/maxresdefault.jpg">
+      <div class="music-info"><h3>Situma - Levixone</h3><p>Gospel | 4:15</p><span class="music-badge">HOT</span></div>
+    </div>
+    <div class="music-card show" data-cat="afrobeat" onclick="playReplay('https://www.youtube.com/embed/hFAOXdXZ5TM')">
+      <img src="https://img.youtube.com/vi/hFAOXdXZ5TM/maxresdefault.jpg">
+      <div class="music-info"><h3>Calm Down - Rema</h3><p>Afrobeat | 3:39</p><span class="music-badge">TRENDING</span></div>
+    </div>
+    <div class="music-card show" data-cat="love" onclick="playReplay('https://www.youtube.com/embed/0KSOMA3QBU0')">
+      <img src="https://img.youtube.com/vi/0KSOMA3QBU0/maxresdefault.jpg">
+      <div class="music-info"><h3>Perfect - Ed Sheeran</h3><p>Love Song | 4:23</p><span class="music-badge">ROMANCE</span></div>
+    </div>
   </div>
 </div>
 
@@ -336,13 +311,11 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   <div class="unmute-hint" id="unmuteHint">🔊 Tap video to unmute sound</div>
   <div class="chat-toggle" onclick="toggleChat()">💬 Chat</div>
   <div class="chat-box" id="chatBox">
-    <div class="chat-box">
-      <div class="chat-header">Live Chat</div>
-      <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input">
-        <input type="text" id="chatInput" placeholder="Type message...">
-        <button onclick="sendChat()">Send</button>
-      </div>
+    <div class="chat-header">Live Chat</div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Type message...">
+      <button onclick="sendChat()">Send</button>
     </div>
   </div>
   <span class="close-btn" onclick="closePlayer()">×</span>
@@ -352,7 +325,7 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 <div class="popup-overlay" id="prayerPopup">
   <div class="popup-box">
     <span class="popup-close" onclick="closePopup('prayer')">&times;</span>
-    <h3>🙏 Send Prayer Request</hes3>
+    <h3>🙏 Send Prayer Request</h3>
     <input type="text" id="prayerName" placeholder="Your Name">
     <textarea id="prayerText" placeholder="Your prayer request..." rows="4"></textarea>
     <button onclick="sendPrayer()">Send via WhatsApp</button>
@@ -369,31 +342,31 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   </div>
 </div>
 
-<div id="installPopup" style="display:none;position:fixed;bottom:140px;left:50%;transform:translateX(-50%);background:#c43e3e;padding:15px 25px;border-radius:50px;color:#fff;font-weight:bold;z-index:9999;box-shadow:0 5px 20px rgba(196,30,58,0.6);cursor:pointer">
+<div id="installPopup" style="display:none;position:fixed;bottom:140px;left:50%;transform:translateX(-50%);background:#c41e3a;padding:15px 25px;border-radius:50px;color:#fff;font-weight:bold;z-index:9999;box-shadow:0 5px 20px rgba(196,30,58,0.6);cursor:pointer">
   📲 Install TRUTH TV App
 </div>
 
 <script>
-// CONFIG - 16 videos: Sermons, Prayers, Gospel, Movies
+// CONFIG - 3 YouTube replay video IDs for rotation when LIVE is down
 const REPLAY_VIDEOS = [
-  "VIDEO_VIDEO_01","VIDEO_VIDEO_02","VIDEO_VIDEO_03","VIDEO_VIDEO_04","VIDEO_VIDEO_05",
-  "VIDEO_VIDEO_06","VIDEO_VIDEO_07","VIDEO_VIDEO_08","VIDEO_VIDEO_09","VIDEO_VIDEO_10",
-  "VIDEO_VIDEO_11","VIDEO_VIDEO_12","VIDEO_VIDEO_13","VIDEO_VIDEO_14","VIDEO_VIDEO_15","VIDEO_VIDEO_16"
+  "6v2L2UGZJAM", // 1. Wilson Bugembe - We Worship You
+  "MtN1YnoL46g", // 2. Levixone - Situma
+  "hFAOXdXZ5TM" // 3. Rema - Calm Down. Replace with your 3 sermon IDs
 ];
 
 let currentReplayIndex = 0;
 
 function getReplayURL() {
   let videoId = REPLAY_VIDEOS[currentReplayIndex];
-  return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&muted=1&loop=1&playlist=${videoId}&quality=hd&origin=${window.location.origin}`;
+  return `https://www.youtube.com/embed/${videoId}?autoplay=1&muted=1&loop=1&playlist=${videoId}&quality=hd`;
 }
 
-// LIVE URL from Caster
-const LIVE_URL = "https://player.caster.com/live_c63d584069a711f188392b25e74f7f96?password=28f43f43&autoplay=1&muted=1&quality=hd";
+// LIVE URL from Castr with HD quality
+const LIVE_URL = "https://player.castr.com/live_c63d584069a711f188392b25e74f7f96?password=28f46f43&autoplay=1&muted=1&quality=hd";
 
 const channels = [
-  { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c43e3e/ffffff?text=24%2F7+Live", url: LIVE_URL, isLive: true },
-  { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c43e3e?text=Subscribe+Now", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
+  { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: LIVE_URL, isLive: true },
+  { name: "Subscribe on YouTube", thumb: "https://via.placeholder.com/400x225/1a1a1a/c41e3a?text=SUBSCRIBE+NOW", url: "https://www.youtube.com/@EmmieShukie", isLive: false }
 ];
 
 const bibleVerses = [
@@ -418,7 +391,9 @@ loadDailyVerse();
 function showUnmuteHint() {
   let hint = document.getElementById('unmuteHint');
   hint.style.display = 'block';
-  setTimeout(() => { hint.style.display = 'none'; }, 3000);
+  setTimeout(() => {
+    hint.style.display = 'none';
+  }, 3000);
 }
 
 channels.forEach(ch => {
@@ -430,93 +405,60 @@ channels.forEach(ch => {
   `;
 });
 
-// NO REDIRECT - Show error inside app if blocked
-function playReplay(url) {
-  document.getElementById('player').style.display = 'block';
-  let iframe = document.getElementById('videoFrame');
-
-  // Remove old error
-  let oldError = document.querySelector('.error-overlay');
-  if(oldError) oldError.remove();
-
-  iframe.src = url + '&autoplay=1&playsinline=1&quality=hd&origin=' + window.location.origin;
-
-  // After 4s, if blocked, show error inside app
-  setTimeout(() => {
-    try {
-      if(iframe.contentDocument && iframe.contentDocument.body.innerText.includes('error')) {
-        showErrorInsideApp();
-      }
-    } catch(e) {
-      showErrorInsideApp();
-    }
-  }, 4000);
-
-  showUnmuteHint();
-  document.getElementById('chatBox').style.display = 'block';
-}
-
-function showErrorInsideApp() {
-  let playerDiv = document.getElementById('player');
-  let errorDiv = document.createElement('div');
-  errorDiv.className = 'error-overlay';
-  errorDiv.innerHTML = `
-    <h3>⚠️ Video Blocked by YouTube</h3>
-    <p>This video can't play inside TRUTH TV UG due to copyright restrictions.</p>
-    <p style="font-size:13px;opacity:0.7;">Only videos with "Allow embedding" can play here.</p>
-    <button onclick="document.querySelector('.error-overlay').remove(); closePlayer();" style="background:#c43e3e;color:#fff;border:none;padding:12px 25px;border-radius:8px;cursor:pointer;margin-top:15px;font-weight:bold;">Close & Try Another</button>
-  `;
-  playerDiv.appendChild(errorDiv);
-}
-
-// LIVE with error handling
+// SMART PLAYER: Auto-switch to rotating replays if live fails
 function playChannel(url, isLive) {
   document.getElementById('player').style.display = 'block';
   let iframe = document.getElementById('videoFrame');
 
-  let oldError = document.querySelector('.error-overlay');
-  if(oldError) oldError.remove();
-
   if(isLive) {
+    // Try LIVE first with HD
     iframe.src = url + '&autoplay=1&muted=1&quality=hd';
     document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: LIVE with Emmie Shukie`;
 
-    setTimeout(() => {
-      try {
-        if(iframe.contentDocument && iframe.contentDocument.body.innerText.includes('error')) {
-          showLiveError();
-        }
-      } catch(e) {
-        showLiveError();
-      }
+    // If live doesn't load in 8 seconds, switch to replay rotation
+    let fallbackTimer = setTimeout(() => {
+      playNextReplay(iframe);
+      document.getElementById('nowPlaying').innerHTML = `🔁 REPLAY MODE: Best of TRUTH TV UG | Live will resume soon`;
     }, 8000);
+
+    // If live loads successfully, cancel fallback
+    iframe.onload = () => clearTimeout(fallbackTimer);
   } else {
+    // YouTube channel button
     iframe.src = url + '&autoplay=1&muted=1';
     document.getElementById('nowPlaying').innerHTML = `📺 Subscribe on YouTube`;
   }
+
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
 }
 
-function showLiveError() {
-  let playerDiv = document.getElementById('player');
-  let errorDiv = document.createElement('div');
-  errorDiv.className = 'error-overlay';
-  errorDiv.innerHTML = `
-    <h3>📡 Live Stream Offline</h3>
-    <p>Live stream is temporarily offline.</p>
-    <p style="font-size:13px;opacity:0.7;">Watch sermons and movies below.</p>
-    <button onclick="document.querySelector('.error-overlay').remove(); closePlayer();" style="background:#c43e3e;color:#fff;border:none;padding:12px 25px;border-radius:8px;cursor:pointer;margin-top:15px;font-weight:bold;">Close</button>
-  `;
-  playerDiv.appendChild(errorDiv);
+// Function to rotate through 3 replay videos
+function playNextReplay(iframe) {
+  iframe.src = getReplayURL();
+
+  // When video ends, play next one in the list
+  iframe.onload = () => {
+    setTimeout(() => {
+      currentReplayIndex = (currentReplayIndex + 1) % REPLAY_VIDEOS.length;
+      iframe.src = getReplayURL();
+    }, 5000); // Wait 5sec after video ends before switching
+  };
+}
+
+// REPLAY function for music videos - also with HD
+function playReplay(url) {
+  document.getElementById('player').style.display = 'block';
+  let separator = url.includes('?')? '&' : '?';
+  document.getElementById('videoFrame').src = url + separator + 'autoplay=1&playsinline=1&quality=hd';
+  showUnmuteHint();
+  document.getElementById('chatBox').style.display = 'block';
 }
 
 function closePlayer() {
   document.getElementById('player').style.display = 'none';
   document.getElementById('videoFrame').src = '';
   document.getElementById('chatBox').style.display = 'none';
-  let oldError = document.querySelector('.error-overlay');
-  if(oldError) oldError.remove();
 }
 
 function toggleChat() {
@@ -562,7 +504,7 @@ function sendTestimony() {
     let div = document.createElement('div');
     div.className = 'testimony-card';
     div.innerHTML = `<h4>${name}</h4><p>${text}</p>`;
-    document.getElementById('testimonyList').prepend(div);
+    document.getElementById('testimoniesList').prepend(div);
     closePopup('testimony');
     alert('Testimony submitted. Thank you for sharing!');
   }
@@ -588,21 +530,6 @@ function searchShows() {
       p.classList.remove('hide');
     } else {
       p.classList.add('hide');
-    }
-  });
-  document.querySelectorAll('.music-card').forEach(card => {
-    let name = card.getAttribute('data-name');
-    if(name && name.includes(query)) {
-      card.classList.add('show');
-    } else if(query === '') {
-      let activeCat = document.querySelector('.cat-btn.active').onclick.toString().match(/'(\w+)'/)[1];
-      if(activeCat === 'all' || card.dataset.cat === activeCat) {
-        card.classList.add('show');
-      } else {
-        card.classList.remove('show');
-      }
-    } else {
-      card.classList.remove('show');
     }
   });
 }
@@ -642,9 +569,15 @@ setInterval(updateNowPlaying, 60000);
 
 const newsItems = [
   "TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests",
-  "Join us for Morning Dew Prayers daily at 6:00am live",
-  "💰 Support TRUTH TV: Donate via MTN/Airtel 0776686096",
-  "📱 Follow us: Facebook, X, TikTok, WhatsApp, YouTube @TRUTH TVUG"
+  "Join us for Morning Dew Prayers daily at 6:00am live on YouTube",
+  "💰 SUPPORT US: Donate via MTN MoMo + Airtel Money 0776686096 - God bless you",
+  "📱 FOLLOW US: Facebook, Twitter X, TikTok, WhatsApp, YouTube, LinkedIn, Amazon @TRUTHTVUG",
+  "Breaking: New gospel album from Pastor Wilson Bugembe out now",
+  "Prayer testimonies: Send your testimony via WhatsApp +256776686096",
+  "TRUTH News Prime airs daily at 5:30pm - Stay informed",
+  "💸 Partner with TRUTH TV: Send donations to 0776686096 MTN/Airtel",
+  "Subscribe to Emmie Shukie YouTube channel for daily updates",
+  "Youth Vibes show every day 2:00pm - 4:00pm | Your voice matters"
 ];
 
 let currentNewsIndex = 0;
@@ -655,27 +588,33 @@ function rotateNews() {
 }
 setInterval(rotateNews, 10000);
 
-// PWA Install
+// PWA INSTALL SCRIPT
 let deferredPrompt;
 const installPopup = document.getElementById('installPopup');
+
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
   installPopup.style.display = 'block';
 });
+
 installPopup.addEventListener('click', async () => {
-  if(deferredPrompt) {
+  if (deferredPrompt) {
     deferredPrompt.prompt();
-    const {outcome} = await deferredPrompt.userChoice;
-    if(outcome === 'accepted') installPopup.style.display = 'none';
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      installPopup.style.display = 'none';
+    }
     deferredPrompt = null;
   }
 });
+
 window.addEventListener('appinstalled', () => {
   installPopup.style.display = 'none';
-  alert('TRUTH TV UG installed! 🙏');
+  alert('TRUTH TV UG installed successfully! 🙏');
 });
-if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-  </html>
+</html>
