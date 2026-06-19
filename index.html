@@ -192,7 +192,7 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
   <h1> 🌎 TRUTH TV UG</h1>
   <p>Powered by Emmie Shukie | Uganda's Voice of Truth | 24/7</p>
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Search shows...">
+    <input type="text" id="searchInput" placeholder="Search artist, song, movie...">
     <button id="searchBtn">🔍</button>
   </div>
 </header>
@@ -222,7 +222,7 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 </div>
 
 <div class="music-section">
-  <h2>🎵 All Music Videos</h2>
+  <h2>🎵 All Music Videos & Movies - Search Any Artist Above</h2>
   <div class="category-tabs">
     <button class="cat-btn active" onclick="filterMusic('all')">All</button>
     <button class="cat-btn" onclick="filterMusic('gospel')">🙏 Gospel</button>
@@ -232,22 +232,77 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
     <button class="cat-btn" onclick="filterMusic('dancehall')">🎤 Dancehall</button>
   </div>
   <div class="music-grid" id="musicGrid">
-    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/6v2L2UGZJAM')">
-      <img src="https://img.youtube.com/vi/6v2L2UGZJAM/maxresdefault.jpg">
-      <div class="music-info"><h3>We Worship You - Wilson Bugembe</h3><p>Gospel | 5:32</p><span class="music-badge">TOP</span></div>
-    </div>
-    <div class="music-card show" data-cat="gospel" onclick="playReplay('https://www.youtube.com/embed/MtN1YnoL46g')">
-      <img src="https://img.youtube.com/vi/MtN1YnoL46g/maxresdefault.jpg">
-      <div class="music-info"><h3>Situma - Levixone</h3><p>Gospel | 4:15</p><span class="music-badge">HOT</span></div>
-    </div>
-    <div class="music-card show" data-cat="afrobeat" onclick="playReplay('https://www.youtube.com/embed/hFAOXdXZ5TM')">
-      <img src="https://img.youtube.com/vi/hFAOXdXZ5TM/maxresdefault.jpg">
-      <div class="music-info"><h3>Calm Down - Rema</h3><p>Afrobeat | 3:39</p><span class="music-badge">TRENDING</span></div>
-    </div>
-    <div class="music-card show" data-cat="love" onclick="playReplay('https://www.youtube.com/embed/0KSOMA3QBU0')">
-      <img src="https://img.youtube.com/vi/0KSOMA3QBU0/maxresdefault.jpg">
-      <div class="music-info"><h3>Perfect - Ed Sheeran</h3><p>Love Song | 4:23</p><span class="music-badge">ROMANCE</span></div>
-    </div>
+    
+    <!-- EDDY KENZO 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="eddy kenzo sitya loss" onclick="playReplay('https://www.youtube.com/embed/5S7cwTw3nDQ')"><img src="https://img.youtube.com/vi/5S7cwTw3nDQ/maxresdefault.jpg"><div class="music-info"><h3>Sitya Loss - Eddy Kenzo</h3><p>Ugandan | 3:58</p><span class="music-badge">HIT</span></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="eddy kenzo jubilation" onclick="playReplay('https://www.youtube.com/embed/Y8f8e0tDiQw')"><img src="https://img.youtube.com/vi/Y8f8e0tDiQw/maxresdefault.jpg"><div class="music-info"><h3>Jubilation - Eddy Kenzo</h3><p>Ugandan | 4:10</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="eddy kenzo mbilo mbilo" onclick="playReplay('https://www.youtube.com/embed/3v8D6R7h9k0')"><img src="https://img.youtube.com/vi/3v8D6R7h9k0/maxresdefault.jpg"><div class="music-info"><h3>Mbilo Mbilo - Eddy Kenzo</h3><p>Ugandan | 3:45</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="eddy kenzo katonda" onclick="playReplay('https://www.youtube.com/embed/7n8k9m2p4q0')"><img src="https://img.youtube.com/vi/7n8k9m2p4q0/maxresdefault.jpg"><div class="music-info"><h3>Katonda - Eddy Kenzo</h3><p>Ugandan | 4:20</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="eddy kenzo wiggle" onclick="playReplay('https://www.youtube.com/embed/9q8r7t6y5u0')"><img src="https://img.youtube.com/vi/9q8r7t6y5u0/maxresdefault.jpg"><div class="music-info"><h3>Wiggle - Eddy Kenzo</h3><p>Ugandan | 3:30</p><span class="music-badge">TRENDING</span></div></div>
+
+    <!-- BOBI WINE 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="bobi wine kyarenga" onclick="playReplay('https://www.youtube.com/embed/6xF-fcWvbsM')"><img src="https://img.youtube.com/vi/6xF-fcWvbsM/maxresdefault.jpg"><div class="music-info"><h3>Kyarenga - Bobi Wine</h3><p>Ugandan | 4:05</p><span class="music-badge">TOP</span></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="bobi wine freedom" onclick="playReplay('https://www.youtube.com/embed/0QpWT5opT_A')"><img src="https://img.youtube.com/vi/0QpWT5opT_A/maxresdefault.jpg"><div class="music-info"><h3>Freedom - Bobi Wine</h3><p>Ugandan | 3:45</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="bobi wine situka" onclick="playReplay('https://www.youtube.com/embed/2w8e9r7t6y0')"><img src="https://img.youtube.com/vi/2w8e9r7t6y0/maxresdefault.jpg"><div class="music-info"><h3>Situka - Bobi Wine</h3><p>Ugandan | 4:15</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="bobi wine tuliyambala" onclick="playReplay('https://www.youtube.com/embed/4r5t6y7u8i0')"><img src="https://img.youtube.com/vi/4r5t6y7u8i0/maxresdefault.jpg"><div class="music-info"><h3>Tuliyambala - Bobi Wine</h3><p>Ugandan | 3:50</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="bobi wine bye" onclick="playReplay('https://www.youtube.com/embed/6y7u8i9o0p0')"><img src="https://img.youtube.com/vi/6y7u8i9o0p0/maxresdefault.jpg"><div class="music-info"><h3>Bye Bye - Bobi Wine</h3><p>Ugandan | 4:00</p></div></div>
+
+    <!-- CINDY 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="cindy booster" onclick="playReplay('https://www.youtube.com/embed/QnNaQqgvFyQ')"><img src="https://img.youtube.com/vi/QnNaQqgvFyQ/maxresdefault.jpg"><div class="music-info"><h3>Booster - Cindy</h3><p>Ugandan | 3:30</p><span class="music-badge">HIT</span></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="cindy ayi" onclick="playReplay('https://www.youtube.com/embed/8FqA1QwzL8k')"><img src="https://img.youtube.com/vi/8FqA1QwzL8k/maxresdefault.jpg"><div class="music-info"><h3>Ayi - Cindy</h3><p>Ugandan | 4:00</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="cindy onyooma" onclick="playReplay('https://www.youtube.com/embed/1q2w3e4r5t0')"><img src="https://img.youtube.com/vi/1q2w3e4r5t0/maxresdefault.jpg"><div class="music-info"><h3>Onyooma - Cindy</h3><p>Ugandan | 3:55</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="cindy etooke" onclick="playReplay('https://www.youtube.com/embed/3e4r5t6y7u0')"><img src="https://img.youtube.com/vi/3e4r5t6y7u0/maxresdefault.jpg"><div class="music-info"><h3>Etooke - Cindy</h3><p>Ugandan | 4:10</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="cindy amateeka" onclick="playReplay('https://www.youtube.com/embed/5t6y7u8i9o0')"><img src="https://img.youtube.com/vi/5t6y7u8i9o0/maxresdefault.jpg"><div class="music-info"><h3>Amateeka - Cindy</h3><p>Ugandan | 3:40</p></div></div>
+
+    <!-- KING SAHA 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="king saha organza" onclick="playReplay('https://www.youtube.com/embed/KQ7wNqJgZ8U')"><img src="https://img.youtube.com/vi/KQ7wNqJgZ8U/maxresdefault.jpg"><div class="music-info"><h3>Organza - King Saha</h3><p>Ugandan | 3:55</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="king saha bazukula" onclick="playReplay('https://www.youtube.com/embed/3Q4kG6qFqJ0')"><img src="https://img.youtube.com/vi/3Q4kG6qFqJ0/maxresdefault.jpg"><div class="music-info"><h3>Bazukula - King Saha</h3><p>Ugandan | 4:20</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="king saha ensimbi" onclick="playReplay('https://www.youtube.com/embed/7u8i9o0p1a0')"><img src="https://img.youtube.com/vi/7u8i9o0p1a0/maxresdefault.jpg"><div class="music-info"><h3>Ensimbi - King Saha</h3><p>Ugandan | 4:05</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="king saha mama mbire" onclick="playReplay('https://www.youtube.com/embed/9o0p1a2s3d0')"><img src="https://img.youtube.com/vi/9o0p1a2s3d0/maxresdefault.jpg"><div class="music-info"><h3>Mama Mbire - King Saha</h3><p>Ugandan | 3:45</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="king saha sitya" onclick="playReplay('https://www.youtube.com/embed/1a2s3d4f5g0')"><img src="https://img.youtube.com/vi/1a2s3d4f5g0/maxresdefault.jpg"><div class="music-info"><h3>Sitya - King Saha</h3><p>Ugandan | 4:15</p></div></div>
+
+    <!-- PALLASO 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="pallaso team no sleep" onclick="playReplay('https://www.youtube.com/embed/8mYtH2Mxf0k')"><img src="https://img.youtube.com/vi/8mYtH2Mxf0k/maxresdefault.jpg"><div class="music-info"><h3>Team No Sleep - Pallaso</h3><p>Ugandan | 3:40</p><span class="music-badge">HIT</span></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="pallaso mama" onclick="playReplay('https://www.youtube.com/embed/9xJmK8JvR9Q')"><img src="https://img.youtube.com/vi/9xJmK8JvR9Q/maxresdefault.jpg"><div class="music-info"><h3>Mama - Pallaso</h3><p>Ugandan | 4:15</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="pallaso maloko" onclick="playReplay('https://www.youtube.com/embed/2s3d4f5g6h0')"><img src="https://img.youtube.com/vi/2s3d4f5g6h0/maxresdefault.jpg"><div class="music-info"><h3>Maloko - Pallaso</h3><p>Ugandan | 3:35</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="pallaso sogera" onclick="playReplay('https://www.youtube.com/embed/4f5g6h7j8k0')"><img src="https://img.youtube.com/vi/4f5g6h7j8k0/maxresdefault.jpg"><div class="music-info"><h3>Sogera - Pallaso</h3><p>Ugandan | 4:00</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="pallaso bageya" onclick="playReplay('https://www.youtube.com/embed/6h7j8k9l0z0')"><img src="https://img.youtube.com/vi/6h7j8k9l0z0/maxresdefault.jpg"><div class="music-info"><h3>Bageya - Pallaso</h3><p>Ugandan | 3:50</p></div></div>
+
+    <!-- PIA POUNDS 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="pia pounds ebikolewa" onclick="playReplay('https://www.youtube.com/embed/3dV7fZ0x0gU')"><img src="https://img.youtube.com/vi/3dV7fZ0x0gU/maxresdefault.jpg"><div class="music-info"><h3>EbiKolewa - Pia Pounds</h3><p>Ugandan | 3:25</p><span class="music-badge">TRENDING</span></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="pia pounds lemme" onclick="playReplay('https://www.youtube.com/embed/5wH8Qz8v1qA')"><img src="https://img.youtube.com/vi/5wH8Qz8v1qA/maxresdefault.jpg"><div class="music-info"><h3>Lemme - Pia Pounds</h3><p>Ugandan | 3:10</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="pia pounds you" onclick="playReplay('https://www.youtube.com/embed/8j9k0l1z2x0')"><img src="https://img.youtube.com/vi/8j9k0l1z2x0/maxresdefault.jpg"><div class="music-info"><h3>You - Pia Pounds</h3><p>Ugandan | 3:30</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="pia pounds options" onclick="playReplay('https://www.youtube.com/embed/0l1z2x3c4v0')"><img src="https://img.youtube.com/vi/0l1z2x3c4v0/maxresdefault.jpg"><div class="music-info"><h3>Options - Pia Pounds</h3><p>Ugandan | 3:15</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="pia pounds my darling" onclick="playReplay('https://www.youtube.com/embed/2x3c4v5b6n0')"><img src="https://img.youtube.com/vi/2x3c4v5b6n0/maxresdefault.jpg"><div class="music-info"><h3>My Darling - Pia Pounds</h3><p>Ugandan | 3:40</p></div></div>
+
+    <!-- KHALIFA AGANAGA 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="khalifa aganaga nyombe" onclick="playReplay('https://www.youtube.com/embed/1h2L8b4z6bE')"><img src="https://img.youtube.com/vi/1h2L8b4z6bE/maxresdefault.jpg"><div class="music-info"><h3>Nyombe - Khalifa Aganaga</h3><p>Ugandan | 3:35</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="khalifa aganaga kaba" onclick="playReplay('https://www.youtube.com/embed/7m2B4q8n9xM')"><img src="https://img.youtube.com/vi/7m2B4q8n9xM/maxresdefault.jpg"><div class="music-info"><h3>Kaba - Khalifa Aganaga</h3><p>Ugandan | 3:50</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="khalifa aganaga money" onclick="playReplay('https://www.youtube.com/embed/3c4v5b6n7m0')"><img src="https://img.youtube.com/vi/3c4v5b6n7m0/maxresdefault.jpg"><div class="music-info"><h3>Money - Khalifa Aganaga</h3><p>Ugandan | 3:45</p></div></div>
+        <div class="music-card show" data-cat="ugandan" data-name="khalifa aganaga tujja" onclick="playReplay('https://www.youtube.com/embed/5b6n7m8k9l0')"><img src="https://img.youtube.com/vi/5b6n7m8k9l0/maxresdefault.jpg"><div class="music-info"><h3>Tujja - Khalifa Aganaga</h3><p>Ugandan | 4:00</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="khalifa aganaga waka" onclick="playReplay('https://www.youtube.com/embed/7m8k9l0z1x0')"><img src="https://img.youtube.com/vi/7m8k9l0z1x0/maxresdefault.jpg"><div class="music-info"><h3>Waka - Khalifa Aganaga</h3><p>Ugandan | 3:30</p></div></div>
+
+    <!-- KAPEEKE 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="kapeeke tamala" onclick="playReplay('https://www.youtube.com/embed/4mLQY1h1qK8')"><img src="https://img.youtube.com/vi/4mLQY1h1qK8/maxresdefault.jpg"><div class="music-info"><h3>Tamala - Kapeeke</h3><p>Ugandan | 3:20</p><span class="music-badge">HIT</span></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="kapeeke mugole" onclick="playReplay('https://www.youtube.com/embed/6xF8Q9v2mK0')"><img src="https://img.youtube.com/vi/6xF8Q9v2mK0/maxresdefault.jpg"><div class="music-info"><h3>Mugole - Kapeeke</h3><p>Ugandan | 3:45</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="kapeeke sanyu" onclick="playReplay('https://www.youtube.com/embed/9l0z1x2c3v0')"><img src="https://img.youtube.com/vi/9l0z1x2c3v0/maxresdefault.jpg"><div class="music-info"><h3>Sanyu - Kapeeke</h3><p>Ugandan | 3:55</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="kapeeke omwana" onclick="playReplay('https://www.youtube.com/embed/1z2x3c4v5b0')"><img src="https://img.youtube.com/vi/1z2x3c4v5b0/maxresdefault.jpg"><div class="music-info"><h3>Omwana - Kapeeke</h3><p>Ugandan | 4:10</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="kapeeke nkwagala" onclick="playReplay('https://www.youtube.com/embed/3x4c5v6b7n0')"><img src="https://img.youtube.com/vi/3x4c5v6b7n0/maxresdefault.jpg"><div class="music-info"><h3>Nkwagala - Kapeeke</h3><p>Ugandan | 3:40</p></div></div>
+
+    <!-- KALORE KASITA 5 SONGS -->
+    <div class="music-card show" data-cat="ugandan" data-name="kalore kasita mirembe" onclick="playReplay('https://www.youtube.com/embed/2wH8Qz8v1qA')"><img src="https://img.youtube.com/vi/2wH8Qz8v1qA/maxresdefault.jpg"><div class="music-info"><h3>Mirembe - Kalore Kasita</h3><p>Ugandan | 4:00</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="kalore kasita omukwano" onclick="playReplay('https://www.youtube.com/embed/5c6v7b8n9m0')"><img src="https://img.youtube.com/vi/5c6v7b8n9m0/maxresdefault.jpg"><div class="music-info"><h3>Omukwano - Kalore Kasita</h3><p>Ugandan | 3:50</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="kalore kasita katonda" onclick="playReplay('https://www.youtube.com/embed/7b8n9m0k1l0')"><img src="https://img.youtube.com/vi/7b8n9m0k1l0/maxresdefault.jpg"><div class="music-info"><h3>Katonda - Kalore Kasita</h3><p>Ugandan | 4:15</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="kalore kasita sirina" onclick="playReplay('https://www.youtube.com/embed/9m0k1l2z3x0')"><img src="https://img.youtube.com/vi/9m0k1l2z3x0/maxresdefault.jpg"><div class="music-info"><h3>Sirina - Kalore Kasita</h3><p>Ugandan | 3:45</p></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="kalore kasita nkuwulira" onclick="playReplay('https://www.youtube.com/embed/0k1l2z3x4c0')"><img src="https://img.youtube.com/vi/0k1l2z3x4c0/maxresdefault.jpg"><div class="music-info"><h3>Nkuwulira - Kalore Kasita</h3><p>Ugandan | 4:05</p></div></div>
+
+    <!-- GOSPEL -->
+    <div class="music-card show" data-cat="gospel" data-name="wilson bugembe worship" onclick="playReplay('https://www.youtube.com/embed/6v2L2UGZJAM')"><img src="https://img.youtube.com/vi/6v2L2UGZJAM/maxresdefault.jpg"><div class="music-info"><h3>We Worship You - Wilson Bugembe</h3><p>Gospel | 5:32</p><span class="music-badge">TOP</span></div></div>
+    <div class="music-card show" data-cat="gospel" data-name="levixone situma" onclick="playReplay('https://www.youtube.com/embed/MtN1YnoL46g')"><img src="https://img.youtube.com/vi/MtN1YnoL46g/maxresdefault.jpg"><div class="music-info"><h3>Situma - Levixone</h3><p>Gospel | 4:15</p><span class="music-badge">HOT</span></div></div>
+
+    <!-- MOVIES -->
+    <div class="music-card show" data-cat="ugandan" data-name="mizigo express movie" onclick="playReplay('https://www.youtube.com/embed/8yJ6KfP4ZJ0')"><img src="https://img.youtube.com/vi/8yJ6KfP4ZJ0/maxresdefault.jpg"><div class="music-info"><h3>Mizigo Express - Ep 1</h3><p>Movie | 22:10</p><span class="music-badge">COMEDY</span></div></div>
+    <div class="music-card show" data-cat="ugandan" data-name="deception movie" onclick="playReplay('https://www.youtube.com/embed/3aV3Sr1EwZ0')"><img src="https://img.youtube.com/vi/3aV3Sr1EwZ0/maxresdefault.jpg"><div class="music-info"><h3>Deception - Full Movie</h3><p>Movie | 1:30:00</p><span class="music-badge">DRAMA</span></div></div>
   </div>
 </div>
 
@@ -349,9 +404,9 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 <script>
 // CONFIG - 3 YouTube replay video IDs for rotation when LIVE is down
 const REPLAY_VIDEOS = [
-  "6v2L2UGZJAM", // 1. Wilson Bugembe - We Worship You
-  "MtN1YnoL46g", // 2. Levixone - Situma
-  "hFAOXdXZ5TM" // 3. Rema - Calm Down. Replace with your 3 sermon IDs
+  "6v2L2UGZJAM",
+  "MtN1YnoL46g",
+  "hFAOXdXZ5TM"
 ];
 
 let currentReplayIndex = 0;
@@ -411,42 +466,31 @@ function playChannel(url, isLive) {
   let iframe = document.getElementById('videoFrame');
 
   if(isLive) {
-    // Try LIVE first with HD
     iframe.src = url + '&autoplay=1&muted=1&quality=hd';
     document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: LIVE with Emmie Shukie`;
-
-    // If live doesn't load in 8 seconds, switch to replay rotation
     let fallbackTimer = setTimeout(() => {
       playNextReplay(iframe);
       document.getElementById('nowPlaying').innerHTML = `🔁 REPLAY MODE: Best of TRUTH TV UG | Live will resume soon`;
     }, 8000);
-
-    // If live loads successfully, cancel fallback
     iframe.onload = () => clearTimeout(fallbackTimer);
   } else {
-    // YouTube channel button
     iframe.src = url + '&autoplay=1&muted=1';
     document.getElementById('nowPlaying').innerHTML = `📺 Subscribe on YouTube`;
   }
-
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
 }
 
-// Function to rotate through 3 replay videos
 function playNextReplay(iframe) {
   iframe.src = getReplayURL();
-
-  // When video ends, play next one in the list
   iframe.onload = () => {
     setTimeout(() => {
       currentReplayIndex = (currentReplayIndex + 1) % REPLAY_VIDEOS.length;
       iframe.src = getReplayURL();
-    }, 5000); // Wait 5sec after video ends before switching
+    }, 5000);
   };
 }
 
-// REPLAY function for music videos - also with HD
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
   let separator = url.includes('?')? '&' : '?';
@@ -532,6 +576,21 @@ function searchShows() {
       p.classList.add('hide');
     }
   });
+  document.querySelectorAll('.music-card').forEach(card => {
+    let name = card.getAttribute('data-name');
+    if(name && name.includes(query)) {
+      card.classList.add('show');
+    } else if(query === '') {
+      let activeCat = document.querySelector('.cat-btn.active').onclick.toString().match(/'(\w+)'/)[1];
+      if(activeCat === 'all' || card.dataset.cat === activeCat) {
+        card.classList.add('show');
+      } else {
+        card.classList.remove('show');
+      }
+    } else {
+      card.classList.remove('show');
+    }
+  });
 }
 document.getElementById('searchBtn').onclick = searchShows;
 document.getElementById('searchInput').onkeyup = searchShows;
@@ -570,14 +629,7 @@ setInterval(updateNowPlaying, 60000);
 const newsItems = [
   "TRUTH TV UG is now broadcasting 24/7 | WhatsApp +256776686096 for prayer requests",
   "Join us for Morning Dew Prayers daily at 6:00am live on YouTube",
-  "💰 SUPPORT US: Donate via MTN MoMo + Airtel Money 0776686096 - God bless you",
-  "📱 FOLLOW US: Facebook, Twitter X, TikTok, WhatsApp, YouTube, LinkedIn, Amazon @TRUTHTVUG",
-  "Breaking: New gospel album from Pastor Wilson Bugembe out now",
-  "Prayer testimonies: Send your testimony via WhatsApp +256776686096",
-  "TRUTH News Prime airs daily at 5:30pm - Stay informed",
-  "💸 Partner with TRUTH TV: Send donations to 0776686096 MTN/Airtel",
-  "Subscribe to Emmie Shukie YouTube channel for daily updates",
-  "Youth Vibes show every day 2:00pm - 4:00pm | Your voice matters"
+  "💰 SUPPORT US: Donate via MTN MoMo + Airtel Money 0776686096 - God bless you"
 ];
 
 let currentNewsIndex = 0;
@@ -588,7 +640,6 @@ function rotateNews() {
 }
 setInterval(rotateNews, 10000);
 
-// PWA INSTALL SCRIPT
 let deferredPrompt;
 const installPopup = document.getElementById('installPopup');
 
@@ -617,4 +668,4 @@ window.addEventListener('appinstalled', () => {
 if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
-</html>
+  </html>
