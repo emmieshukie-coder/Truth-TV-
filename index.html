@@ -8,25 +8,11 @@
 <meta name="description" content="TRUTH TV UG - Watch Emmie Shukie Live 24/7">
 <meta name="google-site-verification" content="P8Fmw4ua0YTLmV2WVz3NVJ0VwtI7p3DIQb_PEmQPe54" />
 
-<!-- GOOGLE SCHEMA CODE - ADDED ONLY. DO NOT DELETE -->
+<!-- GOOGLE SCHEMA CODE - ADDED ONLY -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "TRUTH TV UG",
-  "alternateName": "Truth TV Uganda",
-  "url": "https://truthtvug.onrender.com/",
-  "logo": "https://truthtvug.onrender.com/icon-512.png",
-  "sameAs": [
-    "https://facebook.com/TRUTHTVUG",
-    "https://twitter.com/TRUTHTVUG", 
-    "https://youtube.com/@EmmieShukie",
-    "https://tiktok.com/@TRUTHTVUG"
-  ],
-  "description": "Uganda's Gospel TV Channel. Live 24/7 with Emmie Shukie. Gospel music, sermons, prayers and Christian news from Kampala."
-}
+{"@context":"https://schema.org","@type":"Organization","name":"TRUTH TV UG","alternateName":"Truth TV Uganda","url":"https://truthtvug.onrender.com/","logo":"https://truthtvug.onrender.com/icon-512.png","sameAs":["https://facebook.com/TRUTHTVUG","https://twitter.com/TRUTHTVUG","https://youtube.com/@EmmieShukie","https://tiktok.com/@TRUTHTVUG"],"description":"Uganda's Gospel TV Channel. Live 24/7 with Emmie Shukie. Gospel music, sermons, prayers and Christian news from Kampala."}
 </script>
-  
+
 <link rel="manifest" href="/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -69,7 +55,7 @@ body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; padding
 .breaking-news { background: #c00; color: #fff; padding: 10px 0; overflow: hidden; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 102; border-top: 3px solid #900; }
 .breaking-news span { background: #900; padding: 10px 15px; font-weight: bold; margin-right: 20px; display: inline-block; }
 .ticker { display: inline-block; white-space: nowrap; animation: scroll 25s linear infinite; }
-@keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); }
+@keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
 header { padding: 20px; background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%); text-align: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
 header h1 { font-size: 32px; }
@@ -81,7 +67,7 @@ header p { opacity: 0.9; margin-top: 5px; }
 .search-box button:hover { transform: scale(1.1); }
 
 #nowPlaying { background: #c00; padding: 12px; text-align: center; font-weight: bold; margin: 0; font-size: 16px; animation: blink 2s infinite; }
-@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 
 .viewer-count { text-align: center; padding: 10px; background: #111; color: #00ff00; font-size: 14px; font-weight: bold; }
 .viewer-count span { color: #c41e3a; font-size: 16px; }
@@ -144,7 +130,7 @@ header p { opacity: 0.9; margin-top: 5px; }
 .channel img { width: 100%; height: 160px; object-fit: cover; }
 .channel h3 { padding: 15px; font-size: 18px; }
 .live-badge { position: absolute; top: 10px; left: 10px; background: #c41e3a; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; animation: pulse 1.5s infinite; box-shadow: 0 0 15px #c41e3a; }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
 .player { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
 .player iframe { width: 100%; height: 100%; border: none; }
@@ -369,9 +355,9 @@ footer { text-align: center; padding: 30px 20px; opacity: 0.6; font-size: 14px; 
 <script>
 // CONFIG - 3 YouTube replay video IDs for rotation when LIVE is down
 const REPLAY_VIDEOS = [
-  "6v2L2UGZJAM", // 1. Wilson Bugembe - We Worship You
-  "MtN1YnoL46g", // 2. Levixone - Situma
-  "hFAOXdXZ5TM" // 3. Rema - Calm Down. Replace with your 3 sermon IDs
+  "6v2L2UGZJAM",
+  "MtN1YnoL46g",
+  "hFAOXdXZ5TM"
 ];
 
 let currentReplayIndex = 0;
@@ -381,7 +367,6 @@ function getReplayURL() {
   return `https://www.youtube.com/embed/${videoId}?autoplay=1&muted=1&loop=1&playlist=${videoId}&quality=hd`;
 }
 
-// LIVE URL from YouTube - REPLACED CASTR WITH YOUTUBE EMBED
 const LIVE_URL = "https://www.youtube.com/embed/QwqwofiBHc4?autoplay=1&muted=1&loop=1&playlist=QwqwofiBHc4";
 
 const channels = [
