@@ -3,10 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TRUTH TV UG | Gospel TV Uganda | Watch Emmie Shukie Live 24/7</title>
+<title>TRUTH TV UG - Uganda's Truth Channel</title>
 <meta name="theme-color" content="#c41e3a">
-<meta name="description" content="TRUTH TV UG - Uganda's #1 Gospel TV Channel. Watch Emmie Shukie live 24/7. Gospel music, sermons, prayers, news & Christian programs from Kampala.">
+<meta name="description" content="TRUTH TV UG - Watch Emmie Shukie Live 24/7">
 <meta name="google-site-verification" content="P8Fmw4ua0YTLmV2WVz3NVJ0VwtI7p3DIQb_PEmQPe54" />
+
+<!-- GOOGLE SCHEMA CODE - ADDED ONLY. DO NOT DELETE -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TRUTH TV UG",
+  "alternateName": "Truth TV Uganda",
+  "url": "https://truthtvug.onrender.com/",
+  "logo": "https://truthtvug.onrender.com/icon-512.png",
+  "sameAs": [
+    "https://facebook.com/TRUTHTVUG",
+    "https://twitter.com/TRUTHTVUG", 
+    "https://youtube.com/@EmmieShukie",
+    "https://tiktok.com/@TRUTHTVUG"
+  ],
+  "description": "Uganda's Gospel TV Channel. Live 24/7 with Emmie Shukie. Gospel music, sermons, prayers and Christian news from Kampala."
+}
+</script>
   
 <link rel="manifest" href="/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,25 +42,6 @@
       notifyButton: { enable: false }
     });
   });
-</script>
-
-<!-- GOOGLE SCHEMA CODE - THIS MAKES YOU SHOW LIKE JOBAI ON GOOGLE -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "TRUTH TV UG",
-  "alternateName": "Truth TV Uganda Gospel Channel",
-  "url": "https://truthtvug.onrender.com/",
-  "logo": "https://truthtvug.onrender.com/icon-512.png",
-  "sameAs": [
-    "https://facebook.com/TRUTHTVUG",
-    "https://twitter.com/TRUTHTVUG", 
-    "https://youtube.com/@EmmieShukie",
-    "https://tiktok.com/@TRUTHTVUG"
-  ],
-  "description": "Uganda's #1 Gospel TV Channel. Live 24/7 with Emmie Shukie. Gospel music, sermons, prayers and Christian news from Kampala."
-}
 </script>
 
 <style>
@@ -431,42 +431,31 @@ function playChannel(url, isLive) {
   let iframe = document.getElementById('videoFrame');
 
   if(isLive) {
-    // Try LIVE first with HD
     iframe.src = url + '&autoplay=1&muted=1&quality=hd';
     document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: LIVE with Emmie Shukie`;
-
-    // If live doesn't load in 8 seconds, switch to replay rotation
     let fallbackTimer = setTimeout(() => {
       playNextReplay(iframe);
       document.getElementById('nowPlaying').innerHTML = `🔁 REPLAY MODE: Best of TRUTH TV UG | Live will resume soon`;
     }, 8000);
-
-    // If live loads successfully, cancel fallback
     iframe.onload = () => clearTimeout(fallbackTimer);
   } else {
-    // YouTube channel button
     iframe.src = url + '&autoplay=1&muted=1';
     document.getElementById('nowPlaying').innerHTML = `📺 Subscribe on YouTube`;
   }
-
   showUnmuteHint();
   document.getElementById('chatBox').style.display = 'block';
 }
 
-// Function to rotate through 3 replay videos
 function playNextReplay(iframe) {
   iframe.src = getReplayURL();
-
-  // When video ends, play next one in the list
   iframe.onload = () => {
     setTimeout(() => {
       currentReplayIndex = (currentReplayIndex + 1) % REPLAY_VIDEOS.length;
       iframe.src = getReplayURL();
-    }, 5000); // Wait 5sec after video ends before switching
+    }, 5000);
   };
 }
 
-// REPLAY function for music videos - also with HD
 function playReplay(url) {
   document.getElementById('player').style.display = 'block';
   let separator = url.includes('?')? '&' : '?';
