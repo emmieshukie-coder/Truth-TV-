@@ -367,7 +367,10 @@ function getReplayURL() {
   return `https://www.youtube.com/embed/${videoId}?autoplay=1&muted=1&loop=1&playlist=${videoId}&quality=hd`;
 }
 
-const LIVE_URL = "https://www.youtube.com/embed/videoseries?list=PLTpUcDCBbxfo&autoplay=1&muted=1&loop=1&playlist=PLTpUcDCBbxfo";
+// AUTO LIVE DETECTION CONFIG
+const LIVE_STREAM_ID = "yZp8vRSOVqY"; // <-- PUT YOUR YOUTUBE LIVE VIDEO ID HERE
+const PLAYLIST_ID = "PLTpUcDCBbxfo";
+const LIVE_URL = `https://www.youtube.com/embed/videoseries?list=${PLAYLIST_ID}&autoplay=1&muted=1&loop=1&playlist=${PLAYLIST_ID}`;
 
 const channels = [
   { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: LIVE_URL, isLive: true },
@@ -410,25 +413,31 @@ channels.forEach(ch => {
   `;
 });
 
-// SMART PLAYER: Auto-switch to rotating replays if live fails
-function playChannel(url, isLive) {
+// SMART PLAYER: Auto-detect LIVE or fallback to Playlist
+async function playChannel(url, isLive) {
   document.getElementById('player').style.display = 'block';
   let iframe = document.getElementById('videoFrame');
+  document.getElementById('chatBox').style.display = 'block';
+  showUnmuteHint();
 
   if(isLive) {
-    iframe.src = url + '&autoplay=1&muted=1&quality=hd';
+    // Check if LIVE is actually on
+    let liveCheckUrl = `https://www.youtube.com/embed/${LIVE_STREAM_ID}?autoplay=1&muted=1&loop=1&playlist=${LIVE_STREAM_ID}`;
+
+    iframe.src = liveCheckUrl;
     document.getElementById('nowPlaying').innerHTML = `🔴 ON AIR NOW: LIVE with Emmie Shukie`;
+
+    // If YouTube returns error/black screen after 7s, switch to playlist
     let fallbackTimer = setTimeout(() => {
-      playNextReplay(iframe);
+      iframe.src = LIVE_URL;
       document.getElementById('nowPlaying').innerHTML = `🔁 REPLAY MODE: Best of TRUTH TV UG | Live will resume soon`;
-    }, 8000);
+    }, 7000);
+
     iframe.onload = () => clearTimeout(fallbackTimer);
   } else {
     iframe.src = url + '&autoplay=1&muted=1';
     document.getElementById('nowPlaying').innerHTML = `📺 Subscribe on YouTube`;
   }
-  showUnmuteHint();
-  document.getElementById('chatBox').style.display = 'block';
 }
 
 function playNextReplay(iframe) {
