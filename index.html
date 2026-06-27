@@ -367,7 +367,7 @@ function getReplayURL() {
   return `https://www.youtube.com/embed/${videoId}?autoplay=1&muted=1&loop=1&playlist=${videoId}&quality=hd`;
 }
 
-  const LIVE_URL = "https://www.youtube.com/embed/yZp8vRSOVqY?autoplay=1&muted=1&loop=1&playlist=yZp8vRSOVqY";
+const LIVE_URL = "https://www.youtube.com/embed?listType=user_uploads&list=EmmieShukie&autoplay=1&muted=1&loop=1";
 
 const channels = [
   { name: "TRUTH TV UG - Live 24/7", thumb: "https://via.placeholder.com/400x225/c41e3a/ffffff?text=24%2F7+LIVE", url: LIVE_URL, isLive: true },
@@ -401,7 +401,7 @@ function showUnmuteHint() {
   }, 3000);
 }
 
-channels.forEach(ch => {
+ channels.forEach(ch => {
   document.getElementById('channels').innerHTML += `
     <div class="channel" onclick="playChannel('${ch.url}', ${ch.isLive})">
       <div style="position:relative">${ch.isLive? '<span class="live-badge">LIVE 24/7</span>' : ''}<img src="${ch.thumb}"></div>
